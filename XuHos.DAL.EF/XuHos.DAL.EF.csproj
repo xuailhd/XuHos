@@ -71,9 +71,9 @@
     <Compile Include="DbCommandInterceptors\NoLockInterceptor.cs" />
     <Compile Include="Extensions\DbContent.cs" />
     <Compile Include="Extensions\Query.cs" />
-    <Compile Include="Migrations\201805190317098_V1.0.0.cs" />
-    <Compile Include="Migrations\201805190317098_V1.0.0.Designer.cs">
-      <DependentUpon>201805190317098_V1.0.0.cs</DependentUpon>
+    <Compile Include="Migrations\201805201431213_V1.0.0.cs" />
+    <Compile Include="Migrations\201805201431213_V1.0.0.Designer.cs">
+      <DependentUpon>201805201431213_V1.0.0.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,8 +106,8 @@
     <Folder Include="Repositorys\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805190317098_V1.0.0.resx">
-      <DependentUpon>201805190317098_V1.0.0.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805201431213_V1.0.0.resx">
+      <DependentUpon>201805201431213_V1.0.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

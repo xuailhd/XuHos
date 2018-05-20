@@ -105,6 +105,7 @@
     <Compile Include="DTOs\Request\RequestSendSMSDTO.cs" />
     <Compile Include="Implements\HRegionService.cs" />
     <Compile Include="Implements\SysEventService.cs" />
+    <Compile Include="Implements\WaterNoService.cs" />
     <Compile Include="Implements\SysShortMessageService.cs" />
     <Compile Include="Implements\SysModuleService.cs" />
     <Compile Include="Implements\SysMonitorIndexService.cs" />

@@ -17,7 +17,7 @@ namespace XuHos.DTO
         public RequestUserConsultSubmitDTO()
         {
             this.Privilege = EnumPayPrivilege.None;
-            this.ConsultType = EnumConsultType.Pay;
+            //this.ConsultType = EnumConsultType.Pay;
         }
         /// <summary>
         /// 成员ID
@@ -70,11 +70,6 @@ namespace XuHos.DTO
         /// </summary>
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string ConsultContent { get; set; }
-
-        /// <summary>
-        /// 咨询类型（0-付费、1-免费、2-义诊、3-套餐、4-会员、5-家庭医生）
-        /// </summary>
-        public EnumConsultType ConsultType { get; set; }
         
         /// <summary>
         /// 咨询类型（0-付费、1-免费、2-义诊、3-套餐、4-会员）

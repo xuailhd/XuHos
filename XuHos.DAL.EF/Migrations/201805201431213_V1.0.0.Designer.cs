@@ -13,7 +13,7 @@ namespace XuHos.DAL.EF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201805190317098_V1.0.0"; }
+            get { return "201805201431213_V1.0.0"; }
         }
         
         string IMigrationMetadata.Source

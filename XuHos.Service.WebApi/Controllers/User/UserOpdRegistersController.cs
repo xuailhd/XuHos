@@ -102,15 +102,6 @@ namespace XuHos.WebApi.Controllers
             //默认当前登录用户
             request.UserID = CurrentOperatorUserID;
             request.UserType = CurrentOperatorUserType;
-            request.UserLevel = CurrentOperatorUserLevel;
-
-            if (string.IsNullOrEmpty(request.OrgnazitionID))
-            {
-                if (CurrentOperatorUser != null && !string.IsNullOrEmpty(CurrentOperatorUser.OrgID))
-                {
-                    request.OrgnazitionID = CurrentOperatorUser.OrgID;
-                }
-            }
 
             var ret = bll.Submit(request, true);
 

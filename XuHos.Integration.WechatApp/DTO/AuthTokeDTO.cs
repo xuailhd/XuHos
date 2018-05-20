@@ -12,6 +12,8 @@ namespace XuHos.Integration.WechatApp
 
         public string session_key { get; set; }
 
+        public string mobile { get; set; }
+
         public string unionid { get; set; }
 
         public string errcode { get; set; }

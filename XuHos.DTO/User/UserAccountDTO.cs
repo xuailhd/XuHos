@@ -25,10 +25,6 @@ namespace XuHos.DTO
         /// </summary>
         public string UserID { get; set; }
 
-        /// <summary>
-        /// 账户类型
-        /// </summary>
-        public EnumAccountType AccountType { get; set; }
 
         /// <summary>
         /// 账户余额

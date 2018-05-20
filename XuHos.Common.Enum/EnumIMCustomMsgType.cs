@@ -8,8 +8,6 @@ namespace XuHos.Common.Enum
 {
     /// <summary>
     /// 实时通信自定义类型
-    
-    /// 日期：2016年8月20日
     /// </summary>
     public enum EnumIMCustomMsgType
     {

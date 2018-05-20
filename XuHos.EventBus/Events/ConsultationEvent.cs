@@ -12,10 +12,6 @@ namespace XuHos.EventBus.Events
 
         public string ConsultationID { get; set; }
 
-        public EnumConsultationOperationType OperationType { get; set; }
-
-        public EnumConsultationProgress OperationingConsultationProgress { get; set; }
-
         public string CurrentOperatorUserID { get; set; }
 
         public string TradeNo { get; set; }

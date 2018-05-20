@@ -18,9 +18,6 @@ namespace XuHos.DTO
 
         public string UserID { get; set; }
 
-        public EnumConsultType? ConsultType
-        { get; set; }
-
         public string ConsultTime { get; set; }
 
         public string MemberName { get; set; }
@@ -37,8 +34,6 @@ namespace XuHos.DTO
         /// </summary>
         public int IncludeRemoved { get; set; }
         public EnumOrderState? OrderState { get; set; }
-
-        public EnumConsultState? ConsultState { get; set; }
 
         /// <summary>
         /// 是否已支付

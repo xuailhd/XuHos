@@ -36,7 +36,6 @@ namespace XuHos.Entity
         /// </summary>
         [Column(TypeName = "varchar")]
         [MaxLength(50)]
-        [Required]
         public string JRegisterID { get; set; }
     }
 }

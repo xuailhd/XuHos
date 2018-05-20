@@ -203,9 +203,9 @@ namespace XuHos.WebApi.Controllers.User
             {
                 condition.ProviderID = ProviderID;
             }
-            else if (user != null && !string.IsNullOrEmpty(user.DoctorID))
+            else if (user != null && !string.IsNullOrEmpty(user.UserID))
             {
-                condition.ProviderID = user.DoctorID;
+                condition.ProviderID = user.UserID;
             }
             condition.CurrentPage = CurrentPage;
             condition.PageSize = PageSize;
@@ -342,7 +342,7 @@ namespace XuHos.WebApi.Controllers.User
             var user = CurrentOperatorUser;
             if (string.IsNullOrEmpty(ProviderID))
             {
-                ProviderID = user.DoctorID;
+                ProviderID = user.UserID;
             }
 
             var service = new BLL.Doctor.Implements.DoctorService();

@@ -52,7 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\Request\RequestBannerSearchDTO.cs" />
     <Compile Include="DTOs\Request\RequestGetChannelInfoDTO.cs" />
     <Compile Include="DTOs\Request\RequestGetWaitStatisticsDTO.cs" />
     <Compile Include="DTOs\Request\RequestSendEnterRoomNotifyDTO.cs" />

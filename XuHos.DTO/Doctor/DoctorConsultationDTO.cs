@@ -102,11 +102,6 @@ namespace XuHos.DTO
         public string MedicalRecordNo { get; set; }
 
         /// <summary>
-        ///  会诊状态(0-待支付、1-待开始、2-进行中、3-已完成)
-        /// </summary>
-        public EnumConsultationStatus ConsultationStatus { get; set; }
-
-        /// <summary>
         /// 会诊医生ID列表
         /// </summary>
         public List<string> DoctorIDList { get; set; }

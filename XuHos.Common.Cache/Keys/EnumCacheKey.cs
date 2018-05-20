@@ -264,6 +264,10 @@ namespace XuHos.Common.Cache.Keys
         /// 用户与OpenId
         /// </summary>
         User_OpenID,
+
+        User_Identify,
+
+        ChannelID,
         #endregion
 
         #region 短信相关
@@ -317,6 +321,7 @@ namespace XuHos.Common.Cache.Keys
         MAP_GetIMUidByMemberID,
         MAP_GetDoctorIDByUserID,
         MAP_GetUserIDByMobile,
+        MAP_GetUserIDByOpenID,
         MAP_GetUserIDByCreateUserID,
         MAP_GetUserIDByCreateUserIDAndOrgID,
         MAP_GetUserIDByCreateUserIDAndOrgIDAndMobile,

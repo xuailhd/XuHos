@@ -234,11 +234,12 @@ namespace XuHos.BLL.Sys.Implements
         /// </summary>
         /// <param name="userTokenStr"></param>
         /// <param name="user"></param>
-        public static void SetUserTicket(UserLoginServerTicketDTO user)
+        public static void SetUserTicket(UserLoginServerTicketDTO user,string userToken)
         {
             //设置缓存
             var expireMinute = _GetUserTokenExpireMinute();
-            var UserTicket_CacheKey = new XuHos.Common.Cache.Keys.EntityCacheKey<UserLoginServerTicketDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.User_Ticket, user.UserToken);
+            var UserTicket_CacheKey = new XuHos.Common.Cache.Keys.EntityCacheKey<UserLoginServerTicketDTO>(
+                XuHos.Common.Cache.Keys.StringCacheKeyType.User_Ticket, userToken);
             user.ToCache(UserTicket_CacheKey,TimeSpan.FromMinutes(expireMinute));
         }
 

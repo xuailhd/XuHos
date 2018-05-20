@@ -253,16 +253,16 @@ namespace XuHos.WebApi.Controllers
             //更新登录信息
             if (ret.Status == EnumApiStatus.BizOK && requst.Relation == EnumUserRelation.MySelf)
             {
-                var curruser = Service.Infrastructure.SecurityHelper.LoginUser;
-                if (curruser != null && curruser.UserType == EnumUserType.User)
-                {
-                    curruser.UserCNName = requst.MemberName ?? "";
-                    curruser.UserENName = requst.MemberName ?? "";
-                    curruser.IDNumber = requst.IDNumber ?? "";
-                    curruser.Email = requst.Email ?? "";
-                    curruser.Mobile = requst.Mobile ?? "";
-                    Service.Infrastructure.SecurityHelper.SignIn(curruser);
-                }
+                //var curruser = Service.Infrastructure.SecurityHelper.LoginUser;
+                //if (curruser != null && curruser.UserType == EnumUserType.User)
+                //{
+                //    curruser.UserCNName = requst.MemberName ?? "";
+                //    curruser.UserENName = requst.MemberName ?? "";
+                //    curruser.IDNumber = requst.IDNumber ?? "";
+                //    curruser.Email = requst.Email ?? "";
+                //    curruser.Mobile = requst.Mobile ?? "";
+                //    Service.Infrastructure.SecurityHelper.SignIn(curruser);
+                //}
             }
 
             return ret;

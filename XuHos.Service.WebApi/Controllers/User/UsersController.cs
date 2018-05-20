@@ -40,6 +40,7 @@ namespace XuHos.WebApi.Controllers
 
         public UsersController()
         {
+            userService = new UserService();
             serviceMsgLog = new BLL.Sys.Implements.SysShortMessageService();
         }
 
@@ -50,7 +51,6 @@ namespace XuHos.WebApi.Controllers
         /// <returns></returns>
         [IgnoreUserAuthenticate]
         [HttpPost]
-        [Obsolete("移至患者端Users/Login")]
         public ApiResult Login([FromBody]RequestUserLoginDTO model)
         {
             if (model != null)
@@ -58,9 +58,8 @@ namespace XuHos.WebApi.Controllers
                 var userService = new BLL.User.Implements.UserService();
                 var appToken = CurrentOperatorApp;
                 model.AppID = appToken.AppId;
-                model.ClientSourceType = appToken.SourceType;
 
-                return userService.Login(model, appToken);
+                return userService.Login(model);
             }
             else
             {
@@ -68,8 +67,6 @@ namespace XuHos.WebApi.Controllers
             }
         }
 
-
-    
         /// <summary>
         /// 更新用户信息
         /// </summary>
@@ -174,9 +171,7 @@ namespace XuHos.WebApi.Controllers
                 Mobile = request.Mobile,
                 Email = request.Email,
                 Password = request.Password,
-                Terminal = request.Terminal,
                 UserType = request.UserType == EnumUserType.Default ? EnumUserType.User : request.UserType,
-                RegisterType = EnumUserRegisterType.NetWork,
             };
             var Reason = "";
             userService = new BLL.User.Implements.UserService();
@@ -327,7 +322,7 @@ namespace XuHos.WebApi.Controllers
             string msgContent = string.Format(template.TemplateContent,
                 codeNum.ToString(),
                 outMinute.ToString(),
-                Service.Infrastructure.SecurityHelper.LoginUser.UserCNName,
+                "aaa",
                 request.IDNumber);
 
             //短信参数
@@ -340,7 +335,7 @@ namespace XuHos.WebApi.Controllers
             var msgParms = new List<string>();
             msgParms.Add(codeNum.ToString());
             msgParms.Add(outMinute.ToString());
-            msgParms.Add(Service.Infrastructure.SecurityHelper.LoginUser.UserCNName);
+            msgParms.Add("aaa");
             msgParms.Add(request.IDNumber);
 
             //模板编号
@@ -573,8 +568,9 @@ namespace XuHos.WebApi.Controllers
 
             return EnumApiStatus.BizError.ToApiResultForApiStatus("该用户不存在");
         }
+
         /// <summary>
-        /// 添加用户(不验证手机验证码)(BAT调用)
+        /// 添加用户(不验证手机验证码)
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -591,7 +587,6 @@ namespace XuHos.WebApi.Controllers
                 Email = model.Email,
                 Password = model.Password,
                 UserType = model.UserType,
-                RegisterType = EnumUserRegisterType.ThirdParty,
             };
 
             if (string.IsNullOrEmpty(model.OrgID))
@@ -615,7 +610,7 @@ namespace XuHos.WebApi.Controllers
         }
 
         /// <summary>
-        /// app找回密码(不验证短信验证码，BAT调用)
+        /// app找回密码(不验证短信验证码)
         /// </summary>
         /// <returns></returns>
         [HttpPost]

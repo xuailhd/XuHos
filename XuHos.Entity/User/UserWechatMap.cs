@@ -26,7 +26,6 @@ namespace XuHos.Entity
         public string OpenID { get; set; }
 
         [Column(TypeName = "varchar")]
-        [Required]
         [MaxLength(256)]
         public string AppID { get; set; }
     }

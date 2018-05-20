@@ -18,7 +18,7 @@ namespace XuHos.Service.Infrastructure
     {
         static string cookiePrefix = XuHos.Common.Config.ConfigHelper.GetAppSetting("Cookie.Prefix");
 
-        static string UserToken
+        public static string UserToken
         {
             get
             {
@@ -131,7 +131,6 @@ namespace XuHos.Service.Infrastructure
                         }
                         else
                         {
-                            user.UserToken = UserToken;
                             return user;
                         }
                     }
@@ -181,7 +180,7 @@ namespace XuHos.Service.Infrastructure
         /// <param name="user"></param>
         public static void SignIn(UserLoginServerTicketDTO user)
         {
-            BLL.Sys.Implements.ApiSecurityService.SetUserTicket(user);
+            //BLL.Sys.Implements.ApiSecurityService.SetUserTicket(user);
         }
 
 

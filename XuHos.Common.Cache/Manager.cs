@@ -220,10 +220,10 @@ namespace XuHos.Common.Cache
         /// <param name="cacheKey"></param>
         /// <param name="dbNum"></param>
         /// <returns></returns>
-        public static double Increment(this Keys.StringCacheKey cacheKey)
+        public static double Increment(this Keys.ICacheKey cacheKey, double val = 1)
         {
             if (Manager.Instance != null)
-                return Manager.Instance.StringIncrement(KeyPrefix + cacheKey.KeyName);
+                return Manager.Instance.StringIncrement(KeyPrefix + cacheKey.KeyName, val);
             else
                 return default(double);
         }
@@ -234,10 +234,10 @@ namespace XuHos.Common.Cache
         /// <param name="cacheKey"></param>
         /// <param name="dbNum"></param>
         /// <returns></returns>
-        public static double Decrement(this Keys.StringCacheKey cacheKey)
+        public static double Decrement(this Keys.ICacheKey cacheKey, double val = 1)
         {
             if (Manager.Instance != null)
-                return Manager.Instance.StringDecrement(KeyPrefix + cacheKey.KeyName);
+                return Manager.Instance.StringDecrement(KeyPrefix + cacheKey.KeyName, val);
             else
                 return default(double);
         }

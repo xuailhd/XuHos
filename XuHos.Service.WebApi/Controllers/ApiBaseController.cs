@@ -67,15 +67,6 @@ namespace XuHos.WebApi.Controllers
             }
         }
 
-        public int CurrentOperatorUserLevel
-        {
-
-            get
-            {
-                return CurrentOperatorUser.UserLevel;
-            }
-        }
-
         /// <summary>
         /// 当前操作用户的唯一标识
         /// </summary>
@@ -87,18 +78,6 @@ namespace XuHos.WebApi.Controllers
                 return ImUidService.GetUserIMUid(CurrentOperatorUserID);
             }
 
-        }
-
-        /// <summary>
-        /// 当前操作Apptoken 的 OrgID
-        /// </summary>
-        public string CurrentUserOrgID
-        {
-
-            get
-            {
-                return CurrentOperatorUser != null ? CurrentOperatorUser.OrgID : "kmwlyy";
-            }
         }
 
         #endregion
