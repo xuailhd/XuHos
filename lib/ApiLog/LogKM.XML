@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogKM</name>
+    </assembly>
+    <members>
+        <member name="T:KM.log.BlockArray`1">
+            <summary>
+            阻塞队列
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:KM.log.BlockArray`1.put(`0)">
+            <summary>
+            入栈
+            </summary>
+            <param name="t"></param>
+        </member>
+        <member name="M:KM.log.BlockArray`1.insert(`0)">
+            <summary>
+            插入对象
+            </summary>
+            <param name="t"></param>
+        </member>
+        <member name="M:KM.log.BlockArray`1.take">
+            <summary>
+            出栈
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.BlockArray`1.extract">
+            <summary>
+            取出一个对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.BlockArray`1.inc(System.Int32)">
+            <summary>
+            循环递增
+            </summary>
+            <param name="i">递增前值</param>
+            <returns></returns>
+        </member>
+        <member name="T:KM.log.LogApiKM">
+            <summary>
+            接口日志接口
+            </summary>
+        </member>
+        <member name="M:KM.log.LogApiKM.getInstance">
+            <summary>
+            单例函数
+            </summary>
+            <returns>单例实例</returns>
+        </member>
+        <member name="M:KM.log.LogApiKM.Track(System.String,System.String,System.Int32,System.String,System.Int32,System.String,System.String,System.String,System.Int32,System.Int64,System.String,System.String)">
+            <summary>
+            Api日志追踪
+            </summary>
+            <param name="appId">应用id</param>
+            <param name="clientType">客户端类型：10-Android，20-IOS，30-IE，31-FireFox，32-Opera，33-Safari，34-Chrome，40-Service</param>
+            <param name="clientIP">客户端IP</param>
+            <param name="requestType">请求类型：0-GET，1-POST，2-PUT，3-DELETE</param>
+            <param name="serviceName">接口名称</param>
+            <param name="outputParam">接口出参</param>
+            <param name="inputParam">接口入参</param>
+            <param name="responseStatus">响应状态：0-成功，1-失败</param>
+            <param name="responseTime">接口响应时长(ms)</param>
+            <param name="moduleId">模块Id（用于告警具体模块负责人）</param>
+            <param name="indentify">标识（测试场景唯一id：userId,orderId等）</param>
+        </member>
+        <member name="T:KM.log.LogKM">
+            <summary>
+            系统日志接口
+            </summary>
+        </member>
+        <member name="M:KM.log.LogKM.getInstance">
+            <summary>
+            单例函数
+            </summary>
+            <returns>单例实例</returns>
+        </member>
+        <member name="M:KM.log.LogKM.Info(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            0：Info日志
+            </summary>
+            <param name="message">异常信息</param>
+            <param name="stackInfo">堆栈信息</param>
+            <param name="remark">备注信息</param>
+            <param name="moduleId">模块id</param>
+            <param name="indentify">标识（通用测试ID标识，如userId，orderId）</param>
+        </member>
+        <member name="M:KM.log.LogKM.Debug(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            1：Debug日志
+            </summary>
+            <param name="message">异常信息</param>
+            <param name="stackInfo">堆栈信息</param>
+            <param name="remark">备注信息</param>
+            <param name="moduleId">模块id</param>
+            <param name="indentify">标识（通用测试ID标识，如userId，orderId）</param>
+        </member>
+        <member name="M:KM.log.LogKM.Warn(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            2：Warn日志
+            </summary>
+            <param name="message">异常信息</param>
+            <param name="stackInfo">堆栈信息</param>
+            <param name="remark">备注信息</param>
+            <param name="moduleId">模块id</param>
+            <param name="indentify">标识（通用测试ID标识，如userId，orderId）</param>
+        </member>
+        <member name="M:KM.log.LogKM.Error(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            3：Error日志
+            </summary>
+            <param name="message">异常信息</param>
+            <param name="stackInfo">堆栈信息</param>
+            <param name="remark">备注信息</param>
+            <param name="moduleId">模块id</param>
+            <param name="indentify">标识（通用测试ID标识，如userId，orderId）</param>
+        </member>
+        <member name="M:KM.log.LogKM.Fatal(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            4：Fatal日志
+            </summary>
+            <param name="message">异常信息</param>
+            <param name="stackInfo">堆栈信息</param>
+            <param name="remark">备注信息</param>
+            <param name="moduleId">模块id</param>
+            <param name="indentify">标识（通用测试ID标识，如userId，orderId）</param>
+        </member>
+        <member name="M:KM.log.LogKM.sendJson(System.Int32,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            发送json数据
+            </summary>
+        </member>
+        <member name="M:KM.log.Util.runJob(System.Object)">
+            <summary>
+            http请求线程任务
+            </summary>
+        </member>
+        <member name="M:KM.log.Util.httpPost(KM.log.Util.SendData)">
+            <summary>
+            Http异步请求数据
+            </summary>
+            <param name="type">请求接口类型：0-系统日志,1-接口日志</param>
+            <param name="postDataStr"></param>
+        </member>
+        <member name="M:KM.log.Util.getXmlValue(System.String,System.String,System.String)">
+            <summary>
+            获得xml信息
+            </summary>
+            <param name="xmlElement">xml节点</param>
+            <param name="xmlAttribute">xml属性</param>
+            <param name="defval">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.Util.encrypt(System.String,System.String)">
+            <summary>
+            参数签名加密
+            </summary>
+            <param name="appkey">key值</param>
+            <param name="param">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.Util.getMd5(System.String)">
+            <summary>
+            MD5 32位 UTF8 加密
+            </summary>
+            <param name="str">被加密的参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.Util.getTimeStamp">
+            <summary>
+            获取当前时间戳
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.Util.replaceText(System.Int32,System.String)">
+            <summary>
+            文件名变量替换，替换“${}”里的内容
+            </summary>
+            <param name="type">日志类型：0 - 系统日志， 1 - api日志</param>
+            <param name="file">文件路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.Util.writLine">
+            <summary>
+            输出本地日志
+            </summary>
+            <param name="type">日志类型</param>
+            <param name="txt">输出内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.Util.writLog(System.Int32,System.String,System.String)">
+            <summary>
+            写本地日志
+            </summary>
+            <param name="type">日志类型</param>
+            <param name="txt">日志信息</param>
+            <param name="stackInfo">堆栈信息</param>
+        </member>
+        <member name="M:KM.log.Util.filter(System.String)">
+            <summary>
+            转义json字符串特殊字符
+            </summary>
+        </member>
+        <member name="M:KM.log.Util.getFileSize(System.String)">
+            <summary>
+            单位转换，将MB、GB转为字节
+            </summary>
+            <param name="size">大小字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.Util.getNumberFloat(System.String)">
+            <summary>
+            如果字符窜是浮点类型，转换成浮点数
+            </summary>
+        </member>
+        <member name="M:KM.log.Util.getLastFileNum(System.IO.FileInfo)">
+            <summary>
+            获得文件最大分割数
+            </summary>
+            <param name="fi">文件信息对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:KM.log.Util.getJsonString(System.String,System.String)">
+            <summary>
+            根据key获取非嵌套json
+            </summary>
+            <param name="json">json字符串</param>
+            <param name="key">key值</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

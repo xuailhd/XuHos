@@ -1,0 +1,1284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>关于康美医院</value>
+  </data>
+  <data name="AfraidSeriousIllness" xml:space="preserve">
+    <value>大病不用怕</value>
+  </data>
+  <data name="Agreement" xml:space="preserve">
+    <value>保密协议</value>
+  </data>
+  <data name="Appointment" xml:space="preserve">
+    <value>预约</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>聊天记录</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>收藏</value>
+  </data>
+  <data name="ComfirmPassword" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="ComfirmPasswordError" xml:space="preserve">
+    <value>确认密码错误！</value>
+  </data>
+  <data name="ComfirmPay" xml:space="preserve">
+    <value>确认支付</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>康美健康云服务有限公司</value>
+  </data>
+  <data name="ConfirmReservation" xml:space="preserve">
+    <value>确认预约</value>
+  </data>
+  <data name="Daughter" xml:space="preserve">
+    <value>女儿</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="DeliveryIn" xml:space="preserve">
+    <value>快递小哥配送中=^_^=</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>科室</value>
+  </data>
+  <data name="DeputyDirector" xml:space="preserve">
+    <value>副主任医生</value>
+  </data>
+  <data name="DetailUnderstand" xml:space="preserve">
+    <value>详细了解</value>
+  </data>
+  <data name="Disclaimer" xml:space="preserve">
+    <value>免责声明</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>医生</value>
+  </data>
+  <data name="Doctors" xml:space="preserve">
+    <value>医生</value>
+  </data>
+  <data name="DoctorVideoWindow" xml:space="preserve">
+    <value>医生视频窗口</value>
+  </data>
+  <data name="DriverLicense" xml:space="preserve">
+    <value>驾驶证</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>电子邮箱</value>
+  </data>
+  <data name="Expert" xml:space="preserve">
+    <value>专家</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>父亲</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>女性</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>周五</value>
+  </data>
+  <data name="HasSign" xml:space="preserve">
+    <value>已签收=^_^=</value>
+  </data>
+  <data name="HaveRead" xml:space="preserve">
+    <value>我已阅读并接受</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>您好！请</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="Hospital" xml:space="preserve">
+    <value>医院</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>小时</value>
+  </data>
+  <data name="ICP" xml:space="preserve">
+    <value>粤ICP备15086500号-1</value>
+  </data>
+  <data name="IDCard" xml:space="preserve">
+    <value>身份证</value>
+  </data>
+  <data name="InputPassword" xml:space="preserve">
+    <value>请输入登录密码</value>
+  </data>
+  <data name="InputUserName" xml:space="preserve">
+    <value>请输入登录账号或手机号</value>
+  </data>
+  <data name="KMNews" xml:space="preserve">
+    <value>康美动态</value>
+  </data>
+  <data name="LastWeek" xml:space="preserve">
+    <value>上一周</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>列表</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>注销</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>男性</value>
+  </data>
+  <data name="MasterHealthInAnyWhere" xml:space="preserve">
+    <value>随时随地掌握父母健康状况</value>
+  </data>
+  <data name="MedicalDirector" xml:space="preserve">
+    <value>主任医生</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>成员</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>文字信息</value>
+  </data>
+  <data name="MilitaryOfficer" xml:space="preserve">
+    <value>军官证</value>
+  </data>
+  <data name="Minorillnesses" xml:space="preserve">
+    <value>小病不用跑医院</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>手机号码</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>周一</value>
+  </data>
+  <data name="Money" xml:space="preserve">
+    <value>￥</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>母亲</value>
+  </data>
+  <data name="MyFavorite" xml:space="preserve">
+    <value>我的收藏</value>
+  </data>
+  <data name="Myself" xml:space="preserve">
+    <value>本人</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="NamePasswordError" xml:space="preserve">
+    <value>登陆失败，请检查您的用户名或密码错误是否正确！</value>
+  </data>
+  <data name="Networkclinic" xml:space="preserve">
+    <value>网络门诊</value>
+  </data>
+  <data name="NextWeek" xml:space="preserve">
+    <value>下一周</value>
+  </data>
+  <data name="NoClear" xml:space="preserve">
+    <value>看不清？点击更换</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>数据不存在！</value>
+  </data>
+  <data name="NoObject" xml:space="preserve">
+    <value>没有对象！</value>
+  </data>
+  <data name="OldPasswordError" xml:space="preserve">
+    <value>旧密码输入有误！</value>
+  </data>
+  <data name="OnlineDoctor" xml:space="preserve">
+    <value>在线医生</value>
+  </data>
+  <data name="OnlineExpert" xml:space="preserve">
+    <value>在线专家</value>
+  </data>
+  <data name="OnlineHospital" xml:space="preserve">
+    <value>网上医院</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="Passport" xml:space="preserve">
+    <value>护照</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="PatientVideoWindow" xml:space="preserve">
+    <value>患者视频窗口</value>
+  </data>
+  <data name="PersonalCenter" xml:space="preserve">
+    <value>个人中心</value>
+  </data>
+  <data name="PersonInfo" xml:space="preserve">
+    <value>个人信息</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="Professional" xml:space="preserve">
+    <value>擅长</value>
+  </data>
+  <data name="PuningCity" xml:space="preserve">
+    <value>普宁市</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="ResidentsBooklet" xml:space="preserve">
+    <value>居民户口簿</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>周六</value>
+  </data>
+  <data name="Second" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>请选择上传文件！</value>
+  </data>
+  <data name="SelectPay" xml:space="preserve">
+    <value>选择支付方式</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>发送</value>
+  </data>
+  <data name="SignUpNow" xml:space="preserve">
+    <value>立即注册</value>
+  </data>
+  <data name="SizeLimit" xml:space="preserve">
+    <value>上传文件大小超过限制！</value>
+  </data>
+  <data name="Son" xml:space="preserve">
+    <value>儿子</value>
+  </data>
+  <data name="SorryNoLimit" xml:space="preserve">
+    <value>对不起，您没有权限访问的此页面，请确认您所使用的登录用户是否有足够的权限访问该页面。</value>
+  </data>
+  <data name="Spend" xml:space="preserve">
+    <value>费用</value>
+  </data>
+  <data name="Spouse" xml:space="preserve">
+    <value>配偶</value>
+  </data>
+  <data name="Suggest" xml:space="preserve">
+    <value>意见和建议</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>周日</value>
+  </data>
+  <data name="TermsService" xml:space="preserve">
+    <value>服务条款</value>
+  </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>本周</value>
+  </data>
+  <data name="ThreeGradeHospital" xml:space="preserve">
+    <value>三级甲等医院</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>周四</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>周二</value>
+  </data>
+  <data name="TumorManagement" xml:space="preserve">
+    <value>肿瘤管理服务</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="UploadFail" xml:space="preserve">
+    <value>文件上传失败！</value>
+  </data>
+  <data name="UserIDExist" xml:space="preserve">
+    <value>用户名已存在.</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="VerificationError" xml:space="preserve">
+    <value>验证码错误！</value>
+  </data>
+  <data name="VerifyCode" xml:space="preserve">
+    <value>验证码</value>
+  </data>
+  <data name="WebSiteTitle" xml:space="preserve">
+    <value>康美网络医院平台</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>周三</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="Wisdomelder" xml:space="preserve">
+    <value>智慧养老</value>
+  </data>
+  <data name="WrongExt" xml:space="preserve">
+    <value>上传文件扩展名是不允许的扩展名，有效的扩展名是:{0}</value>
+  </data>
+  <data name="SearchDoctor" xml:space="preserve">
+    <value>搜索医生</value>
+  </data>
+  <data name="AppointmentRegister" xml:space="preserve">
+    <value>预约挂号</value>
+  </data>
+  <data name="AudioService" xml:space="preserve">
+    <value>语音</value>
+  </data>
+  <data name="ClinicToday" xml:space="preserve">
+    <value>今日义诊</value>
+  </data>
+  <data name="CustomerServiceNumber" xml:space="preserve">
+    <value>客服电话</value>
+  </data>
+  <data name="DocAudioDesc" xml:space="preserve">
+    <value>预约医生，和医生进行15分钟语音问诊</value>
+  </data>
+  <data name="DocImageDesc" xml:space="preserve">
+    <value>通过文字，图片及语音和医生在线问诊</value>
+  </data>
+  <data name="DocVideoDesc" xml:space="preserve">
+    <value>在线进行视频诊断和处方下达</value>
+  </data>
+  <data name="FamilyDoctor" xml:space="preserve">
+    <value>家庭医生</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>忘记密码</value>
+  </data>
+  <data name="FreeConsultation" xml:space="preserve">
+    <value>免费咨询</value>
+  </data>
+  <data name="FriendshipLinks" xml:space="preserve">
+    <value>友情链接</value>
+  </data>
+  <data name="Hos3stClassHospital" xml:space="preserve">
+    <value>三甲医院</value>
+  </data>
+  <data name="HosAnorectalHospital" xml:space="preserve">
+    <value>肛肠专科医院</value>
+  </data>
+  <data name="HosChildrenHospital" xml:space="preserve">
+    <value>儿童医院</value>
+  </data>
+  <data name="HosChronicHospital" xml:space="preserve">
+    <value>慢性病防治医院</value>
+  </data>
+  <data name="HosENTHospital" xml:space="preserve">
+    <value>耳鼻喉医院</value>
+  </data>
+  <data name="HosFirstLevelHospital" xml:space="preserve">
+    <value>一级医院</value>
+  </data>
+  <data name="HosGastricHospital" xml:space="preserve">
+    <value>胃肠专科医院</value>
+  </data>
+  <data name="HosGeneralHospital" xml:space="preserve">
+    <value>综合医院</value>
+  </data>
+  <data name="HosHealthCenter" xml:space="preserve">
+    <value>健康体检中心</value>
+  </data>
+  <data name="HosHeartHospital" xml:space="preserve">
+    <value>心脏专科医院</value>
+  </data>
+  <data name="HosHospitalLevel" xml:space="preserve">
+    <value>医院等级</value>
+  </data>
+  <data name="HosHospitalTypes" xml:space="preserve">
+    <value>医院类型</value>
+  </data>
+  <data name="HosMentalHospital" xml:space="preserve">
+    <value>精神心理医院</value>
+  </data>
+  <data name="HosObstetricsHospital" xml:space="preserve">
+    <value>妇产科医院</value>
+  </data>
+  <data name="HosOccupationalHospital" xml:space="preserve">
+    <value>职业病防治医院</value>
+  </data>
+  <data name="HosOphthalmicHospital" xml:space="preserve">
+    <value>眼科医院</value>
+  </data>
+  <data name="HosOrthopedicsHospital" xml:space="preserve">
+    <value>骨科医院</value>
+  </data>
+  <data name="HosRegion" xml:space="preserve">
+    <value>区域</value>
+  </data>
+  <data name="HosReproductHospital" xml:space="preserve">
+    <value>生殖专科医院</value>
+  </data>
+  <data name="HosSecondLevelHospital" xml:space="preserve">
+    <value>二级医院</value>
+  </data>
+  <data name="HosSelectedCondition" xml:space="preserve">
+    <value>已选条件</value>
+  </data>
+  <data name="HosSkinHospital" xml:space="preserve">
+    <value>皮肤专科医院</value>
+  </data>
+  <data name="HosSpecialClassHospital" xml:space="preserve">
+    <value>特等医院</value>
+  </data>
+  <data name="HosStomatoHospital" xml:space="preserve">
+    <value>口腔医院</value>
+  </data>
+  <data name="HosThirdLevelHospital" xml:space="preserve">
+    <value>三级医院</value>
+  </data>
+  <data name="HosUrologyHospital" xml:space="preserve">
+    <value>泌尿外科医院</value>
+  </data>
+  <data name="HosWomenChildHospital" xml:space="preserve">
+    <value>妇幼专科医院</value>
+  </data>
+  <data name="HotDoctors" xml:space="preserve">
+    <value>热门医生</value>
+  </data>
+  <data name="ImageService" xml:space="preserve">
+    <value>图文</value>
+  </data>
+  <data name="ImmediatelyConsult" xml:space="preserve">
+    <value>立即咨询</value>
+  </data>
+  <data name="InternationalHealth" xml:space="preserve">
+    <value>国际医疗</value>
+  </data>
+  <data name="IsDoctor" xml:space="preserve">
+    <value>我是医生</value>
+  </data>
+  <data name="MembershipPackage" xml:space="preserve">
+    <value>会员套餐</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>新闻资讯</value>
+  </data>
+  <data name="NoDatas" xml:space="preserve">
+    <value>暂时没有相关数据</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>公告</value>
+  </data>
+  <data name="Onlineclinic" xml:space="preserve">
+    <value>在线问诊</value>
+  </data>
+  <data name="OnlineCustomer" xml:space="preserve">
+    <value>在线客服</value>
+  </data>
+  <data name="QuickAppointment" xml:space="preserve">
+    <value>快速挂号</value>
+  </data>
+  <data name="RecommendedExpert" xml:space="preserve">
+    <value>推荐专家</value>
+  </data>
+  <data name="ReplyTime" xml:space="preserve">
+    <value>10分钟内回复，免费为你提供病情咨询</value>
+  </data>
+  <data name="VideoService" xml:space="preserve">
+    <value>视频</value>
+  </data>
+  <data name="ConsultAdvisoryServices" xml:space="preserve">
+    <value>医生未开启图文咨询服务</value>
+  </data>
+  <data name="ConsultDetailDesc" xml:space="preserve">
+    <value>详细描述您的病情、症状、以前的治疗经过（如果有）和本次问诊想要获得的帮助。（不少于10个字）</value>
+  </data>
+  <data name="ConsultDiseaseDesc" xml:space="preserve">
+    <value>病情描述</value>
+  </data>
+  <data name="ConsultFees" xml:space="preserve">
+    <value>咨询费用</value>
+  </data>
+  <data name="ConsultFreeSumbit" xml:space="preserve">
+    <value>提交咨询(免费)</value>
+  </data>
+  <data name="ConsultImage" xml:space="preserve">
+    <value>图文咨询</value>
+  </data>
+  <data name="ConsultPicExplain" xml:space="preserve">
+    <value>(上传病历图片、检查图片或病症部位图片，以便医生诊治，最多可上传9张)</value>
+  </data>
+  <data name="ConsultSelectPatient" xml:space="preserve">
+    <value>选择就诊人</value>
+  </data>
+  <data name="ConsultSumbit" xml:space="preserve">
+    <value>提交咨询</value>
+  </data>
+  <data name="Cooperative" xml:space="preserve">
+    <value>合作机构</value>
+  </data>
+  <data name="DoctorBuy" xml:space="preserve">
+    <value>购买家庭医生</value>
+  </data>
+  <data name="DoctorDetails" xml:space="preserve">
+    <value>医生详情</value>
+  </data>
+  <data name="DoctorImmediateClinic" xml:space="preserve">
+    <value>立即问诊</value>
+  </data>
+  <data name="DoctorIntroduction" xml:space="preserve">
+    <value>简介</value>
+  </data>
+  <data name="DoctorSameDepartment" xml:space="preserve">
+    <value>推荐医生</value>
+  </data>
+  <data name="InputCode" xml:space="preserve">
+    <value>请输入图形验证码</value>
+  </data>
+  <data name="LinksChineseMedicine" xml:space="preserve">
+    <value>康美中药网</value>
+  </data>
+  <data name="LinksHealthMall" xml:space="preserve">
+    <value>康美健康商城</value>
+  </data>
+  <data name="LinksHerbal" xml:space="preserve">
+    <value>康美•中国中药材价格指数</value>
+  </data>
+  <data name="LinksHospital" xml:space="preserve">
+    <value>康美医院</value>
+  </data>
+  <data name="LinksSH" xml:space="preserve">
+    <value>康美药业</value>
+  </data>
+  <data name="LinksTmail" xml:space="preserve">
+    <value>康美天猫官方旗舰店</value>
+  </data>
+  <data name="LinksTrough" xml:space="preserve">
+    <value>康美中药网e药谷</value>
+  </data>
+  <data name="LinksWallet" xml:space="preserve">
+    <value>康美钱包</value>
+  </data>
+  <data name="SelecctDepartment" xml:space="preserve">
+    <value>请选择科室</value>
+  </data>
+  <data name="SelectHospital" xml:space="preserve">
+    <value>请选择医院</value>
+  </data>
+  <data name="SelectRegion" xml:space="preserve">
+    <value>请选择地区</value>
+  </data>
+  <data name="PackageBuy" xml:space="preserve">
+    <value>购买</value>
+  </data>
+  <data name="PackageBuyNow" xml:space="preserve">
+    <value>立即购买</value>
+  </data>
+  <data name="PackageContrast" xml:space="preserve">
+    <value>套餐对比</value>
+  </data>
+  <data name="PackageIntroduction" xml:space="preserve">
+    <value>套餐介绍</value>
+  </data>
+  <data name="PackageNameplate" xml:space="preserve">
+    <value>身份铭牌</value>
+  </data>
+  <data name="PackageTimes" xml:space="preserve">
+    <value>次</value>
+  </data>
+  <data name="AppointBack" xml:space="preserve">
+    <value>返回首页</value>
+  </data>
+  <data name="AppointConsultTime" xml:space="preserve">
+    <value>就诊时间 （必填）</value>
+  </data>
+  <data name="AppointDoctorInfo" xml:space="preserve">
+    <value>医生信息</value>
+  </data>
+  <data name="AppointFee" xml:space="preserve">
+    <value>挂号费用</value>
+  </data>
+  <data name="AppointIDCard" xml:space="preserve">
+    <value>身份证</value>
+  </data>
+  <data name="AppointPatientInfo" xml:space="preserve">
+    <value>就诊人信息</value>
+  </data>
+  <data name="AppointSumbit" xml:space="preserve">
+    <value>提交订单</value>
+  </data>
+  <data name="AppointType" xml:space="preserve">
+    <value>门诊类型</value>
+  </data>
+  <data name="DoctorAppointment" xml:space="preserve">
+    <value>预约医生</value>
+  </data>
+  <data name="DoctorAppointService" xml:space="preserve">
+    <value>预约服务</value>
+  </data>
+  <data name="DoctorAudioConsult" xml:space="preserve">
+    <value>语音问诊</value>
+  </data>
+  <data name="DoctorCloseConsult" xml:space="preserve">
+    <value>停诊</value>
+  </data>
+  <data name="DoctorMonth" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="DoctorSchedule" xml:space="preserve">
+    <value>我的排班</value>
+  </data>
+  <data name="DoctorTo" xml:space="preserve">
+    <value>至</value>
+  </data>
+  <data name="DoctorVideoConsult" xml:space="preserve">
+    <value>视频问诊</value>
+  </data>
+  <data name="DoctorYuan" xml:space="preserve">
+    <value>元</value>
+  </data>
+  <data name="HosA" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="HosAddress" xml:space="preserve">
+    <value>地址</value>
+  </data>
+  <data name="HosAppointByDepart" xml:space="preserve">
+    <value>按科室挂号</value>
+  </data>
+  <data name="HosAppointOver" xml:space="preserve">
+    <value>已约满</value>
+  </data>
+  <data name="HosExpert" xml:space="preserve">
+    <value>科室专家</value>
+  </data>
+  <data name="HosM" xml:space="preserve">
+    <value>午</value>
+  </data>
+  <data name="HosP" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="HosPhone" xml:space="preserve">
+    <value>电话</value>
+  </data>
+  <data name="HosShedule" xml:space="preserve">
+    <value>科室排班</value>
+  </data>
+  <data name="HosWebSite" xml:space="preserve">
+    <value>官网</value>
+  </data>
+  <data name="IndexAdmissed" xml:space="preserve">
+    <value>已接诊</value>
+  </data>
+  <data name="IndexSurplus" xml:space="preserve">
+    <value>剩余</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="DefaultAddress" xml:space="preserve">
+    <value>默认地址</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>修改</value>
+  </data>
+  <data name="EditAddress" xml:space="preserve">
+    <value>修改地址</value>
+  </data>
+  <data name="InputName" xml:space="preserve">
+    <value>请输入姓名</value>
+  </data>
+  <data name="InputPhoneNumber" xml:space="preserve">
+    <value>请输入手机号</value>
+  </data>
+  <data name="InputZipCode" xml:space="preserve">
+    <value>请输入邮编</value>
+  </data>
+  <data name="PayIntime" xml:space="preserve">
+    <value>请您及时付款，以便订单尽快处理</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>手机</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="SetDefault" xml:space="preserve">
+    <value>设为默认</value>
+  </data>
+  <data name="SettleConfirmOrder" xml:space="preserve">
+    <value>确认订单信息</value>
+  </data>
+  <data name="SettleManageAddress" xml:space="preserve">
+    <value>管理收货地址</value>
+  </data>
+  <data name="SettleNewAddress" xml:space="preserve">
+    <value>使用新地址</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>街道</value>
+  </data>
+  <data name="TradeAddress" xml:space="preserve">
+    <value>收货地址</value>
+  </data>
+  <data name="TradeAlipay" xml:space="preserve">
+    <value>支付宝</value>
+  </data>
+  <data name="TradeAmountPayable" xml:space="preserve">
+    <value>应付金额</value>
+  </data>
+  <data name="TradeApplyingRefund" xml:space="preserve">
+    <value>正在申请退款</value>
+  </data>
+  <data name="TradeCancelOrder" xml:space="preserve">
+    <value>取消订单</value>
+  </data>
+  <data name="TradeCancelReason" xml:space="preserve">
+    <value>取消原因</value>
+  </data>
+  <data name="TradeCancelTime" xml:space="preserve">
+    <value>取消时间</value>
+  </data>
+  <data name="TradeCarrier" xml:space="preserve">
+    <value>承运人</value>
+  </data>
+  <data name="TradeCheckout" xml:space="preserve">
+    <value>收银台</value>
+  </data>
+  <data name="TradeComplete" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="TradeConfirmReceipt" xml:space="preserve">
+    <value>确认收货</value>
+  </data>
+  <data name="TradeConsignee" xml:space="preserve">
+    <value>收货人信息</value>
+  </data>
+  <data name="TradeContact" xml:space="preserve">
+    <value>联系方式</value>
+  </data>
+  <data name="TradeDealingRefund" xml:space="preserve">
+    <value>正在处理退款，请稍后。</value>
+  </data>
+  <data name="TradeDeliverMode" xml:space="preserve">
+    <value>配送方式</value>
+  </data>
+  <data name="TradeDeliveryMode" xml:space="preserve">
+    <value>送货方式</value>
+  </data>
+  <data name="TradeEditAddress" xml:space="preserve">
+    <value>修改地址</value>
+  </data>
+  <data name="TradeEnterAnytime" xml:space="preserve">
+    <value>您可随时进入"</value>
+  </data>
+  <data name="TradeEnterMyprofile" xml:space="preserve">
+    <value>进入个人中心</value>
+  </data>
+  <data name="TradeExpress" xml:space="preserve">
+    <value>快递</value>
+  </data>
+  <data name="TradeFreeShipping" xml:space="preserve">
+    <value>免邮</value>
+  </data>
+  <data name="TradeGoodsOutbound" xml:space="preserve">
+    <value>商品出库</value>
+  </data>
+  <data name="TradeIncentives" xml:space="preserve">
+    <value>优惠</value>
+  </data>
+  <data name="TradeKMPharmacy" xml:space="preserve">
+    <value>康美药业智慧药房</value>
+  </data>
+  <data name="TradeKMWallet" xml:space="preserve">
+    <value>康美钱包</value>
+  </data>
+  <data name="TradeLogisticsDetails" xml:space="preserve">
+    <value>物流详情</value>
+  </data>
+  <data name="TradeMerchant" xml:space="preserve">
+    <value>商家</value>
+  </data>
+  <data name="TradeNo" xml:space="preserve">
+    <value>交易编号</value>
+  </data>
+  <data name="TradeNonPayment" xml:space="preserve">
+    <value>免支付</value>
+  </data>
+  <data name="TradeOrderCancelled" xml:space="preserve">
+    <value>订单已取消</value>
+  </data>
+  <data name="TradeOrderCancelSuccess" xml:space="preserve">
+    <value>订单取消成功</value>
+  </data>
+  <data name="TradeOrderCenter" xml:space="preserve">
+    <value>订单中心</value>
+  </data>
+  <data name="TradeOrderDesc" xml:space="preserve">
+    <value>订单描述</value>
+  </data>
+  <data name="TradeOrderDetail" xml:space="preserve">
+    <value>订单详情</value>
+  </data>
+  <data name="TradeOrderInfor" xml:space="preserve">
+    <value>订单信息</value>
+  </data>
+  <data name="TradeOrderNo" xml:space="preserve">
+    <value>订单编号</value>
+  </data>
+  <data name="TradeOrderNumber" xml:space="preserve">
+    <value>订单号</value>
+  </data>
+  <data name="TradeOrderTime" xml:space="preserve">
+    <value>下单时间</value>
+  </data>
+  <data name="TradeOrdinaryExpress" xml:space="preserve">
+    <value>普通快递</value>
+  </data>
+  <data name="TradePaid" xml:space="preserve">
+    <value>已付款</value>
+  </data>
+  <data name="TradePayAmount" xml:space="preserve">
+    <value>付款总额</value>
+  </data>
+  <data name="TradePayInfor" xml:space="preserve">
+    <value>付款信息</value>
+  </data>
+  <data name="TradePaymentHelp" xml:space="preserve">
+    <value>支付帮助</value>
+  </data>
+  <data name="TradePaymentMethod" xml:space="preserve">
+    <value>支付方式</value>
+  </data>
+  <data name="TradePayNow" xml:space="preserve">
+    <value>立即付款</value>
+  </data>
+  <data name="TradePayStatus" xml:space="preserve">
+    <value>付款状态</value>
+  </data>
+  <data name="TradePaySuc" xml:space="preserve">
+    <value>订单提交成功，请尽快付款！订单编号</value>
+  </data>
+  <data name="TradePaySuccess" xml:space="preserve">
+    <value>付款成功</value>
+  </data>
+  <data name="TradePayTerms" xml:space="preserve">
+    <value>付款方式</value>
+  </data>
+  <data name="TradePayTime" xml:space="preserve">
+    <value>付款时间</value>
+  </data>
+  <data name="TradePrintOrder" xml:space="preserve">
+    <value>打印订单</value>
+  </data>
+  <data name="TradeRealPay" xml:space="preserve">
+    <value>实付款</value>
+  </data>
+  <data name="TradeReceiveAddress" xml:space="preserve">
+    <value>请选择收货地址</value>
+  </data>
+  <data name="TradeReceiver" xml:space="preserve">
+    <value>收货人</value>
+  </data>
+  <data name="TradeReceiving" xml:space="preserve">
+    <value>等待收货</value>
+  </data>
+  <data name="TradeRefundAmount" xml:space="preserve">
+    <value>退款金额</value>
+  </data>
+  <data name="TradeRefundStatus" xml:space="preserve">
+    <value>退款状态</value>
+  </data>
+  <data name="TradeRefundSuccess" xml:space="preserve">
+    <value>退款成功</value>
+  </data>
+  <data name="TradeRefundTime" xml:space="preserve">
+    <value>退款时间</value>
+  </data>
+  <data name="TradeSelectOtherPayWay" xml:space="preserve">
+    <value>选择其他支付方式</value>
+  </data>
+  <data name="TradeSettlementPage" xml:space="preserve">
+    <value>结算页</value>
+  </data>
+  <data name="TradeSubmitOrder" xml:space="preserve">
+    <value>提交订单</value>
+  </data>
+  <data name="TradeSubmitOrderAfter" xml:space="preserve">
+    <value>分钟内完成支付，否则订单自动取消。</value>
+  </data>
+  <data name="TradeSubmitOrderFix" xml:space="preserve">
+    <value>请在提交订单后</value>
+  </data>
+  <data name="TradeSubmitTime" xml:space="preserve">
+    <value>提交时间</value>
+  </data>
+  <data name="TradeSubtotal" xml:space="preserve">
+    <value>小计</value>
+  </data>
+  <data name="TradeSuccessPay" xml:space="preserve">
+    <value>您已成功支付</value>
+  </data>
+  <data name="TradeSweepQRCode" xml:space="preserve">
+    <value>扫描二维码支付</value>
+  </data>
+  <data name="TradeToknowMore" xml:space="preserve">
+    <value>",了解更多.</value>
+  </data>
+  <data name="TradeTotal" xml:space="preserve">
+    <value>合计(含运费)</value>
+  </data>
+  <data name="TradeUnpaid" xml:space="preserve">
+    <value>未付款</value>
+  </data>
+  <data name="TradeViewMap" xml:space="preserve">
+    <value>查看地图</value>
+  </data>
+  <data name="TradeWaitConfirm" xml:space="preserve">
+    <value>您提交了订单，请等待系统确认</value>
+  </data>
+  <data name="TradeWaybillNo" xml:space="preserve">
+    <value>货运单号</value>
+  </data>
+  <data name="TradeWeChat" xml:space="preserve">
+    <value>微信</value>
+  </data>
+  <data name="TradeWechatSweep" xml:space="preserve">
+    <value>请使用微信扫一扫</value>
+  </data>
+  <data name="UnitPrice" xml:space="preserve">
+    <value>单价</value>
+  </data>
+  <data name="WechatPay" xml:space="preserve">
+    <value>微信支付</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>邮编</value>
+  </data>
+  <data name="ConsultingProject" xml:space="preserve">
+    <value>服务项目</value>
+  </data>
+  <data name="DoctorNotSchedule" xml:space="preserve">
+    <value>该医生最近没有排班</value>
+  </data>
+  <data name="ImageConsultDesc" xml:space="preserve">
+    <value>24小时内无限次解答健康问题</value>
+  </data>
+  <data name="ServiceNotOpened" xml:space="preserve">
+    <value>服务暂未开通</value>
+  </data>
+  <data name="VideoConsultDesc" xml:space="preserve">
+    <value>在线看诊、中药代煎、送药上门</value>
+  </data>
+  <data name="AddPatient" xml:space="preserve">
+    <value>新增就诊人</value>
+  </data>
+  <data name="addPatientDesc" xml:space="preserve">
+    <value>身份证号提交后，姓名、身份证号、性别、出生日期将不可修改，请谨慎填写</value>
+  </data>
+  <data name="AppointmentResult" xml:space="preserve">
+    <value>挂号结果</value>
+  </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>出生日期</value>
+  </data>
+  <data name="BirthdayPlaceholder" xml:space="preserve">
+    <value>请选择出生日期</value>
+  </data>
+  <data name="DetailAddress" xml:space="preserve">
+    <value>详细地址</value>
+  </data>
+  <data name="DoctorInformation" xml:space="preserve">
+    <value>医生信息</value>
+  </data>
+  <data name="EditBtn" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="FamilyConsultDesc" xml:space="preserve">
+    <value>随时咨询医生、健康资讯推送、呵护全家健康</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="IDCardNo" xml:space="preserve">
+    <value>身份证号</value>
+  </data>
+  <data name="OneMonth" xml:space="preserve">
+    <value>一个月</value>
+  </data>
+  <data name="OneYear" xml:space="preserve">
+    <value>十二个月</value>
+  </data>
+  <data name="PackageSelect" xml:space="preserve">
+    <value>套餐选择</value>
+  </data>
+  <data name="PackedUp" xml:space="preserve">
+    <value>收起</value>
+  </data>
+  <data name="PatientAddressPlaceholder" xml:space="preserve">
+    <value>请输入就诊人的详细地址</value>
+  </data>
+  <data name="PatientEmail" xml:space="preserve">
+    <value>邮箱</value>
+  </data>
+  <data name="PatientEmailPlaceholder" xml:space="preserve">
+    <value>请输入您的邮箱地址</value>
+  </data>
+  <data name="PatientIDCardPlaceholder" xml:space="preserve">
+    <value>请输入就诊人的身份证号</value>
+  </data>
+  <data name="PatientInformation" xml:space="preserve">
+    <value>就诊人信息</value>
+  </data>
+  <data name="PatientMobilePlaceholder" xml:space="preserve">
+    <value>请输入就诊人手机号码</value>
+  </data>
+  <data name="PatientNamePlaceholder" xml:space="preserve">
+    <value>请输入就诊人的真实姓名</value>
+  </data>
+  <data name="Relations" xml:space="preserve">
+    <value>关系</value>
+  </data>
+  <data name="Self" xml:space="preserve">
+    <value>本人</value>
+  </data>
+  <data name="ServiceSpend" xml:space="preserve">
+    <value>服务价格</value>
+  </data>
+  <data name="ServiceTime" xml:space="preserve">
+    <value>服务时间</value>
+  </data>
+  <data name="ServiceType" xml:space="preserve">
+    <value>服务类型</value>
+  </data>
+  <data name="SetDefaultPatient" xml:space="preserve">
+    <value>设为默认就诊人</value>
+  </data>
+  <data name="SixMonths" xml:space="preserve">
+    <value>六个月</value>
+  </data>
+  <data name="ThreeMonths" xml:space="preserve">
+    <value>三个月</value>
+  </data>
+  <data name="DrugstorePoint" xml:space="preserve">
+    <value>药店就诊点</value>
+  </data>
+  <data name="SeeTheMap" xml:space="preserve">
+    <value>查看地图</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="MyMessages" xml:space="preserve">
+    <value>我的消息</value>
+  </data>
+  <data name="ReadAllMessages" xml:space="preserve">
+    <value>查看全部消息</value>
+  </data>
+  <data name="ReadMoreMessages" xml:space="preserve">
+    <value>查看更多</value>
+  </data>
+  <data name="loginNotRegister" xml:space="preserve">
+    <value>我未注册,现在就</value>
+  </data>
+  <data name="ConsultDisease" xml:space="preserve">
+    <value>疾病名称</value>
+  </data>
+  <data name="ConsultDiseaseTip" xml:space="preserve">
+    <value>未确诊可不必要填写</value>
+  </data>
+  <data name="TradeUsingPrivilege" xml:space="preserve">
+    <value>使用优惠</value>
+  </data>
+  <data name="HKMacaoPass" xml:space="preserve">
+    <value>港澳通行证</value>
+  </data>
+  <data name="TaiwanPass" xml:space="preserve">
+    <value>台湾通行证</value>
+  </data>
+  <data name="HMTIDCard" xml:space="preserve">
+    <value>港澳台身份证</value>
+  </data>
+  <data name="NewsTitleInfo" xml:space="preserve">
+    <value>关爱健康 关爱生活</value>
+  </data>
+  <data name="OnlineTitleInfo" xml:space="preserve">
+    <value>足不出户, 随时随地问诊</value>
+  </data>
+  <data name="ReservationTitleInfo" xml:space="preserve">
+    <value>一键预约名医, 方便快捷就诊</value>
+  </data>
+  <data name="CooperativePharmacy" xml:space="preserve">
+    <value>合作药房</value>
+  </data>
+  <data name="HealthyHall" xml:space="preserve">
+    <value>健康云馆</value>
+  </data>
+  <data name="MedicalHall" xml:space="preserve">
+    <value>医疗馆</value>
+  </data>
+  <data name="ServiceMall" xml:space="preserve">
+    <value>服务商城</value>
+  </data>
+  <data name="NewInfo" xml:space="preserve">
+    <value>关爱健康 关爱生活</value>
+  </data>
+  <data name="OnlineInfo" xml:space="preserve">
+    <value>足不出户, 随时随地问诊</value>
+  </data>
+  <data name="PharmacyWorkstations" xml:space="preserve">
+    <value>药店工作站</value>
+  </data>
+  <data name="RegisterInfo" xml:space="preserve">
+    <value>一键预约名医, 方便快捷就诊</value>
+  </data>
+  <data name="RemoteConsultation" xml:space="preserve">
+    <value>远程会诊</value>
+  </data>
+  <data name="ClinicCloud" xml:space="preserve">
+    <value>云诊所</value>
+  </data>
+  <data name="LicenseNo" xml:space="preserve">
+    <value>批准文号</value>
+  </data>
+</root>

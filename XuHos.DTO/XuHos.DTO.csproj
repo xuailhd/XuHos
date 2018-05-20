@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F7934317-46CE-48C5-A562-1A08960856FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XuHos.DTO</RootNamespace>
+    <AssemblyName>XuHos.DTO</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integrated|AnyCPU'">
+    <OutputPath>bin\Integrated\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Doctor\DoctorTriageDTO.cs" />
+    <Compile Include="Platform\Conversation\ConversationExternalDTO.cs" />
+    <Compile Include="Doctor\DoctorConsultationDTO.cs" />
+    <Compile Include="Doctor\DoctorConsultationInviteDTO.cs" />
+    <Compile Include="Doctor\DoctorMemberDTO.cs" />
+    <Compile Include="Doctor\DoctorInviteDTO.cs" />
+    <Compile Include="Doctor\DoctorPriceServiceDto.cs" />
+    <Compile Include="Doctor\DoctorScheduleDTO.cs" />
+    <Compile Include="Doctor\DoctorScheduleSingleDto.cs" />
+    <Compile Include="Doctor\DoctorServiceDTO.cs" />
+    <Compile Include="Platform\Conversation\ConversationMessageDTO.cs" />
+    <Compile Include="Platform\Conversation\ConversationRoomDTO.cs" />
+    <Compile Include="Platform\Exam\ExamItemDTO.cs" />
+    <Compile Include="Platform\Exam\ExamItemTypeDTO.cs" />
+    <Compile Include="Platform\Exam\ExamResultAttachmentDTO.cs" />
+    <Compile Include="Platform\Exam\ExamResultDTO.cs" />
+    <Compile Include="Hospital\HospitalDepartment.cs" />
+    <Compile Include="Hospital\WorkingTimeDto.cs" />
+    <Compile Include="Platform\RegionDTO.cs" />
+    <Compile Include="Platform\ServiceEvaluationDTO.cs" />
+    <Compile Include="Platform\ServiceEvaluationTagDTO.cs" />
+    <Compile Include="Doctor\DoctorDto.cs" />
+    <Compile Include="Hospital\HospitalDto.cs" />
+    <Compile Include="Platform\OrderDTO.cs" />
+    <Compile Include="Platform\Token.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\RequestInterpretationConsultingRoomChangeDTO.cs" />
+    <Compile Include="Request\RequestDelete.cs" />
+    <Compile Include="Request\RequestDoctorConsultationDoctorQueryDTO.cs" />
+    <Compile Include="Request\RequestDoctorConsultationQueryDTO.cs" />
+    <Compile Include="Request\RequestDoctorConsultationSaveDTO.cs" />
+    <Compile Include="Request\RequestDoctorSchedule.cs" />
+    <Compile Include="Request\RequestDoctorSelectDTO.cs" />
+    <Compile Include="Request\RequestHospitalQueryDTO.cs" />
+    <Compile Include="Request\RequestMsgCodeMobileDto.cs" />
+    <Compile Include="Request\RequestOrderConfirmDTO.cs" />
+    <Compile Include="Request\RequestPatientEMRSearch.cs" />
+    <Compile Include="Request\RequestResetPasswordDTO.cs" />
+    <Compile Include="Request\RequestUpgradeByPhysiotherapyChairDTO.cs" />
+    <Compile Include="Request\RequestUserBuyRecipe.cs" />
+    <Compile Include="Request\RequestUserConsultsQueryDTO.cs" />
+    <Compile Include="Request\RequestUserConsultSubmitDTO.cs" />
+    <Compile Include="Request\RequestUserFileDTO.cs" />
+    <Compile Include="Request\RequestUserInfoUpdateDTO.cs" />
+    <Compile Include="Request\RequestUserOPDRegisterSubmitDTO.cs" />
+    <Compile Include="Request\RequestUserQueryDTO.cs" />
+    <Compile Include="Request\RequestUserQueryOPDRegisterDTO.cs" />
+    <Compile Include="Request\RequestUserRegisterDTO.cs" />
+    <Compile Include="Request\RequestVerifyCodeDto.cs" />
+    <Compile Include="Response\ResponseDoctorDiagnosisFormularDTO.cs" />
+    <Compile Include="Response\ResponseDoctorPersonalInfoDTO.cs" />
+    <Compile Include="Response\ResponseDoctorReplyDTO.cs" />
+    <Compile Include="Response\ResponseDoctorSerivceTypeIncomeDTO.cs" />
+    <Compile Include="Response\ResponseDoctorStatisticsInfoDTO.cs" />
+    <Compile Include="Response\ResponseChannelDrugStatsDTO.cs" />
+    <Compile Include="Response\ResponseAutocompleteDTO.cs" />
+    <Compile Include="Response\ResponseDoctorAvailableRegTimesDTO.cs" />
+    <Compile Include="Response\ResponseDoctorClinicReturnDTO.cs" />
+    <Compile Include="Request\RequestDoctorConsultationFinishDTO.cs" />
+    <Compile Include="Response\ResponseDoctorDiagnoseAndRecipeDTO.cs" />
+    <Compile Include="Response\ResponseMedicalRecordDTO.cs" />
+    <Compile Include="Response\ResponseOPDRegisterAudVidDTO.cs" />
+    <Compile Include="Response\ResponseOrderLogDTO.cs" />
+    <Compile Include="Response\ResponsePlotChartData.cs" />
+    <Compile Include="Response\ResponseServiceItemStatDTO.cs" />
+    <Compile Include="Response\ResponseUploadDTO.cs" />
+    <Compile Include="Response\ResponseUserFileDTO.cs" />
+    <Compile Include="Response\ResponseUserListDTO.cs" />
+    <Compile Include="Response\ResponseUserOPDRegisterSubmitDTO.cs" />
+    <Compile Include="Response\ResponseWXPayDTO.cs" />
+    <Compile Include="User\UserAccountDTO.cs" />
+    <Compile Include="User\UserMedicalRecordDTO.cs" />
+    <Compile Include="User\UserFileDTO.cs" />
+    <Compile Include="User\UserFindPwdDto.cs" />
+    <Compile Include="User\UserFindPwdPreDto.cs" />
+    <Compile Include="User\UserInspectResultDto.cs" />
+    <Compile Include="User\UserAddressDto.cs" />
+    <Compile Include="User\UserDTO.cs" />
+    <Compile Include="User\UserLoginReturnDTO.cs" />
+    <Compile Include="User\UserMemberEMRDTO.cs" />
+    <Compile Include="User\UserOPDRegisterDTO.cs" />
+    <Compile Include="User\UserPhysicalExamDTO.cs" />
+    <Compile Include="User\UserTicketDataDTO.cs" />
+    <Compile Include="User\UserMemberDTO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XuHos.Common.Cache\XuHos.Common.Cache.csproj">
+      <Project>{0304da15-717d-46ff-b13e-6fe66f086119}</Project>
+      <Name>XuHos.Common.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Config\XuHos.Common.Config.csproj">
+      <Project>{1a5ae0b9-4c8d-4ca7-b8b5-d22b87c45a53}</Project>
+      <Name>XuHos.Common.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Enum\XuHos.Common.Enum.csproj">
+      <Project>{be7faf9b-e33b-41e3-ab24-b6b9934f2cf1}</Project>
+      <Name>XuHos.Common.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common\XuHos.Common.csproj">
+      <Project>{775df2bd-fb37-4f33-a8ed-deeea5b3b16b}</Project>
+      <Name>XuHos.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DTO.Common\XuHos.DTO.Common.csproj">
+      <Project>{cb8d5d85-1bdd-4499-a645-628f07dad383}</Project>
+      <Name>XuHos.DTO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Entity\XuHos.Entity.csproj">
+      <Project>{3E2E98E9-A179-468B-938F-24178AC5D729}</Project>
+      <Name>XuHos.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E2E98E9-A179-468B-938F-24178AC5D729}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XuHos.Entity</RootNamespace>
+    <AssemblyName>XuHos.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integrated|AnyCPU'">
+    <OutputPath>bin\Integrated\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Doctor\DoctorMember.cs" />
+    <Compile Include="Platform\Conversation\ConversationRoomReturnVisit.cs" />
+    <Compile Include="Platform\Region.cs" />
+    <Compile Include="Platform\Sys\SysEvent.cs" />
+    <Compile Include="Platform\Sys\SysEventConsume.cs" />
+    <Compile Include="Platform\Sys\SysModule.cs" />
+    <Compile Include="Platform\Sys\SysShortMessageTemplate.cs" />
+    <Compile Include="Platform\Order\OrderCallbackLog.cs" />
+    <Compile Include="Platform\Conversation\ConversationFriend.cs" />
+    <Compile Include="Platform\Conversation\ConversationRoomUid.cs" />
+    <Compile Include="Platform\Conversation\ConversationRecording.cs" />
+    <Compile Include="Platform\Conversation\ConversationMessage.cs" />
+    <Compile Include="Platform\Conversation\ConversationIMUid.cs" />
+    <Compile Include="Platform\Conversation\ConversationRoom.cs" />
+    <Compile Include="Platform\Monitor\MonitorIndex.cs" />
+    <Compile Include="Platform\Exam\ExamResultAttachment.cs" />
+    <Compile Include="Platform\Exam\ExamResult.cs" />
+    <Compile Include="Platform\Exam\ExamItem.cs" />
+    <Compile Include="Platform\Exam\ExamItemType.cs" />
+    <Compile Include="IAuditableEntity.cs" />
+    <Compile Include="AuditableEntity.cs" />
+    <Compile Include="Doctor\Doctor.cs" />
+    <Compile Include="Doctor\DoctorSchedule.cs" />
+    <Compile Include="Doctor\DoctorService.cs" />
+    <Compile Include="Hospital\Hospital.cs" />
+    <Compile Include="Hospital\HospitalDepartment.cs" />
+    <Compile Include="Hospital\HospitalWorkingTime.cs" />
+    <Compile Include="Platform\Order\Order.cs" />
+    <Compile Include="Platform\Order\OrderConsignee.cs" />
+    <Compile Include="Platform\Order\OrderDetail.cs" />
+    <Compile Include="Platform\Order\OrderRefundLog.cs" />
+    <Compile Include="Platform\Order\OrderTradeLog.cs" />
+    <Compile Include="Platform\Order\OrderDiscount.cs" />
+    <Compile Include="Platform\Order\OrderLog.cs" />
+    <Compile Include="ServiceEvaluation\ServiceEvaluation.cs" />
+    <Compile Include="ServiceEvaluation\ServiceEvaluationTag.cs" />
+    <Compile Include="Platform\Sys\SysDereplication.cs" />
+    <Compile Include="Platform\Sys\SysFileIndex.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Platform\Sys\SysConfig.cs" />
+    <Compile Include="Platform\Sys\SysDict.cs" />
+    <Compile Include="Platform\Sys\SysDictType.cs" />
+    <Compile Include="Platform\Sys\SysAccessAccount.cs" />
+    <Compile Include="IUserBaseEntity.cs" />
+    <Compile Include="Platform\Conversation\ConversationRoomLog.cs" />
+    <Compile Include="User\UserExtend.cs" />
+    <Compile Include="User\UserLoginLog.cs" />
+    <Compile Include="User\UserMedicalRecord.cs" />
+    <Compile Include="User\UserRoleMap.cs" />
+    <Compile Include="User\UserShortMessageLog.cs" />
+    <Compile Include="User\User.cs" />
+    <Compile Include="User\UserMemberEMR.cs" />
+    <Compile Include="User\UserFile.cs" />
+    <Compile Include="User\UserMember.cs" />
+    <Compile Include="User\UserOPDRegister.cs" />
+    <Compile Include="User\UserRole.cs" />
+    <Compile Include="User\UserRolePrevilege.cs" />
+    <Compile Include="User\UserWechatMap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XuHos.Common.Enum\XuHos.Common.Enum.csproj">
+      <Project>{be7faf9b-e33b-41e3-ab24-b6b9934f2cf1}</Project>
+      <Name>XuHos.Common.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common\XuHos.Common.csproj">
+      <Project>{775df2bd-fb37-4f33-a8ed-deeea5b3b16b}</Project>
+      <Name>XuHos.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

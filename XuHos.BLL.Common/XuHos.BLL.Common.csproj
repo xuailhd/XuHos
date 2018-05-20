@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7633152E-7A64-40C9-8A5B-DFCFB49A3A96}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XuHos.BLL.Common</RootNamespace>
+    <AssemblyName>XuHos.BLL.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integrated|AnyCPU'">
+    <OutputPath>bin\Integrated\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EF6.1.3\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EF6.1.3\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTOs\Request\RequestBannerSearchDTO.cs" />
+    <Compile Include="DTOs\Request\RequestGetChannelInfoDTO.cs" />
+    <Compile Include="DTOs\Request\RequestGetWaitStatisticsDTO.cs" />
+    <Compile Include="DTOs\Request\RequestSendEnterRoomNotifyDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseConversationRoomDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseBannerDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseGetWaitStatisticsDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseToken.cs" />
+    <Compile Include="DTOs\Response\UserTicketDataDTO.cs" />
+    <Compile Include="DTOs\Request\RequestUserOperateLogDTO.cs" />
+    <Compile Include="Implements\BaseService.cs" />
+    <Compile Include="IBaseService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XuHos.Common.Cache\XuHos.Common.Cache.csproj">
+      <Project>{0304da15-717d-46ff-b13e-6fe66f086119}</Project>
+      <Name>XuHos.Common.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Config\XuHos.Common.Config.csproj">
+      <Project>{1A5AE0B9-4C8D-4CA7-B8B5-D22B87C45A53}</Project>
+      <Name>XuHos.Common.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Enum\XuHos.Common.Enum.csproj">
+      <Project>{be7faf9b-e33b-41e3-ab24-b6b9934f2cf1}</Project>
+      <Name>XuHos.Common.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Utility\XuHos.Common.Utility.csproj">
+      <Project>{875fba84-092a-427a-bf79-78243f3b081e}</Project>
+      <Name>XuHos.Common.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common\XuHos.Common.csproj">
+      <Project>{775df2bd-fb37-4f33-a8ed-deeea5b3b16b}</Project>
+      <Name>XuHos.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DAL.EF\XuHos.DAL.EF.csproj">
+      <Project>{2fed0cab-e792-48f0-b558-cd7437c8236d}</Project>
+      <Name>XuHos.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DTO.Common\XuHos.DTO.Common.csproj">
+      <Project>{CB8D5D85-1BDD-4499-A645-628F07DAD383}</Project>
+      <Name>XuHos.DTO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Entity\XuHos.Entity.csproj">
+      <Project>{3e2e98e9-a179-468b-938f-24178ac5d729}</Project>
+      <Name>XuHos.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

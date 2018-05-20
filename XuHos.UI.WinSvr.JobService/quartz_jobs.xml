@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file contains job definitions in schema version 2.0 format -->
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <!--（0）触发器 每5秒执行一次SYNC_EnqueueEvent_JOB任务-->
+    <trigger>
+      <cron>
+        <name>SYNC_EnqueueEvent_Trigger</name>
+        <group>SYNC</group>
+        <job-name>SYNC_EnqueueEvent_JOB</job-name>
+        <job-group>SYNC</job-group>
+        <cron-expression>0/5 * * * * ?</cron-expression>
+      </cron>
+    </trigger>
+    <!--（0）重新写入消息队列-->
+    <job>
+      <name>SYNC_EnqueueEvent_JOB</name>
+      <group>SYNC</group>
+      <description>重新写入消息队列（补偿）</description>
+      <job-type>XuHos.Service.Jobs.SYNC_EnqueueEvent,XuHos.Service.Jobs</job-type>
+      <durable>true</durable>
+      <recover>true</recover>
+    </job>
+
+    
+    <!--（1）批量更新订单状态-->
+    <job>
+      <name>SYNC_UpdateOrderStatus_JOB</name>
+      <group>SYNC</group>
+      <description>批量更新订单状态</description>
+      <job-type>XuHos.Service.Jobs.SYNC_UpdateOrderStatus,XuHos.Service.Jobs</job-type>
+      <durable>true</durable>
+      <recover>true</recover>
+    </job>
+    <!--（1）触发器 每5秒执行一次SYNC_UpdateOrderStatus_JOB任务-->
+    <trigger>
+      <cron>
+        <name>SYNC_UpdateOrderStatus_Trigger</name>
+        <group>SYNC</group>
+        <job-name>SYNC_UpdateOrderStatus_JOB</job-name>
+        <job-group>SYNC</job-group>
+        <cron-expression>0/5 * * * * ?</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+</job-scheduling-data>

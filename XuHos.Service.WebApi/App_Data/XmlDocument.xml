@@ -1,0 +1,951 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KMEHosp.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:KMEHosp.WebApi.Code.ApiModelValidateFilterAttribute">
+            <summary>
+            API模型验证
+            </summary>
+        </member>
+        <member name="T:KMEHosp.WebApi.Code.ApiResultFilterAttribute">
+            <summary>
+            API返回结果过滤器
+            作者：郭明
+            日期：2016年8月6日
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiResultFilterAttribute.OnActionExecuted(System.Web.Http.Filters.HttpActionExecutedContext)">
+            <summary>
+            
+            </summary>
+            <param name="actionExecutedContext"></param>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.CheckApp(System.String,System.String)">
+            <summary>
+            app接入端是否合法
+            </summary>
+            <param name="appId"></param>
+            <param name="appSecret"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.GetById(System.String)">
+            <summary>
+            获取接入端账户信息
+            </summary>
+            <param name="appId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.GetToken(System.String)">
+            <summary>
+            获取验证通过的接入端信息
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.SetToken(System.String,System.String)">
+            <summary>
+            保存token
+            </summary>
+            <param name="tokenStr"></param>
+            <param name="appId"></param>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.CheckToken(System.String)">
+            <summary>
+            验证token
+            </summary>
+            <param name="tokenStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.CheckTimestamp(System.String)">
+            <summary>
+            验证时间戳
+            </summary>
+            <param name="timeStamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.CheckNonceStr(System.String,System.String)">
+            <summary>
+            验证随机数
+            </summary>
+            <param name="nonceStr"></param>
+            <param name="tokenStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.SetNonceStr(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nonceStr"></param>
+            <param name="tokenStr"></param>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.CheckSign(System.String,System.String,System.String,System.String)">
+            <summary>
+            验证签名
+            </summary>
+            <param name="sign"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.GetRequestParams">
+            <summary>
+            请求参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.GetSign(System.Collections.SortedList,System.String)">
+            <summary>
+            获取参数签名
+            </summary>
+            <param name="reqParams"></param>
+            <param name="tokenStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.GetUserToken(System.String)">
+            <summary>
+            获取登录用户信息
+            </summary>
+            <param name="userTokenStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.CheckUserToken(System.String)">
+            <summary>
+            检查登录用户
+            </summary>
+            <param name="userTokenStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.GetAppKey(System.String)">
+            <summary>
+            获取接入端密钥
+            </summary>
+            <param name="tokenStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiSecurityOperate.GetAppTokenExpireMinute">
+            <summary>
+            appToken过期时间(分钟)
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiAuthorizationFilterAttribute.IsIgnoreAuthenticate(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            是否忽略接入API认证
+            </summary>
+            <param name="actionContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiAuthorizationFilterAttribute.IsIgnoreUserAuthenticate(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            是否忽略用户登录认证
+            </summary>
+            <param name="actionContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Code.ApiAuthorizationFilterAttribute.GetActionOrControllerAttributes``1(System.Web.Http.Controllers.HttpActionContext)">
+            <summary>
+            获取action或Controller的特性
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="actionContext"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Code.IgnoreAuthenticateAttribute">
+            <summary>
+            忽略平台接入验证特性
+            </summary>
+        </member>
+        <member name="T:KMEHosp.WebApi.Code.IgnoreUserAuthenticateAttribute">
+            <summary>
+            忽略用户登录验证特性
+            </summary>
+        </member>
+        <member name="T:KMEHosp.WebApi.Code.UserAuthenticateAttribute">
+            <summary>
+            登录用户的权限认证
+            </summary>
+        </member>
+        <member name="P:KMEHosp.WebApi.Code.UserAuthenticateAttribute.IsValidUserType">
+            <summary>
+            是否验证角色
+            </summary>
+        </member>
+        <member name="P:KMEHosp.WebApi.Code.UserAuthenticateAttribute.UserType">
+            <summary>
+            用户类型，患者或医生
+            </summary>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorClinicController">
+            <summary>
+            用户访问权限：用户
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorClinicController.AddDoctorClinic(KMEHosp.DTO.Request{System.Collections.Generic.List{KMEHosp.DTO.DoctorClinicDTO}})">
+            <summary>
+            添加医生义诊信息
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorClinicController.GetDoctorClinicPagelist(System.String)">
+            <summary>
+            根据医生编号和月份查询义诊列表
+            </summary>
+            <param name="month"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorClinicController.getDayNumber(System.Int32,System.Int32)">
+            <summary>
+            返回月份天数
+            </summary>
+            <param name="year"></param>
+            <param name="month"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorInvitesController">
+            <summary>
+            医生邀请
+            前置条件：医生已登录
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorInvitesController.Send(System.Collections.Generic.List{KMEHosp.DTO.DoctorInviteInfoDTO})" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorInvitesController.Get(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorInvitesController.Accept(KMEHosp.DTO.DoctorInviteInfoDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorInvitesController.Cancel(KMEHosp.DTO.DoctorInviteInfoDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorInvitesController.Clear(System.Int32)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorConsultationController">
+            <summary>
+            就诊单
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorConsultationController.InsertEntity(KMEHosp.DTO.DoctorConsultationDTO)">
+            <summary>
+            添加就诊单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorConsultationController.GetEntitys(KMEHosp.DTO.DoctorConsultationCondition)">
+            <summary>
+            查询我的会诊单
+            </summary>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorRecipeFormulaFilesController">
+            <summary>
+            医生处方集
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorRecipeFormulaFilesController.InsertEntity(KMEHosp.DTO.DoctorRecipeFormulaFileDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorRecipeFormulaFilesController.UpdateEntity(KMEHosp.DTO.DoctorRecipeFormulaFileDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorRecipeFormulaFilesController.DeleteEntity(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorRecipeFormulaFilesController.GetEntity(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorRecipeFormulaFilesController.GetEntitys(KMEHosp.DTO.DoctorRecipeFormulaFileSelectRequestDTO)" -->
+        <member name="M:KMEHosp.WebApi.Controllers.ExamResultController.Get(System.String,System.String,System.DateTime,System.String)">
+            <summary>
+            获取患者检验检查结果(按医院、检查日期)
+            前置条件：用户已登录
+            作者：曾璐
+            日期：2016年8月15日
+            </summary>
+            <param name="memberId"></param>
+            <param name="examItemTypeId"></param>
+            <param name="date"></param>
+            <param name="hospitalName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.ExamItemTypeController.GetOptions(System.String,System.String,System.Int32)">
+            <summary>
+            获取患者检验检查类型（用于输入框提示）
+            前置条件：用户已登录
+            作者：曾璐
+            日期：2016年8月15日
+            </summary>
+            <param name="keyword"></param>
+            <param name="parentId"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.ExamItemTypeController.LoadExamItems(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.ExamItemController">
+            <summary>
+            家庭成员
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.ExamItemController.SaveEntity(KMEHosp.DTO.ExamItemDTO)">
+            <summary>
+            保存检验检查
+            前置条件：用户已登录
+            作者：曾璐
+            日期：2016年8月15日
+            </summary>
+            <param name="requst">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.ExamItemController.DeleteEntity(System.String)">
+            <summary>
+            删除检验检查
+            前置条件：用户已登录
+            作者：曾璐
+            日期：2016年8月15日
+            </summary>
+            <param name="id"></param>
+            <returns>0删除失败，1成功</returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.ExamItemController.GetEntitys(System.String)">
+            <summary>
+            获取患者检验检查列表(包含最近检查结果)
+            前置条件：用户已登录
+            作者：曾璐
+            日期：2016年8月15日
+            </summary>
+            <param name="memberId">患者ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.ExamItemController.GetExamItemWithResults(System.String,System.String)">
+            <summary>
+            获取患者检验检查结果列表
+            前置条件：用户已登录
+            作者：曾璐
+            日期：2016年8月15日
+            </summary>
+            <param name="memberId"></param>
+            <param name="examItemTypeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.ExamItemController.GetExamItemsForChart(System.String,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="memberId"></param>
+            <param name="examItemTypeId"></param>
+            <param name="loadSubItems"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorMemberController">
+            <summary>
+            医生的患者
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorMemberController.GetList(KMEHosp.DTO.DoctorMemberCondition)">
+            <summary>
+            我的患者列表
+            </summary>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorMemberController.GetMyMemberInfo(System.String)">
+            <summary>
+            患者详细信息
+            </summary>
+            <param name="doctorMemberID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorMemberController.GetMyMemberVisitList(KMEHosp.DTO.DoctorMemberCondition)">
+            <summary>
+            获取患者就诊记录
+            </summary>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorMemberController.GetDoctorAndMemberInfo(System.String)">
+            <summary>
+            获取主诊医生和患者信息
+            </summary>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.Appointment.AppointmentController">
+            <summary>
+            预约挂号API
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.GetArea(System.String,System.String,System.String,System.String)">
+            <summary>
+            地区列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.GetCity">
+            <summary>
+            获取城市
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.GetHospital(System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            获取医院
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.GetDepartment(System.String,System.Int32)">
+            <summary>
+            科室
+            </summary>
+            <param name="uid"></param>
+            <param name="depid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.GetDoctor(System.String,System.Int32)">
+            <summary>
+            获取医生
+            </summary>
+            <param name="uid"></param>
+            <param name="depid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.GetSchedule(System.String,System.String,System.String,System.String)">
+            <summary>
+            获取排班
+            </summary>
+            <param name="uid"></param>
+            <param name="depid"></param>
+            <param name="docid"></param>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.GetSchDetl(System.String,System.String)">
+            <summary>
+            获取号源
+            </summary>
+            <param name="uid"></param>
+            <param name="schid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.SetYuyue(KMEHosp.DTO.YuYueSubmitData)">
+            <summary>
+            提交预约
+            </summary>
+            <param name="yuYueSubmitData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.GetFamilyYuyue(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            我的预约
+            </summary>
+            <param name="userid"></param>
+            <param name="Orderid"></param>
+            <param name="page"></param>
+            <param name="page_size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.Appointment.AppointmentController.CancelRegister(KMEHosp.DTO.CancelSubmitData)">
+            <summary>
+            取消预约
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.ConversationRoomsController">
+            <summary>
+            腾讯云
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.ConversationRoomsController.GetUsersInfo(KMEHosp.DTO.RequestGetMemberInfoDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.ConversationRoomsController.GetWaitingCount(System.String,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.ConversationRoomsController.GetStatus(System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.ConversationRoomsController.GetEntity(System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.ConversationRoomsController.SetStatus(KMEHosp.DTO.ConversationRoomStatusDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.ConversationRoomsController.GetMessages(KMEHosp.DTO.RequestGetConversationMessageDTO)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.UserInspectResultsController">
+            <summary>
+            科室
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.UserInspectResultsController.InsertEntity(KMEHosp.DTO.UserInspectResultDto)">
+            <summary>
+            新增检查结果
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="requst">科室信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.UserInspectResultsController.UpdateEntity(KMEHosp.DTO.UserInspectResultDto)">
+            <summary>
+            更新检查结果
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="requst">科室信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.UserInspectResultsController.DeleteEntity(System.String)">
+            <summary>
+            删除检查结果
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="ID">科室编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.UserInspectResultsController.GetEntity(System.String)">
+            <summary>
+            获取检查结果详细
+            前置条件：无
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="ID">科室编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.UserInspectResultsController.GetEntitys(KMEHosp.DTO.RequestUserQueryDTO)">
+            <summary>
+            查询用户检查结果
+            前置条件：无
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="request">搜索条件</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserEexaminationsController.GetExaminedList(KMEHosp.DTO.RequestUserQueryDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserEexaminationsController.GetExaminedDetail(System.Int32,System.String)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.Common.UserAccountController">
+            <summary>
+            表示用户登录后才能访问的接口
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.Common.UserAccountController.GetUserAccount" -->
+        <member name="M:KMEHosp.WebApi.Controllers.Common.OptionsController.GetOptionlist(System.String)">
+            <summary>
+            获取常用选项信息
+            前置条件：无
+            </summary>
+            <param name="optionName">选项名称（gender/idtype/relationship/disease/position/unit/chargetype/controllertype）</param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorDiagnosisController">
+            <summary>
+            医生诊断
+            前置条件：医生已登录
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorDiagnosisController.GetDiagnoseSuggest(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorDiagnosisController.GetDagnoseRecipe(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorDiagnosisController.SaveDiagnoseSuggest(KMEHosp.DTO.DoctorDiagnoseAndSuggestDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorDiagnosisController.SaveDiagnoseRecipe(KMEHosp.DTO.DoctorDiagnoseAndRecipeDTO)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorPatentsController">
+            <summary>
+            医生患者
+            前置条件：医生已登录
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorPatentsController.GetWaitingPatientList">
+            <summary>
+            查询医生的候诊队列
+            前置条件：医生已登录
+            作者：郭名
+            日期：2016年8月8日
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorPatentsController.GetPatientVisitList(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            获取患者就诊记录
+            前置条件：医生已登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="OPDRegisterID">当前预约编号</param>
+            <param name="MemberID">会员编号</param> 
+            <param name="CurrentPage">分页索引</param>
+            <param name="PageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorPatentsController.GetPatientInspectResult(System.String)">
+            <summary>
+            获取患者就诊记录
+            前置条件：医生已登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="MemberID">会员编号</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorPatentsController.GetWaitPatientPageList(KMEHosp.DTO.WaitPatientSearch)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorPriceController">
+            <summary>
+            表示用户登录后才能访问的接口
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorPriceController.GetDoctorPriceServiceList" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorPriceController.GetDoctorPriceService(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorPriceController.AddOrEditeDoctorService(KMEHosp.DTO.DoctorServiceSaveDto)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorScheduleController">
+            <summary>
+            用户访问权限：用户
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorScheduleController.GetDoctorSchedule(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorScheduleController.GetScheduleList(System.String,System.Int32)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorScheduleController.DeleteDoctorSchdule(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorScheduleController.AddDoctorSchduleList(KMEHosp.DTO.Request{System.Collections.Generic.List{KMEHosp.DTO.RowScheduleDto}})" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorScheduleController.AvailableTimes(System.String,System.String,System.Int32)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.DoctorsController">
+            <summary>
+            医生
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorsController.InsertEntity(KMEHosp.DTO.DoctorDto)">
+            <summary>
+            新增医生
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="requst">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorsController.UpdateEntity(KMEHosp.DTO.DoctorDto)">
+            <summary>
+            更新医生
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="requst">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorsController.DeleteEntity(System.String)">
+            <summary>
+            删除医生
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="ID">预约编号</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorsController.GetEntity(System.String)" -->
+        <member name="M:KMEHosp.WebApi.Controllers.DoctorsController.GetEntityByUserID(System.String)">
+            <summary>
+            获取医生详情
+            前置条件：无
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="UserID">用户编号</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorsController.GetEntitys(KMEHosp.DTO.DoctorSelectRequestDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorsController.GetDoctorInvitePageList(System.String,KMEHosp.DTO.DoctorSelectRequestDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DoctorsController.GetMyVisitDoctors" -->
+        <member name="T:KMEHosp.WebApi.Controllers.DepartmentsController">
+            <summary>
+            科室
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DepartmentsController.InsertEntity(KMEHosp.DTO.HospitalDepartmentDTO)">
+            <summary>
+            新增科室
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="requst">科室信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DepartmentsController.UpdateEntity(KMEHosp.DTO.HospitalDepartmentDTO)">
+            <summary>
+            更新科室
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="requst">科室信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.DepartmentsController.DeleteEntity(System.String)">
+            <summary>
+            删除科室
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="ID">科室编号</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DepartmentsController.GetEntity(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.DepartmentsController.GetEntitys(KMEHosp.DTO.HospitalSelectRequestDTO)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.HospitalsController">
+            <summary>
+            医院
+            </summary>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.HospitalsController.InsertEntity(KMEHosp.DTO.HospitalDto)">
+            <summary>
+            新增医院
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="requst">医院信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.HospitalsController.UpdateEneity(KMEHosp.DTO.HospitalDto)">
+            <summary>
+            更新医院
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="requst">医院信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.HospitalsController.DeleteEntity(System.String)">
+            <summary>
+            删除医院
+            前置条件：管理员登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="ID">医院编号</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.HospitalsController.GetEntity(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.HospitalsController.GetEntitys(KMEHosp.DTO.HospitalSelectRequestDTO)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.BankController">
+            <summary>
+            表示用户登录后才能访问的接口
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.BankController.GetBankList" -->
+        <member name="T:KMEHosp.WebApi.Controllers.OrdersController">
+            <summary>
+            订单
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.OrdersController.Create(KMEHosp.DTO.Platform.OrderDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.OrdersController.Cancel(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.OrdersController.Confirm(System.String,KMEHosp.DTO.Platform.OrderDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.OrdersController.Refund(System.String,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.OrdersController.Complete(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.OrdersController.GetOrder(System.String)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.IMController">
+            <summary>
+            腾讯云
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.IMController.Config" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.IMController.MediaConfig(System.String,System.Int32)" -->
+        <member name="M:KMEHosp.WebApi.Controllers.IMController.CallBack(System.String,System.String,System.String,System.String,System.Object)">
+            <summary>
+            腾讯云通信回调函数
+            </summary>
+            <param name="SdkAppid">APP在云通讯申请的Appid。</param>
+            <param name="CallbackCommand"></param>
+            <param name="contenttype">固定为：json。</param>
+            <param name="ClientIP">客户端IP地址。</param>
+            <param name="OptPlatform">客户端平台。取值参见回调协议中OptPlatform的参数含义。</param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.SysDictsController">
+            <summary>
+            系统字典
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.SysDictsController.GetEntitys" -->
+        <member name="T:KMEHosp.WebApi.Controllers.SysDrugsController">
+            <summary>
+            系统药品库
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.SysDrugsController.GetEntitys(KMEHosp.Common.Enum.EnumDrugType,System.String,System.Nullable{System.DateTime},System.Int32,System.Int32)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.SysICDsController">
+            <summary>
+            系统疾病编码
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.SysICDsController.GetEntitys(System.String,System.Int32,System.Nullable{System.DateTime},System.Int32,System.Int32)" -->
+        <member name="M:KMEHosp.WebApi.Controllers.TokenController.get(System.String,System.String)">
+                   * @api {GET} /Token 获取应用Token
+                   * @apiGroup Application
+                   * @apiVersion 0.0.1
+                   * @apiDescription 获取应用Token 作者：郭明
+                   * @apiPermission 所有人
+                   * @apiParam {string} appId 应用编号 
+                   * @apiParam {string} appSecret 应用秘钥
+                   * @apiSuccess (Response) {String} Msg 提示信息 
+                   * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
+                   * @apiSuccess (Response) {int} Total 总记录数
+                   * @apiSuccess (Response) {Array} Data 配置信息
+                   * @apiSuccessExample {json} 返回样例:
+                   *{"Data":{
+                      "AppId":"XXXXX",
+                      "AppKey":"XXX",
+                      "ExpireDate":2016-01-01,
+                      "Time":2016-01-01
+                      },"Total":0,"Status":0,"Msg":""}             
+                   *
+            <summary>
+            获取Token
+            前置条件：无
+            </summary>
+            <param name="appId"></param>
+            <param name="appSecret"></param>
+            <returns></returns>
+        </member>
+        <member name="T:KMEHosp.WebApi.Controllers.AddressesController">
+            <summary>
+            表示用户登录后才能访问的接口
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.AddressesController.AddUserAddress(KMEHosp.DTO.UserAddressDto)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.AddressesController.UpdateUserAddress(KMEHosp.DTO.UserAddressDto)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.AddressesController.DeleteUserAddress(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.AddressesController.GetUserAddressList" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.AddressesController.GetUserAddress(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.AddressesController.SetDefaultAddress(System.String)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.UserAttentionsController">
+            <summary>
+            用户关注
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserAttentionsController.GetEntitys" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserAttentionsController.Attention(KMEHosp.DTO.UserAttentionDto)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.UserBankCardController">
+            <summary>
+            表示用户登录后才能访问的接口
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserBankCardController.AddBankCard(KMEHosp.DTO.UserBankCardDto)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserBankCardController.DeleteBankCard(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserBankCardController.UpdateBankCard(KMEHosp.DTO.UserBankCardDto)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserBankCardController.GetBankCardList" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserBankCardController.GetBankCard(System.String)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.User.UserCasheController">
+            <summary>
+            表示用户登录后才能访问的接口
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.User.UserCasheController.GetUserCashInfo(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.User.UserCasheController.GetUserCashPagelist(KMEHosp.DTO.UserCasheSearch)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.User.UserCasheController.AddUserCash(KMEHosp.DTO.UserCasheDto)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.User.UserTransController">
+            <summary>
+            表示用户登录后才能访问的接口
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.User.UserTransController.AddUserTrans(KMEHosp.DTO.UserTransactionDto)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.User.UserTransController.GetUserTransInfo(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.User.UserTransController.GetUserTransPagelist(KMEHosp.DTO.User.UserTransSearch)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.UserMembersController">
+            <summary>
+            家庭成员
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserMembersController.InsertEntity(KMEHosp.DTO.UserMemberDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserMembersController.DeleteEntity(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserMembersController.UpdateEntity(KMEHosp.DTO.UserMemberDTO)" -->
+        <member name="M:KMEHosp.WebApi.Controllers.UserMembersController.GetEntity(System.String)">
+            <summary>
+            获取家庭成员
+            前置条件：已登录
+            作者：郭明
+            日期：2016年8月4日
+            </summary>
+            <param name="ID">成员编号</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserMembersController.GetEntitys(KMEHosp.DTO.RequestUserQueryDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserMembersController.SetDefaultMember(System.String)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.UserOPDRegistersController">
+            <summary>
+            预约接口
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserOPDRegistersController.Insert(KMEHosp.DTO.UserOPDRegisterSubmitDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserOPDRegistersController.GetEntity(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserOPDRegistersController.GetEntitys(KMEHosp.DTO.RequestUserQueryOPDRegisterDTO)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.UserRecipeOrderController">
+            <summary>
+            处方订单
+            前置条件：已登录
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserRecipeOrderController.GetEntity(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UserRecipeOrderController.GetEntitys(KMEHosp.DTO.RequestUserQueryDTO)" -->
+        <member name="T:KMEHosp.WebApi.Controllers.UsersController">
+            <summary>
+            用户访问权限：用户
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UsersController.Login(KMEHosp.DTO.RequestUserLoginDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UsersController.Logout" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UsersController.ChangePassword(KMEHosp.DTO.RequestUserChangePasswordDTO)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UsersController.UserRegister(KMEHosp.DTO.RequestUserRegisterDTO)" -->
+        <member name="M:KMEHosp.WebApi.Controllers.UsersController.InitMemberInfo(KMEHosp.Entity.UserMember)">
+            <summary>
+            初始会员信息成功
+            </summary>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UsersController.IsNeedInitMemberInfo" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UsersController.SendSmsCode(KMEHosp.DTO.MsgCodeMobileDto)" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UsersController.IsLogin" -->
+        <!-- Badly formed XML comment ignored for member "M:KMEHosp.WebApi.Controllers.UsersController.UserFindPwd(KMEHosp.DTO.UserFindPwdDto)" -->
+        <member name="M:KMEHosp.WebApi.Controllers.UsersController.UserFindPwdPre(KMEHosp.DTO.UserFindPwdPreDto)">
+            <summary>
+            用户找加密码第一步
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:KMEHosp.WebApi.Controllers.UsersController.UserFindPwdNext(KMEHosp.DTO.UserFindPwdNextDto)">
+            <summary>
+            用户找加密码第一步
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Tencent.TSLHelper.GetSig(System.UInt32,System.String,System.UInt32)">
+            <summary>
+            获取签名
+            </summary>
+            <param name="SdkAppid">SDK编号</param>
+            <param name="identifier">用户唯一标识</param>
+            <param name="accountType">用户类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:Agora.DynamicKey4">
+            <summary>
+            动态秘钥
+            </summary>
+        </member>
+        <member name="M:Agora.DynamicKey4.generateRecordingKey(System.String,System.String,System.String,System.Int32,System.Int32,System.Int64,System.Int32)">
+            Generate Dynamic Key for recording service
+            @param vendorKey Vendor key assigned by Agora
+            @param signKey Sign key assigned by Agora
+            @param channelName name of channel to join, limited to 64 bytes and should be printable ASCII characters
+            @param unixTs unix timestamp in seconds when generating the Dynamic Key
+            @param randomInt salt for generating dynamic key
+            @param uid user id, range from 0 - max uint32
+            @param expiredTs should be 0
+            @return String representation of dynamic key
+            @throws Exception if any error occurs
+        </member>
+        <member name="M:Agora.DynamicKey4.generateMediaChannelKey(System.String,System.String,System.String,System.Int32,System.Int32,System.Int64,System.Int32)">
+            Generate Dynamic Key for media channel service
+            @param vendorKey Vendor key assigned by Agora
+            @param signKey Sign key assigned by Agora
+            @param channelName name of channel to join, limited to 64 bytes and should be printable ASCII characters
+            @param unixTs unix timestamp in seconds when generating the Dynamic Key
+            @param randomInt salt for generating dynamic key
+            @param uid user id, range from 0 - max uint32
+            @param expiredTs service expiring timestamp. After this timestamp, user will not be able to stay in the channel.
+            @return String representation of dynamic key
+            @throws Exception if any error occurs
+        </member>
+    </members>
+</doc>

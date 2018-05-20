@@ -1,0 +1,2 @@
+copy /y "C:\Codes\XuHos\XuHos.Service.WebApi\Controllers\Platform\WechatAppController.cs" "C:\Codes\XuHos\XuHos.Service.WebApi\Controllers\test\" 
+apidoc -i XuHos.Service.WebApi/Controllers/test -o ./apidoc

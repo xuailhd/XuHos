@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{775DF2BD-FB37-4F33-A8ED-DEEEA5B3B16B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XuHos.Common</RootNamespace>
+    <AssemblyName>XuHos.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integrated|AnyCPU'">
+    <OutputPath>bin\Integrated\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EmitMapper">
+      <HintPath>..\lib\EmitMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\lib\MongoDB\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\lib\MongoDB\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\lib\MongoDB\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ToolGood.Words, Version=1.8.3.0, Culture=neutral, PublicKeyToken=d330f4fd115e6143, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToolGood.Words.1.8.3.0\lib\net40\ToolGood.Words.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DCMHelper.cs" />
+    <Compile Include="Encrypt.cs" />
+    <Compile Include="Extensions\Bytes.cs" />
+    <Compile Include="Extensions\DateTimeExtend.cs" />
+    <Compile Include="Extensions\EntityMapper.cs" />
+    <Compile Include="Extensions\Enum.cs" />
+    <Compile Include="Extensions\Exception.cs" />
+    <Compile Include="Extensions\IntExtend.cs" />
+    <Compile Include="Extensions\String.cs" />
+    <Compile Include="IOCContainer.cs" />
+    <Compile Include="JsonHelper.cs" />
+    <Compile Include="KetamaHash\HashAlgorithm.cs" />
+    <Compile Include="KetamaHash\KetamaNodeLocator.cs" />
+    <Compile Include="LogUtils\ApiTrack\ApiTrackLog.cs" />
+    <Compile Include="LogUtils\ApiTrack\ITrackLogLogAppender.cs" />
+    <Compile Include="LogUtils\Configuration.cs" />
+    <Compile Include="LogUtils\Log4Mongo\BackwardCompatibility.cs" />
+    <Compile Include="LogUtils\Log4Mongo\MongoAppenderFileld.cs" />
+    <Compile Include="LogUtils\Log4Mongo\MongoDBAppender.cs" />
+    <Compile Include="LogUtils\Log4Mongo\UnitResolver.cs" />
+    <Compile Include="LogUtils\LogHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionHelper.cs" />
+    <Compile Include="Snowflake\DisposableAction.cs" />
+    <Compile Include="Snowflake\IdWorker.cs" />
+    <Compile Include="Snowflake\InvalidSystemClock.cs" />
+    <Compile Include="Snowflake\TimeExtensions.cs" />
+    <Compile Include="TimeHelper.cs" />
+    <Compile Include="ToolHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LogUtils\log4net.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

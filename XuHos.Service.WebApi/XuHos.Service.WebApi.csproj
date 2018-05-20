@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{386C0A87-21DC-40A0-9832-7C21216D098A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XuHos.Service.WebApi</RootNamespace>
+    <AssemblyName>XuHos.Service.WebApi</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\lib\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="cn.jpush.api, Version=1.1.1.25209, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\cn.jpush.api.dll</HintPath>
+    </Reference>
+    <Reference Include="DocX">
+      <HintPath>..\lib\DocX.dll</HintPath>
+    </Reference>
+    <Reference Include="EmitMapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EmitMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="LogKM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ApiLog\LogKM.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RabbitMQ\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.DocumentObjectModel, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\MigraDoc.DocumentObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\MigraDoc.Rendering.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\MigraDoc.RtfRendering.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.3.0.157, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MongoDB\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.3.0.157, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MongoDB\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.3.0.157, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MongoDB\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.12\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="O2S.Components.PDFRender4NET, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\O2S.Components.PDFRender4NET.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.1.608.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\WebApi\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\WebApi\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Topshelf, Version=3.1.135.0, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Topshelf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Articles.html" />
+    <Content Include="Global.asax" />
+    <Content Include="App_Data\config.ueditor.json" />
+    <Content Include="App_Data\cert\wxpay\wx21894bb0c29a4606.p12" />
+    <Content Include="App_Data\key\IM\1400092751\private_key" />
+    <Content Include="App_Data\key\IM\1400092751\public_key" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\3.2API.pubxml" />
+    <None Include="Properties\PublishProfiles\aa.pubxml" />
+    <None Include="Properties\PublishProfiles\dd.pubxml" />
+    <Content Include="LicenseAgreement.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApiBaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Platform\Cashier\AliPay\AliPayController.cs" />
+    <Compile Include="Controllers\Doctor\DoctorMemberController.cs" />
+    <Compile Include="Controllers\Platform\Cashier\WxPay\WxPayController.cs" />
+    <Compile Include="Controllers\Platform\WechatAppController.cs" />
+    <Compile Include="Controllers\Platform\VerifyCodesController.cs" />
+    <Compile Include="Controllers\User\ServiceEvaluationsController.cs" />
+    <Compile Include="Controllers\Doctor\DoctorPatentsController.cs" />
+    <Compile Include="Controllers\Doctor\DoctorPriceController.cs" />
+    <Compile Include="Controllers\Doctor\DoctorScheduleController.cs" />
+    <Compile Include="Controllers\Doctor\DoctorsController.cs" />
+    <Compile Include="Controllers\Hospital\DepartmentsController.cs" />
+    <Compile Include="Controllers\Hospital\HospitalsController.cs" />
+    <Compile Include="Controllers\Platform\OrdersController.cs" />
+    <Compile Include="Controllers\Platform\IMController.cs" />
+    <Compile Include="Controllers\Platform\OptionsController.cs" />
+    <Compile Include="Controllers\Platform\SysDictsController.cs" />
+    <Compile Include="Controllers\Platform\TokenController.cs" />
+    <Compile Include="Controllers\User\UserMembersController.cs" />
+    <Compile Include="Controllers\User\UserOpdRegistersController.cs" />
+    <Compile Include="Controllers\User\UsersController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\release.pubxml" />
+    <None Include="Properties\PublishProfiles\WebApi.pubxml" />
+    <None Include="Properties\PublishProfiles\测试环境.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XuHos.BLL.Common\XuHos.BLL.Common.csproj">
+      <Project>{7633152E-7A64-40C9-8A5B-DFCFB49A3A96}</Project>
+      <Name>XuHos.BLL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.BLL.Doctor\XuHos.BLL.Doctor.csproj">
+      <Project>{687ba19a-d79a-44aa-b69a-e08dd3c975c3}</Project>
+      <Name>XuHos.BLL.Doctor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.BLL.Sys\XuHos.BLL.Sys.csproj">
+      <Project>{84773fe4-c240-44a4-86c8-2632c17d3721}</Project>
+      <Name>XuHos.BLL.Sys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.BLL.User\XuHos.BLL.User.csproj">
+      <Project>{7908c915-b775-4cee-a5b7-1a7bda0bbca4}</Project>
+      <Name>XuHos.BLL.User</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.BLL\XuHos.BLL.csproj">
+      <Project>{2c26bd69-092e-4005-bae2-6c554d236e57}</Project>
+      <Name>XuHos.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Cache.Redis\XuHos.Common.Cache.Redis.csproj">
+      <Project>{29056786-1af8-467b-b912-e79da3b46f72}</Project>
+      <Name>XuHos.Common.Cache.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Cache\XuHos.Common.Cache.csproj">
+      <Project>{0304DA15-717D-46FF-B13E-6FE66F086119}</Project>
+      <Name>XuHos.Common.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Config\XuHos.Common.Config.csproj">
+      <Project>{1a5ae0b9-4c8d-4ca7-b8b5-d22b87c45a53}</Project>
+      <Name>XuHos.Common.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Enum\XuHos.Common.Enum.csproj">
+      <Project>{be7faf9b-e33b-41e3-ab24-b6b9934f2cf1}</Project>
+      <Name>XuHos.Common.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Pay\XuHos.Common.Pay.csproj">
+      <Project>{21a41496-df2d-4054-8c10-adf30dcb2c77}</Project>
+      <Name>XuHos.Common.Pay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Storage\XuHos.Common.Storage.csproj">
+      <Project>{59300b04-5155-40f2-a710-28d4ef8d1d92}</Project>
+      <Name>XuHos.Common.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Utility\XuHos.Common.Utility.csproj">
+      <Project>{875FBA84-092A-427A-BF79-78243F3B081E}</Project>
+      <Name>XuHos.Common.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common\XuHos.Common.csproj">
+      <Project>{775df2bd-fb37-4f33-a8ed-deeea5b3b16b}</Project>
+      <Name>XuHos.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DAL.EF\XuHos.DAL.EF.csproj">
+      <Project>{2fed0cab-e792-48f0-b558-cd7437c8236d}</Project>
+      <Name>XuHos.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DTO.Common\XuHos.DTO.Common.csproj">
+      <Project>{cb8d5d85-1bdd-4499-a645-628f07dad383}</Project>
+      <Name>XuHos.DTO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DTO\XuHos.DTO.csproj">
+      <Project>{f7934317-46ce-48c5-a562-1a08960856fc}</Project>
+      <Name>XuHos.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Entity\XuHos.Entity.csproj">
+      <Project>{3E2E98E9-A179-468B-938F-24178AC5D729}</Project>
+      <Name>XuHos.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.EventBus\XuHos.EventBus.csproj">
+      <Project>{6bdf7b0f-b740-418f-a7d6-e6313318da05}</Project>
+      <Name>XuHos.EventBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Integration.QQCloudy\XuHos.Integration.QQCloudy.csproj">
+      <Project>{e6bf1109-0a91-44c3-b292-1ac9825970f1}</Project>
+      <Name>XuHos.Integration.QQCloudy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Integration.WechatApp\XuHos.Integration.WechatApp.csproj">
+      <Project>{1e5310ed-512d-49b2-94d5-f2c4a527306c}</Project>
+      <Name>XuHos.Integration.WechatApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Service.Infrastructure\XuHos.Service.Infrastructure.csproj">
+      <Project>{1f8d4a8e-c1a5-482a-8c6b-d3654d5033b4}</Project>
+      <Name>XuHos.Service.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'staging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integrated|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>63739</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:17268/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

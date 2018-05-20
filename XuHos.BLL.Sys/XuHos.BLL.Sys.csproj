@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{84773FE4-C240-44A4-86C8-2632C17D3721}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XuHos.BLL.Sys</RootNamespace>
+    <AssemblyName>XuHos.BLL.Sys</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integrated|AnyCPU'">
+    <OutputPath>bin\Integrated\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EF6.1.3\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EF6.1.3\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CacheConfigSectionHandler.cs" />
+    <Compile Include="DbConfigSectionHandler.cs" />
+    <Compile Include="DTOs\Request\RequestConversactionApplyAddFriendDTO.cs" />
+    <Compile Include="DTOs\Request\RequestConversationRoomSetStateDTO.cs" />
+    <Compile Include="DTOs\Request\RequestChannelMember.cs" />
+    <Compile Include="DTOs\Request\RequestConversactionRoomSwitchChargingStateDTO.cs" />
+    <Compile Include="DTOs\Request\RequestConversationRoomRenewUpgradeDTO.cs" />
+    <Compile Include="DTOs\Request\RequestConversationRoomStatusDTO.cs" />
+    <Compile Include="DTOs\Request\RequestConversationRoomTriageDTO.cs" />
+    <Compile Include="DTOs\Request\RequestDoctorDiagnoseStateDTO.cs" />
+    <Compile Include="DTOs\Request\RequestDrugQueryDTO.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgRoomReadyTurnOn.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgSurvey.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgInquiriesUntaken.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgDiagnoseOnOffStateChanged.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgNotice.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgQueueChanged.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgRoomDurationChanged.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgRoomExpire.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgRoomTurnOff.cs" />
+    <Compile Include="DTOs\Request\RequestIMCustomMsgRoomStateChanged.cs" />
+    <Compile Include="DTOs\Request\RequestIMGetConversationMessageDTO.cs" />
+    <Compile Include="DTOs\Request\RequestIMGetMemberInfoDTO.cs" />
+    <Compile Include="DTOs\Request\RequestIMRecordingDoneDTO.cs" />
+    <Compile Include="DTOs\Request\RequestIMSendAudioDTO.cs" />
+    <Compile Include="DTOs\Request\RequestIMSendFileDTO.cs" />
+    <Compile Include="DTOs\Request\RequestIMSendImageDTO.cs" />
+    <Compile Include="DTOs\Request\RequestIMSendTextDTO.cs" />
+    <Compile Include="DTOs\Request\RequestIMUploadImageByBase64DTO.cs" />
+    <Compile Include="DTOs\Request\RequestSysDrugOrgPriceDTO.cs" />
+    <Compile Include="DTOs\Request\RequestSysMonitorIndexUpdateDTO.cs" />
+    <Compile Include="DTOs\Request\RequestSysNoticeQueryDTO.cs" />
+    <Compile Include="DTOs\Response\RespnoseConversactionFriendDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseConversationRoomDocConfDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseSysModuleForDocDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseSysDrugOrgMapDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseConversactionSessionDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseConversationRoomMemberDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseConversationRoomStatusDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseRoleSysModuleDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseSysServiceItemDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseTaskPriority.cs" />
+    <Compile Include="DTOs\Response\ResponseDrugDetailDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseUserRoleDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseSysModuleMenuDTO.cs" />
+    <Compile Include="DTOs\Response\ResponseSysModuleTreeDTO.cs" />
+    <Compile Include="DTOs\SysOrgSettingDTO.cs" />
+    <Compile Include="Implements\ApiSecurityService.cs" />
+    <Compile Include="Implements\FileService.cs" />
+    <Compile Include="DTOs\Request\RequestSendSMSDTO.cs" />
+    <Compile Include="Implements\HRegionService.cs" />
+    <Compile Include="Implements\SysEventService.cs" />
+    <Compile Include="Implements\SysShortMessageService.cs" />
+    <Compile Include="Implements\SysModuleService.cs" />
+    <Compile Include="Implements\SysMonitorIndexService.cs" />
+    <Compile Include="Implements\CodeService.cs" />
+    <Compile Include="Implements\ConversationIMUidService.cs" />
+    <Compile Include="Implements\ConversationMessageService.cs" />
+    <Compile Include="Implements\ConversationRecordingService.cs" />
+    <Compile Include="Implements\ConversationRoomService.cs" />
+    <Compile Include="Implements\HeartbeatService.cs" />
+    <Compile Include="Implements\SysGrabService.cs" />
+    <Compile Include="Implements\SysRoleService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Implements\SysAccessAccountService.cs" />
+    <Compile Include="Implements\SysConfigService.cs" />
+    <Compile Include="Implements\SysDereplicationService.cs" />
+    <Compile Include="Implements\SysDictService.cs" />
+    <Compile Include="Implements\SysFileIndexService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\XuHos\XuHos.Resource\XuHos.Resource.csproj">
+      <Project>{1B795F62-78BC-4F9C-8427-C1548327E65F}</Project>
+      <Name>XuHos.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.BLL.Common\XuHos.BLL.Common.csproj">
+      <Project>{7633152e-7a64-40c9-8a5b-dfcfb49a3a96}</Project>
+      <Name>XuHos.BLL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Cache\XuHos.Common.Cache.csproj">
+      <Project>{0304da15-717d-46ff-b13e-6fe66f086119}</Project>
+      <Name>XuHos.Common.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Config\XuHos.Common.Config.csproj">
+      <Project>{1a5ae0b9-4c8d-4ca7-b8b5-d22b87c45a53}</Project>
+      <Name>XuHos.Common.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Enum\XuHos.Common.Enum.csproj">
+      <Project>{be7faf9b-e33b-41e3-ab24-b6b9934f2cf1}</Project>
+      <Name>XuHos.Common.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Utility\XuHos.Common.Utility.csproj">
+      <Project>{875fba84-092a-427a-bf79-78243f3b081e}</Project>
+      <Name>XuHos.Common.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common\XuHos.Common.csproj">
+      <Project>{775df2bd-fb37-4f33-a8ed-deeea5b3b16b}</Project>
+      <Name>XuHos.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DAL.EF\XuHos.DAL.EF.csproj">
+      <Project>{2fed0cab-e792-48f0-b558-cd7437c8236d}</Project>
+      <Name>XuHos.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DTO.Common\XuHos.DTO.Common.csproj">
+      <Project>{cb8d5d85-1bdd-4499-a645-628f07dad383}</Project>
+      <Name>XuHos.DTO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DTO\XuHos.DTO.csproj">
+      <Project>{f7934317-46ce-48c5-a562-1a08960856fc}</Project>
+      <Name>XuHos.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Entity\XuHos.Entity.csproj">
+      <Project>{3e2e98e9-a179-468b-938f-24178ac5d729}</Project>
+      <Name>XuHos.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.EventBus\XuHos.EventBus.csproj">
+      <Project>{6bdf7b0f-b740-418f-a7d6-e6313318da05}</Project>
+      <Name>XuHos.EventBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Integration.QQCloudy\XuHos.Integration.QQCloudy.csproj">
+      <Project>{e6bf1109-0a91-44c3-b292-1ac9825970f1}</Project>
+      <Name>XuHos.Integration.QQCloudy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Integration.ShortMessage\XuHos.Integration.ShortMessage.csproj">
+      <Project>{26773248-0387-442E-A0A8-71A6F2DA3290}</Project>
+      <Name>XuHos.Integration.ShortMessage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C26BD69-092E-4005-BAE2-6C554D236E57}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XuHos.BLL</RootNamespace>
+    <AssemblyName>XuHos.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integrated|AnyCPU'">
+    <OutputPath>bin\Integrated\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EF6.1.3\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EF6.1.3\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.DocumentObjectModel, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\MigraDoc.DocumentObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\MigraDoc.Rendering.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\MigraDoc.RtfRendering.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.4000.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Pdf\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Doctor\DoctorMemberService.cs" />
+    <Compile Include="Doctor\DoctorPatentService.cs" />
+    <Compile Include="Doctor\DoctorSchduleService.cs" />
+    <Compile Include="Hospital\HospitalDepartmentService.cs" />
+    <Compile Include="Platform\Cashier\AliPayCashierService.cs" />
+    <Compile Include="Platform\Cashier\CashierFactoryService.cs" />
+    <Compile Include="Platform\Cashier\ICashierService.cs" />
+    <Compile Include="Platform\Cashier\BaseCashierService.cs" />
+    <Compile Include="Platform\Cashier\WXPayCashierService.cs" />
+    <Compile Include="Platform\Stock\IStockService.cs" />
+    <Compile Include="Platform\Stock\StockFactoryService.cs" />
+    <Compile Include="Platform\Stock\VideoConsultStockService.cs" />
+    <Compile Include="Hospital\HospitalService.cs" />
+    <Compile Include="Platform\Order\OrderService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\UserMemberEMRService.cs" />
+    <Compile Include="User\UserOPDRegisterService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XuHos.BLL.Common\XuHos.BLL.Common.csproj">
+      <Project>{7633152e-7a64-40c9-8a5b-dfcfb49a3a96}</Project>
+      <Name>XuHos.BLL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.BLL.Doctor\XuHos.BLL.Doctor.csproj">
+      <Project>{687ba19a-d79a-44aa-b69a-e08dd3c975c3}</Project>
+      <Name>XuHos.BLL.Doctor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.BLL.Sys\XuHos.BLL.Sys.csproj">
+      <Project>{84773fe4-c240-44a4-86c8-2632c17d3721}</Project>
+      <Name>XuHos.BLL.Sys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.BLL.User\XuHos.BLL.User.csproj">
+      <Project>{7908c915-b775-4cee-a5b7-1a7bda0bbca4}</Project>
+      <Name>XuHos.BLL.User</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Cache\XuHos.Common.Cache.csproj">
+      <Project>{0304da15-717d-46ff-b13e-6fe66f086119}</Project>
+      <Name>XuHos.Common.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Config\XuHos.Common.Config.csproj">
+      <Project>{1a5ae0b9-4c8d-4ca7-b8b5-d22b87c45a53}</Project>
+      <Name>XuHos.Common.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Enum\XuHos.Common.Enum.csproj">
+      <Project>{be7faf9b-e33b-41e3-ab24-b6b9934f2cf1}</Project>
+      <Name>XuHos.Common.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Pay\XuHos.Common.Pay.csproj">
+      <Project>{21a41496-df2d-4054-8c10-adf30dcb2c77}</Project>
+      <Name>XuHos.Common.Pay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Storage\XuHos.Common.Storage.csproj">
+      <Project>{59300b04-5155-40f2-a710-28d4ef8d1d92}</Project>
+      <Name>XuHos.Common.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common.Utility\XuHos.Common.Utility.csproj">
+      <Project>{875FBA84-092A-427A-BF79-78243F3B081E}</Project>
+      <Name>XuHos.Common.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common\XuHos.Common.csproj">
+      <Project>{775df2bd-fb37-4f33-a8ed-deeea5b3b16b}</Project>
+      <Name>XuHos.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DAL.EF\XuHos.DAL.EF.csproj">
+      <Project>{2fed0cab-e792-48f0-b558-cd7437c8236d}</Project>
+      <Name>XuHos.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DTO.Common\XuHos.DTO.Common.csproj">
+      <Project>{cb8d5d85-1bdd-4499-a645-628f07dad383}</Project>
+      <Name>XuHos.DTO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.DTO\XuHos.DTO.csproj">
+      <Project>{f7934317-46ce-48c5-a562-1a08960856fc}</Project>
+      <Name>XuHos.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Entity\XuHos.Entity.csproj">
+      <Project>{3e2e98e9-a179-468b-938f-24178ac5d729}</Project>
+      <Name>XuHos.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.EventBus\XuHos.EventBus.csproj">
+      <Project>{6bdf7b0f-b740-418f-a7d6-e6313318da05}</Project>
+      <Name>XuHos.EventBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Integration.Agora\XuHos.Integration.Agora.csproj">
+      <Project>{608ebbcb-9778-4a4b-9e45-0e5621e1ddfc}</Project>
+      <Name>XuHos.Integration.Agora</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Integration.QQCloudy\XuHos.Integration.QQCloudy.csproj">
+      <Project>{e6bf1109-0a91-44c3-b292-1ac9825970f1}</Project>
+      <Name>XuHos.Integration.QQCloudy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Integration.ShortMessage\XuHos.Integration.ShortMessage.csproj">
+      <Project>{26773248-0387-442e-a0a8-71a6f2da3290}</Project>
+      <Name>XuHos.Integration.ShortMessage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

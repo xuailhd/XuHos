@@ -1,0 +1,1284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About KM hospital</value>
+  </data>
+  <data name="AfraidSeriousIllness" xml:space="preserve">
+    <value>Afraidless</value>
+  </data>
+  <data name="Agreement" xml:space="preserve">
+    <value>Ndisclosure agreements</value>
+  </data>
+  <data name="Appointment" xml:space="preserve">
+    <value>Reserve</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Chat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="ComfirmPassword" xml:space="preserve">
+    <value>Comfirm Password</value>
+  </data>
+  <data name="ComfirmPasswordError" xml:space="preserve">
+    <value>Confirm password error.</value>
+  </data>
+  <data name="ComfirmPay" xml:space="preserve">
+    <value>Comfirm Pay</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Kang Mei Healthcare Cloud Service  Co., Ltd.</value>
+  </data>
+  <data name="ConfirmReservation" xml:space="preserve">
+    <value>Confirm Reservation</value>
+  </data>
+  <data name="Daughter" xml:space="preserve">
+    <value>Daughter</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day(s)</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeliveryIn" xml:space="preserve">
+    <value>Courier delivery in = ^ _ ^ =</value>
+  </data>
+  <data name="Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="DeputyDirector" xml:space="preserve">
+    <value>Deputy Director Of Physicians</value>
+  </data>
+  <data name="DetailUnderstand" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Disclaimer" xml:space="preserve">
+    <value>Disclaimer</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="Doctors" xml:space="preserve">
+    <value>Doctors</value>
+  </data>
+  <data name="DoctorVideoWindow" xml:space="preserve">
+    <value>Doctor Video Window</value>
+  </data>
+  <data name="DriverLicense" xml:space="preserve">
+    <value>Driver's License</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Expert" xml:space="preserve">
+    <value>Experts</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>Father</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Fri.</value>
+  </data>
+  <data name="HasSign" xml:space="preserve">
+    <value>Has sign = ^ _ ^ =</value>
+  </data>
+  <data name="HaveRead" xml:space="preserve">
+    <value>I have read and accept the terms of service.</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello! please</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Hospital" xml:space="preserve">
+    <value>Hospital</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Hour(s)</value>
+  </data>
+  <data name="ICP" xml:space="preserve">
+    <value>Guangdong ICP preparation 15086500 -1</value>
+  </data>
+  <data name="IDCard" xml:space="preserve">
+    <value>ID Card</value>
+  </data>
+  <data name="InputCode" xml:space="preserve">
+    <value>Please input a graphic verification code</value>
+  </data>
+  <data name="InputPassword" xml:space="preserve">
+    <value>Please input the login password</value>
+  </data>
+  <data name="InputUserName" xml:space="preserve">
+    <value>Please input your login account or mobile number</value>
+  </data>
+  <data name="KMNews" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="LastWeek" xml:space="preserve">
+    <value>Last Week</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="MasterHealthInAnyWhere" xml:space="preserve">
+    <value>Timely Monitoring </value>
+  </data>
+  <data name="MedicalDirector" xml:space="preserve">
+    <value>Medical Director</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="MilitaryOfficer" xml:space="preserve">
+    <value>Military Officer (Soldier Card)</value>
+  </data>
+  <data name="Minorillnesses" xml:space="preserve">
+    <value>Illness Status</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Minute(s)</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Mon.</value>
+  </data>
+  <data name="Money" xml:space="preserve">
+    <value>$</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>Mother</value>
+  </data>
+  <data name="MyFavorite" xml:space="preserve">
+    <value>Favorite</value>
+  </data>
+  <data name="Myself" xml:space="preserve">
+    <value>Myself</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NamePasswordError" xml:space="preserve">
+    <value>Login failed, please check your user name or password error is correct.</value>
+  </data>
+  <data name="Networkclinic" xml:space="preserve">
+    <value>Network Clinic</value>
+  </data>
+  <data name="NextWeek" xml:space="preserve">
+    <value>Next Week</value>
+  </data>
+  <data name="NoClear" xml:space="preserve">
+    <value>Not clear? Click to change</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>Data does not exist!</value>
+  </data>
+  <data name="NoObject" xml:space="preserve">
+    <value>No Object.</value>
+  </data>
+  <data name="OldPasswordError" xml:space="preserve">
+    <value>The old password is wrong!</value>
+  </data>
+  <data name="OnlineDoctor" xml:space="preserve">
+    <value>Online Doctor</value>
+  </data>
+  <data name="OnlineExpert" xml:space="preserve">
+    <value>Online Expert</value>
+  </data>
+  <data name="OnlineHospital" xml:space="preserve">
+    <value>Online Hospital </value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Passport" xml:space="preserve">
+    <value>Passport</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PatientVideoWindow" xml:space="preserve">
+    <value>Patient Video Window</value>
+  </data>
+  <data name="PersonalCenter" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="PersonInfo" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Professional" xml:space="preserve">
+    <value>Specilaities</value>
+  </data>
+  <data name="PuningCity" xml:space="preserve">
+    <value>Puning</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="ResidentsBooklet" xml:space="preserve">
+    <value>Residents Booklet</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Sat.</value>
+  </data>
+  <data name="Second" xml:space="preserve">
+    <value>Second(s)</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>Please select upload files!</value>
+  </data>
+  <data name="SelectPay" xml:space="preserve">
+    <value>Select Payment Method</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SignUpNow" xml:space="preserve">
+    <value>Sign Up Now</value>
+  </data>
+  <data name="SizeLimit" xml:space="preserve">
+    <value>Upload file size exceeds the limit！</value>
+  </data>
+  <data name="Son" xml:space="preserve">
+    <value>Son</value>
+  </data>
+  <data name="SorryNoLimit" xml:space="preserve">
+    <value>Sorry, you do not have permission to access this page, make sure that you are using the login user has sufficient permissions to access this page.</value>
+  </data>
+  <data name="Spend" xml:space="preserve">
+    <value>Spend</value>
+  </data>
+  <data name="Spouse" xml:space="preserve">
+    <value>Spouse</value>
+  </data>
+  <data name="Suggest" xml:space="preserve">
+    <value>Suggestions and advices</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sun.</value>
+  </data>
+  <data name="TermsService" xml:space="preserve">
+    <value>Terms of Service</value>
+  </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>This Week</value>
+  </data>
+  <data name="ThreeGradeHospital" xml:space="preserve">
+    <value>Three grade A class hospital</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Thurs.</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tues.</value>
+  </data>
+  <data name="TumorManagement" xml:space="preserve">
+    <value>Tumor Managment</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="UploadFail" xml:space="preserve">
+    <value>File Upload Failed!</value>
+  </data>
+  <data name="UserIDExist" xml:space="preserve">
+    <value>User name already exists.</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="VerificationError" xml:space="preserve">
+    <value>Verification code error.</value>
+  </data>
+  <data name="VerifyCode" xml:space="preserve">
+    <value>Captcha</value>
+  </data>
+  <data name="WebSiteTitle" xml:space="preserve">
+    <value>Kangmei Network Hospital Platform</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Wed.</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="Wisdomelder" xml:space="preserve">
+    <value>Intelligent Elderly</value>
+  </data>
+  <data name="WrongExt" xml:space="preserve">
+    <value>Upload file extension is not allowed extension, the extension should be {0}</value>
+  </data>
+  <data name="SearchDoctor" xml:space="preserve">
+    <value>Search doctor</value>
+  </data>
+  <data name="AppointmentRegister" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="AudioService" xml:space="preserve">
+    <value>Audio Consultation</value>
+  </data>
+  <data name="ClinicToday" xml:space="preserve">
+    <value>Consultation free</value>
+  </data>
+  <data name="CustomerServiceNumber" xml:space="preserve">
+    <value>Customer-service Number</value>
+  </data>
+  <data name="DocAudioDesc" xml:space="preserve">
+    <value>Consultation with doctor by voice in 15mins.</value>
+  </data>
+  <data name="DocImageDesc" xml:space="preserve">
+    <value>Consultation via text,picture and voice online.</value>
+  </data>
+  <data name="DocVideoDesc" xml:space="preserve">
+    <value>Consultation via Instant Video and get prescription.</value>
+  </data>
+  <data name="FamilyDoctor" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="ForgetPassword" xml:space="preserve">
+    <value>Forget password</value>
+  </data>
+  <data name="FreeConsultation" xml:space="preserve">
+    <value>Free consult</value>
+  </data>
+  <data name="FriendshipLinks" xml:space="preserve">
+    <value>Friendship Links</value>
+  </data>
+  <data name="Hos3stClassHospital" xml:space="preserve">
+    <value>3st Class Hospital</value>
+  </data>
+  <data name="HosAnorectalHospital" xml:space="preserve">
+    <value>Anorectal Hospital</value>
+  </data>
+  <data name="HosChildrenHospital" xml:space="preserve">
+    <value>Children's Hospital</value>
+  </data>
+  <data name="HosChronicHospital" xml:space="preserve">
+    <value>Chronic Disease Prevention And Treatment Hospital</value>
+  </data>
+  <data name="HosENTHospital" xml:space="preserve">
+    <value>ENT Hospital</value>
+  </data>
+  <data name="HosFirstLevelHospital" xml:space="preserve">
+    <value>First Level Hospital</value>
+  </data>
+  <data name="HosGastricHospital" xml:space="preserve">
+    <value>Gastrointestinal Hospital</value>
+  </data>
+  <data name="HosGeneralHospital" xml:space="preserve">
+    <value>General Hospital</value>
+  </data>
+  <data name="HosHealthCenter" xml:space="preserve">
+    <value>Health Examination Center</value>
+  </data>
+  <data name="HosHeartHospital" xml:space="preserve">
+    <value>Heart Specialist Hospital</value>
+  </data>
+  <data name="HosHospitalLevel" xml:space="preserve">
+    <value>Hospital Level</value>
+  </data>
+  <data name="HosHospitalTypes" xml:space="preserve">
+    <value>Hospital Types</value>
+  </data>
+  <data name="HosMentalHospital" xml:space="preserve">
+    <value>Mental hospital</value>
+  </data>
+  <data name="HosObstetricsHospital" xml:space="preserve">
+    <value>Obstetrics and Gynecology Hospital</value>
+  </data>
+  <data name="HosOccupationalHospital" xml:space="preserve">
+    <value>Occupational Disease Prevention And Treatment Hospital</value>
+  </data>
+  <data name="HosOphthalmicHospital" xml:space="preserve">
+    <value>Ophthalmic Hospital</value>
+  </data>
+  <data name="HosOrthopedicsHospital" xml:space="preserve">
+    <value>Department of orthopedics Hospital</value>
+  </data>
+  <data name="HosRegion" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="HosReproductHospital" xml:space="preserve">
+    <value>Reproductive Specialist Hospital</value>
+  </data>
+  <data name="HosSecondLevelHospital" xml:space="preserve">
+    <value>Second Level Hospital</value>
+  </data>
+  <data name="HosSelectedCondition" xml:space="preserve">
+    <value>Selected Condition</value>
+  </data>
+  <data name="HosSkinHospital" xml:space="preserve">
+    <value>Skin Specialist Hospital</value>
+  </data>
+  <data name="HosSpecialClassHospital" xml:space="preserve">
+    <value>Special-Class Hospital</value>
+  </data>
+  <data name="HosStomatoHospital" xml:space="preserve">
+    <value>Stomatological Hospital</value>
+  </data>
+  <data name="HosThirdLevelHospital" xml:space="preserve">
+    <value>Third Level Hospital</value>
+  </data>
+  <data name="HosUrologyHospital" xml:space="preserve">
+    <value>Department of urology Hospital</value>
+  </data>
+  <data name="HosWomenChildHospital" xml:space="preserve">
+    <value>Women-Children Special Hospital</value>
+  </data>
+  <data name="HotDoctors" xml:space="preserve">
+    <value>Popular doctors</value>
+  </data>
+  <data name="ImageService" xml:space="preserve">
+    <value>Image Consultation</value>
+  </data>
+  <data name="ImmediatelyConsult" xml:space="preserve">
+    <value>Consultation now</value>
+  </data>
+  <data name="InternationalHealth" xml:space="preserve">
+    <value>int'l Med</value>
+  </data>
+  <data name="IsDoctor" xml:space="preserve">
+    <value>I'm a doctor</value>
+  </data>
+  <data name="MembershipPackage" xml:space="preserve">
+    <value>Packages</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>more</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="NoDatas" xml:space="preserve">
+    <value>No relevant data for the time being</value>
+  </data>
+  <data name="Notice" xml:space="preserve">
+    <value>Bulletin board</value>
+  </data>
+  <data name="Onlineclinic" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="OnlineCustomer" xml:space="preserve">
+    <value>online service</value>
+  </data>
+  <data name="QuickAppointment" xml:space="preserve">
+    <value>Easy Appointment</value>
+  </data>
+  <data name="RecommendedExpert" xml:space="preserve">
+    <value>Recommend Experts</value>
+  </data>
+  <data name="ReplyTime" xml:space="preserve">
+    <value>Reply within 10 mins, free of charge to know your health.</value>
+  </data>
+  <data name="VideoService" xml:space="preserve">
+    <value>Video Consultation</value>
+  </data>
+  <data name="ConsultAdvisoryServices" xml:space="preserve">
+    <value>Doctors did not open the picture and text advisory services</value>
+  </data>
+  <data name="ConsultDetailDesc" xml:space="preserve">
+    <value>*Please describe your problem, including physical condition, illness, and symptoms. The doctor will give you professional advice based on your description, and make sure your privacy is safe. (at least 10 words)</value>
+  </data>
+  <data name="ConsultDiseaseDesc" xml:space="preserve">
+    <value>Subject description</value>
+  </data>
+  <data name="ConsultFees" xml:space="preserve">
+    <value>Consultation fee</value>
+  </data>
+  <data name="ConsultFreeSumbit" xml:space="preserve">
+    <value>Submit consultation (free)</value>
+  </data>
+  <data name="ConsultImage" xml:space="preserve">
+    <value>Image Consult</value>
+  </data>
+  <data name="ConsultPicExplain" xml:space="preserve">
+    <value>Disease site, examination report, diagnosis report and records a data (please make sure that the picture clear)</value>
+  </data>
+  <data name="ConsultSelectPatient" xml:space="preserve">
+    <value>Select Patient</value>
+  </data>
+  <data name="ConsultSumbit" xml:space="preserve">
+    <value>Submit consultation</value>
+  </data>
+  <data name="Cooperative" xml:space="preserve">
+    <value>Cooperative Organization</value>
+  </data>
+  <data name="DoctorBuy" xml:space="preserve">
+    <value>Buy a family doctor</value>
+  </data>
+  <data name="DoctorDetails" xml:space="preserve">
+    <value>Doctor details</value>
+  </data>
+  <data name="DoctorImmediateClinic" xml:space="preserve">
+    <value>Consultation now</value>
+  </data>
+  <data name="DoctorIntroduction" xml:space="preserve">
+    <value>Brief Introduction</value>
+  </data>
+  <data name="DoctorSameDepartment" xml:space="preserve">
+    <value>Recommend doctor</value>
+  </data>
+  <data name="LinksChineseMedicine" xml:space="preserve">
+    <value>Kang Mei Chinese Medicine Net</value>
+  </data>
+  <data name="LinksHealthMall" xml:space="preserve">
+    <value>Kang Mei health mall</value>
+  </data>
+  <data name="LinksHerbal" xml:space="preserve">
+    <value>The price index of Chinese herbal medicines</value>
+  </data>
+  <data name="LinksHospital" xml:space="preserve">
+    <value>Kang Mei Hospital</value>
+  </data>
+  <data name="LinksSH" xml:space="preserve">
+    <value>Kang Mei Pharmaceutical</value>
+  </data>
+  <data name="LinksTmail" xml:space="preserve">
+    <value>Kang Mei Tmall official flagship store</value>
+  </data>
+  <data name="LinksTrough" xml:space="preserve">
+    <value>Kangmei medicine e trough</value>
+  </data>
+  <data name="LinksWallet" xml:space="preserve">
+    <value>Kang Mei Wallet</value>
+  </data>
+  <data name="SelecctDepartment" xml:space="preserve">
+    <value>Select department</value>
+  </data>
+  <data name="SelectHospital" xml:space="preserve">
+    <value>Select hospital</value>
+  </data>
+  <data name="SelectRegion" xml:space="preserve">
+    <value>Select area</value>
+  </data>
+  <data name="PackageBuy" xml:space="preserve">
+    <value>Purchase packages</value>
+  </data>
+  <data name="PackageBuyNow" xml:space="preserve">
+    <value>Buy now</value>
+  </data>
+  <data name="PackageContrast" xml:space="preserve">
+    <value>Packages Contrast</value>
+  </data>
+  <data name="PackageIntroduction" xml:space="preserve">
+    <value>Packages Introduction</value>
+  </data>
+  <data name="PackageNameplate" xml:space="preserve">
+    <value>The identity of the nameplate</value>
+  </data>
+  <data name="PackageTimes" xml:space="preserve">
+    <value>times</value>
+  </data>
+  <data name="AppointBack" xml:space="preserve">
+    <value>Return to the home page</value>
+  </data>
+  <data name="AppointConsultTime" xml:space="preserve">
+    <value>Visiting time (Bi Tian)</value>
+  </data>
+  <data name="AppointDoctorInfo" xml:space="preserve">
+    <value>Doctor information</value>
+  </data>
+  <data name="AppointFee" xml:space="preserve">
+    <value>Registration fee</value>
+  </data>
+  <data name="AppointIDCard" xml:space="preserve">
+    <value>ID Card</value>
+  </data>
+  <data name="AppointPatientInfo" xml:space="preserve">
+    <value>Patient information</value>
+  </data>
+  <data name="AppointSumbit" xml:space="preserve">
+    <value>Submit Order</value>
+  </data>
+  <data name="AppointType" xml:space="preserve">
+    <value>Outpatient type</value>
+  </data>
+  <data name="DoctorAppointment" xml:space="preserve">
+    <value>Make an appointment</value>
+  </data>
+  <data name="DoctorAppointService" xml:space="preserve">
+    <value>Reservation service</value>
+  </data>
+  <data name="DoctorAudioConsult" xml:space="preserve">
+    <value>Audio Consultation</value>
+  </data>
+  <data name="DoctorCloseConsult" xml:space="preserve">
+    <value>Close Consult</value>
+  </data>
+  <data name="DoctorMonth" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="DoctorSchedule" xml:space="preserve">
+    <value>My Schedule</value>
+  </data>
+  <data name="DoctorTo" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="DoctorVideoConsult" xml:space="preserve">
+    <value>Video Consultation</value>
+  </data>
+  <data name="DoctorYuan" xml:space="preserve">
+    <value>Yuan</value>
+  </data>
+  <data name="HosA" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="HosAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="HosAppointByDepart" xml:space="preserve">
+    <value>Registered by Department</value>
+  </data>
+  <data name="HosAppointOver" xml:space="preserve">
+    <value>Toplimit</value>
+  </data>
+  <data name="HosExpert" xml:space="preserve">
+    <value>Dept Experts</value>
+  </data>
+  <data name="HosM" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="HosP" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="HosPhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="HosShedule" xml:space="preserve">
+    <value>Department Scheduling</value>
+  </data>
+  <data name="HosWebSite" xml:space="preserve">
+    <value>Official Website</value>
+  </data>
+  <data name="IndexAdmissed" xml:space="preserve">
+    <value>Healed</value>
+  </data>
+  <data name="IndexSurplus" xml:space="preserve">
+    <value>Surplus</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="DefaultAddress" xml:space="preserve">
+    <value>Default address</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditAddress" xml:space="preserve">
+    <value>Edit address</value>
+  </data>
+  <data name="InputName" xml:space="preserve">
+    <value>Please enter your name</value>
+  </data>
+  <data name="InputPhoneNumber" xml:space="preserve">
+    <value>Please enter your phone number</value>
+  </data>
+  <data name="InputZipCode" xml:space="preserve">
+    <value>Please enter a zip code</value>
+  </data>
+  <data name="PayIntime" xml:space="preserve">
+    <value>Please pay in time so that the order can be processed as soon as possible.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SetDefault" xml:space="preserve">
+    <value>Set default</value>
+  </data>
+  <data name="SettleConfirmOrder" xml:space="preserve">
+    <value>Confirm order information</value>
+  </data>
+  <data name="SettleManageAddress" xml:space="preserve">
+    <value>Manage address</value>
+  </data>
+  <data name="SettleNewAddress" xml:space="preserve">
+    <value>Use new address</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="TradeAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="TradeAlipay" xml:space="preserve">
+    <value>Alipay</value>
+  </data>
+  <data name="TradeAmountPayable" xml:space="preserve">
+    <value>Amount payable</value>
+  </data>
+  <data name="TradeApplyingRefund" xml:space="preserve">
+    <value>Is applying for a refund</value>
+  </data>
+  <data name="TradeCancelOrder" xml:space="preserve">
+    <value>Cancel order</value>
+  </data>
+  <data name="TradeCancelReason" xml:space="preserve">
+    <value>Cancel reason</value>
+  </data>
+  <data name="TradeCancelTime" xml:space="preserve">
+    <value>Cancel time</value>
+  </data>
+  <data name="TradeCarrier" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="TradeCheckout" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="TradeComplete" xml:space="preserve">
+    <value>Complete</value>
+  </data>
+  <data name="TradeConfirmReceipt" xml:space="preserve">
+    <value>Confirm receipt</value>
+  </data>
+  <data name="TradeConsignee" xml:space="preserve">
+    <value>Consignee</value>
+  </data>
+  <data name="TradeContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="TradeDealingRefund" xml:space="preserve">
+    <value>Is processing a refund, please later.</value>
+  </data>
+  <data name="TradeDeliverMode" xml:space="preserve">
+    <value>Delivery mode</value>
+  </data>
+  <data name="TradeDeliveryMode" xml:space="preserve">
+    <value>Delivery mode</value>
+  </data>
+  <data name="TradeEditAddress" xml:space="preserve">
+    <value>Edit address</value>
+  </data>
+  <data name="TradeEnterAnytime" xml:space="preserve">
+    <value>You can enter the </value>
+  </data>
+  <data name="TradeEnterMyprofile" xml:space="preserve">
+    <value>Enter my profile</value>
+  </data>
+  <data name="TradeExpress" xml:space="preserve">
+    <value>Express</value>
+  </data>
+  <data name="TradeFreeShipping" xml:space="preserve">
+    <value>Free shipping</value>
+  </data>
+  <data name="TradeGoodsOutbound" xml:space="preserve">
+    <value>Goods outbound</value>
+  </data>
+  <data name="TradeIncentives" xml:space="preserve">
+    <value>Incentives</value>
+  </data>
+  <data name="TradeKMPharmacy" xml:space="preserve">
+    <value>KMpay</value>
+  </data>
+  <data name="TradeKMWallet" xml:space="preserve">
+    <value>KM wallet</value>
+  </data>
+  <data name="TradeLogisticsDetails" xml:space="preserve">
+    <value>Logistics details</value>
+  </data>
+  <data name="TradeMerchant" xml:space="preserve">
+    <value>Merchant</value>
+  </data>
+  <data name="TradeNo" xml:space="preserve">
+    <value>TradeNo</value>
+  </data>
+  <data name="TradeNonPayment" xml:space="preserve">
+    <value>Non payment</value>
+  </data>
+  <data name="TradeOrderCancelled" xml:space="preserve">
+    <value>Order cancelled</value>
+  </data>
+  <data name="TradeOrderCancelSuccess" xml:space="preserve">
+    <value>Order cancellation success</value>
+  </data>
+  <data name="TradeOrderCenter" xml:space="preserve">
+    <value>Order center</value>
+  </data>
+  <data name="TradeOrderDesc" xml:space="preserve">
+    <value>Order description</value>
+  </data>
+  <data name="TradeOrderDetail" xml:space="preserve">
+    <value>Order detail</value>
+  </data>
+  <data name="TradeOrderInfor" xml:space="preserve">
+    <value>Order information</value>
+  </data>
+  <data name="TradeOrderNo" xml:space="preserve">
+    <value>OrderNo</value>
+  </data>
+  <data name="TradeOrderNumber" xml:space="preserve">
+    <value>OrderNo</value>
+  </data>
+  <data name="TradeOrderTime" xml:space="preserve">
+    <value>OrderTime</value>
+  </data>
+  <data name="TradeOrdinaryExpress" xml:space="preserve">
+    <value>Ordinary express</value>
+  </data>
+  <data name="TradePaid" xml:space="preserve">
+    <value>Already paid</value>
+  </data>
+  <data name="TradePayAmount" xml:space="preserve">
+    <value>Pay amount</value>
+  </data>
+  <data name="TradePayInfor" xml:space="preserve">
+    <value>Pay information</value>
+  </data>
+  <data name="TradePaymentHelp" xml:space="preserve">
+    <value>Pay for help</value>
+  </data>
+  <data name="TradePaymentMethod" xml:space="preserve">
+    <value>Method of payment</value>
+  </data>
+  <data name="TradePayNow" xml:space="preserve">
+    <value>Pay now</value>
+  </data>
+  <data name="TradePayStatus" xml:space="preserve">
+    <value>Pay status</value>
+  </data>
+  <data name="TradePaySuc" xml:space="preserve">
+    <value>The order submitted successfully, please pay as soon as possible! The order no. is</value>
+  </data>
+  <data name="TradePaySuccess" xml:space="preserve">
+    <value>Payment success</value>
+  </data>
+  <data name="TradePayTerms" xml:space="preserve">
+    <value>Payment terms</value>
+  </data>
+  <data name="TradePayTime" xml:space="preserve">
+    <value>Pay time</value>
+  </data>
+  <data name="TradePrintOrder" xml:space="preserve">
+    <value>Print order</value>
+  </data>
+  <data name="TradeRealPay" xml:space="preserve">
+    <value>Real payment</value>
+  </data>
+  <data name="TradeReceiveAddress" xml:space="preserve">
+    <value>Please select the receiving address</value>
+  </data>
+  <data name="TradeReceiver" xml:space="preserve">
+    <value>Receiver</value>
+  </data>
+  <data name="TradeReceiving" xml:space="preserve">
+    <value>Receiving</value>
+  </data>
+  <data name="TradeRefundAmount" xml:space="preserve">
+    <value>Refund amount</value>
+  </data>
+  <data name="TradeRefundStatus" xml:space="preserve">
+    <value>Refund status</value>
+  </data>
+  <data name="TradeRefundSuccess" xml:space="preserve">
+    <value>Refund success</value>
+  </data>
+  <data name="TradeRefundTime" xml:space="preserve">
+    <value>Refund time</value>
+  </data>
+  <data name="TradeSelectOtherPayWay" xml:space="preserve">
+    <value>Select other payment methods</value>
+  </data>
+  <data name="TradeSettlementPage" xml:space="preserve">
+    <value>Settlement page</value>
+  </data>
+  <data name="TradeSubmitOrder" xml:space="preserve">
+    <value>Submit order</value>
+  </data>
+  <data name="TradeSubmitOrderAfter" xml:space="preserve">
+    <value>minutes after submitting orders, please complete the payment, otherwise the order cancelled automatically.</value>
+  </data>
+  <data name="TradeSubmitOrderFix" xml:space="preserve">
+    <value>Within</value>
+  </data>
+  <data name="TradeSubmitTime" xml:space="preserve">
+    <value>Submit time</value>
+  </data>
+  <data name="TradeSubtotal" xml:space="preserve">
+    <value>Subtotal</value>
+  </data>
+  <data name="TradeSuccessPay" xml:space="preserve">
+    <value>Your payment is successfully for</value>
+  </data>
+  <data name="TradeSweepQRCode" xml:space="preserve">
+    <value>Sweep QR code payment</value>
+  </data>
+  <data name="TradeToknowMore" xml:space="preserve">
+    <value> at any time, to learn more</value>
+  </data>
+  <data name="TradeTotal" xml:space="preserve">
+    <value>Total (including freight)</value>
+  </data>
+  <data name="TradeUnpaid" xml:space="preserve">
+    <value>Unpaid</value>
+  </data>
+  <data name="TradeViewMap" xml:space="preserve">
+    <value>View map</value>
+  </data>
+  <data name="TradeWaitConfirm" xml:space="preserve">
+    <value>You submitted your order, please wait for the system to confirm</value>
+  </data>
+  <data name="TradeWaybillNo" xml:space="preserve">
+    <value>WaybillNo</value>
+  </data>
+  <data name="TradeWeChat" xml:space="preserve">
+    <value>WeChat</value>
+  </data>
+  <data name="TradeWechatSweep" xml:space="preserve">
+    <value>Please use the WeChat sweep</value>
+  </data>
+  <data name="UnitPrice" xml:space="preserve">
+    <value>Each</value>
+  </data>
+  <data name="WechatPay" xml:space="preserve">
+    <value>Wechat pay</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>Zip code</value>
+  </data>
+  <data name="ConsultingProject" xml:space="preserve">
+    <value>Service Project</value>
+  </data>
+  <data name="DoctorNotSchedule" xml:space="preserve">
+    <value>The doctor recently not scheduling</value>
+  </data>
+  <data name="ImageConsultDesc" xml:space="preserve">
+    <value>Answer health problems within 24 hours.</value>
+  </data>
+  <data name="ServiceNotOpened" xml:space="preserve">
+    <value>Service not opened</value>
+  </data>
+  <data name="VideoConsultDesc" xml:space="preserve">
+    <value>Online doctor,medicine on behalf of fried, sent to the door</value>
+  </data>
+  <data name="AddPatient" xml:space="preserve">
+    <value>Add patient</value>
+  </data>
+  <data name="addPatientDesc" xml:space="preserve">
+    <value>After the ID number is submitted, the name, ID number, gender, date of birth will not be modified.</value>
+  </data>
+  <data name="DoctorInformation" xml:space="preserve">
+    <value>Doctor information</value>
+  </data>
+  <data name="EditBtn" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="FamilyConsultDesc" xml:space="preserve">
+    <value>Consult a doctor at any time, health information push, care for the whole family health</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="IDCardNo" xml:space="preserve">
+    <value>ID Card</value>
+  </data>
+  <data name="PackedUp" xml:space="preserve">
+    <value>Packed up</value>
+  </data>
+  <data name="PatientIDCardPlaceholder" xml:space="preserve">
+    <value>Please enter the patient's ID Card</value>
+  </data>
+  <data name="PatientInformation" xml:space="preserve">
+    <value>Patient information</value>
+  </data>
+  <data name="PatientNamePlaceholder" xml:space="preserve">
+    <value>Please enter the patient's real name</value>
+  </data>
+  <data name="ServiceType" xml:space="preserve">
+    <value>Service type</value>
+  </data>
+  <data name="AppointmentResult" xml:space="preserve">
+    <value>Registration result</value>
+  </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="BirthdayPlaceholder" xml:space="preserve">
+    <value>Please select the date of birth</value>
+  </data>
+  <data name="DetailAddress" xml:space="preserve">
+    <value>Detail address</value>
+  </data>
+  <data name="OneMonth" xml:space="preserve">
+    <value>One month</value>
+  </data>
+  <data name="OneYear" xml:space="preserve">
+    <value>One year</value>
+  </data>
+  <data name="PackageSelect" xml:space="preserve">
+    <value>Select packages</value>
+  </data>
+  <data name="PatientAddressPlaceholder" xml:space="preserve">
+    <value>Please enter the patient's detailed address</value>
+  </data>
+  <data name="PatientEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="PatientEmailPlaceholder" xml:space="preserve">
+    <value>Please enter your email address</value>
+  </data>
+  <data name="PatientMobilePlaceholder" xml:space="preserve">
+    <value>Please enter your mobile phone number</value>
+  </data>
+  <data name="Relations" xml:space="preserve">
+    <value>Relations</value>
+  </data>
+  <data name="Self" xml:space="preserve">
+    <value>Self</value>
+  </data>
+  <data name="ServiceSpend" xml:space="preserve">
+    <value>Service price</value>
+  </data>
+  <data name="ServiceTime" xml:space="preserve">
+    <value>Service time</value>
+  </data>
+  <data name="SetDefaultPatient" xml:space="preserve">
+    <value>Set as default</value>
+  </data>
+  <data name="SixMonths" xml:space="preserve">
+    <value>Six months</value>
+  </data>
+  <data name="ThreeMonths" xml:space="preserve">
+    <value>Three months</value>
+  </data>
+  <data name="DrugstorePoint" xml:space="preserve">
+    <value>Drugstore point</value>
+  </data>
+  <data name="SeeTheMap" xml:space="preserve">
+    <value>See the map</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="MyMessages" xml:space="preserve">
+    <value>My messages</value>
+  </data>
+  <data name="ReadAllMessages" xml:space="preserve">
+    <value>Read all messages</value>
+  </data>
+  <data name="ReadMoreMessages" xml:space="preserve">
+    <value>Read more</value>
+  </data>
+  <data name="loginNotRegister" xml:space="preserve">
+    <value>I am not registered, now</value>
+  </data>
+  <data name="ConsultDisease" xml:space="preserve">
+    <value>Diseases</value>
+  </data>
+  <data name="ConsultDiseaseTip" xml:space="preserve">
+    <value>Please type in the name of the disease that you want to interrogation, less than 30 characters</value>
+  </data>
+  <data name="TradeUsingPrivilege" xml:space="preserve">
+    <value>Use the preferential</value>
+  </data>
+  <data name="HKMacaoPass" xml:space="preserve">
+    <value>HongKong &amp; Macao Pass</value>
+  </data>
+  <data name="TaiwanPass" xml:space="preserve">
+    <value>TaiWan Pass</value>
+  </data>
+  <data name="HMTIDCard" xml:space="preserve">
+    <value>Hong Kong, Macao and Taiwan ID Card</value>
+  </data>
+  <data name="NewsTitleInfo" xml:space="preserve">
+    <value>Care for health care life</value>
+  </data>
+  <data name="OnlineTitleInfo" xml:space="preserve">
+    <value>Stay at home, anytime, anywhere visit</value>
+  </data>
+  <data name="ReservationTitleInfo" xml:space="preserve">
+    <value>A key appointment doctors, convenient and quick treatment</value>
+  </data>
+  <data name="CooperativePharmacy" xml:space="preserve">
+    <value>Pharmacy</value>
+  </data>
+  <data name="HealthyHall" xml:space="preserve">
+    <value>HealthyMall</value>
+  </data>
+  <data name="MedicalHall" xml:space="preserve">
+    <value>MedicalMall</value>
+  </data>
+  <data name="ServiceMall" xml:space="preserve">
+    <value>E-mall</value>
+  </data>
+  <data name="NewInfo" xml:space="preserve">
+    <value>Care for health Care life</value>
+  </data>
+  <data name="OnlineInfo" xml:space="preserve">
+    <value>Stay at home, anytime, anywhere visit</value>
+  </data>
+  <data name="PharmacyWorkstations" xml:space="preserve">
+    <value>PharmacyWorkstations</value>
+  </data>
+  <data name="RegisterInfo" xml:space="preserve">
+    <value>A key appointment doctors, convenient and quick treatment</value>
+  </data>
+  <data name="RemoteConsultation" xml:space="preserve">
+    <value>RemoteConsultation</value>
+  </data>
+  <data name="ClinicCloud" xml:space="preserve">
+    <value>Clinic Cloud</value>
+  </data>
+  <data name="LicenseNo" xml:space="preserve">
+    <value>LicenseNo</value>
+  </data>
+</root>

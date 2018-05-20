@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6BDF7B0F-B740-418F-A7D6-E6313318DA05}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XuHos.EventBus</RootNamespace>
+    <AssemblyName>XuHos.EventBus</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Integrated|AnyCPU'">
+    <OutputPath>bin\Integrated\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net40\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Polly">
+      <HintPath>..\lib\Polly.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RabbitMQ\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Events\ChannelChargingEvent.cs" />
+    <Compile Include="Events\ChannelCreatedEvent.cs" />
+    <Compile Include="Events\ChannelEnteredEvent.cs" />
+    <Compile Include="Events\ChannelExpireEvent.cs" />
+    <Compile Include="Events\ChannelDurationChangeEvent.cs" />
+    <Compile Include="Events\ChannelNewMsgEvent.cs" />
+    <Compile Include="Events\ChannelSendGroupMsgEvent.cs" />
+    <Compile Include="Events\ChannelStateChangedEvent.cs" />
+    <Compile Include="Events\ChannelTriageChangedEvent.cs" />
+    <Compile Include="Events\ChannelC2CCreateEvent.cs" />
+    <Compile Include="Events\UserUnrepliedEvent.cs" />
+    <Compile Include="Events\DoctorAcceptEvent.cs" />
+    <Compile Include="Events\DoctorDiagnoseOffEvent.cs" />
+    <Compile Include="Events\DoctorReturnVisitEvent.cs" />
+    <Compile Include="Events\FamilyDoctorSignatureConfirmed.cs" />
+    <Compile Include="Events\FamilyDoctorSignatureCreated.cs" />
+    <Compile Include="Events\DoctorSchduleEvent.cs" />
+    <Compile Include="Events\OrderCancelingEvent.cs" />
+    <Compile Include="Events\OrderEvaluationEvent.cs" />
+    <Compile Include="Events\OrderLogisticStateChangeEvent.cs" />
+    <Compile Include="Events\DoctorGuidancedEvent.cs" />
+    <Compile Include="Events\OrderPayNotifyEvent.cs" />
+    <Compile Include="Events\OrderRefundEvent.cs" />
+    <Compile Include="Events\OrderRefundNotifyEvent.cs" />
+    <Compile Include="Events\PersonTagAliasChanged.cs" />
+    <Compile Include="Events\RecipeSignCallbackEvent.cs" />
+    <Compile Include="Events\RecipeDelEvent.cs" />
+    <Compile Include="Events\RecipeFileCreatedEvent.cs" />
+    <Compile Include="Events\RecipeSignedEvent.cs" />
+    <Compile Include="Events\RecipeSignPushEvent.cs" />
+    <Compile Include="Events\RecipeSignSubmitEvent.cs" />
+    <Compile Include="Events\SMSSendEvent.cs" />
+    <Compile Include="Events\StockPreDeductionedEvent.cs" />
+    <Compile Include="Events\StockConfirmDeductionedEvent.cs" />
+    <Compile Include="Events\StockRestoreedEvent.cs" />
+    <Compile Include="Events\UserFollowEvent.cs" />
+    <Compile Include="Events\UserLoginedEvent.cs" />
+    <Compile Include="Events\UserLogoutedEvent.cs" />
+    <Compile Include="Events\ConsultationEvent.cs" />
+    <Compile Include="Events\UserNoticeEvent.cs" />
+    <Compile Include="Events\UserNoticeSendEvent.cs" />
+    <Compile Include="Events\UserOnlineStateChangedEvent.cs" />
+    <Compile Include="Events\UserOperatorLogEvent.cs" />
+    <Compile Include="Events\UserPackagePayCompletedEvent.cs" />
+    <Compile Include="Events\GuidanceEvent.cs" />
+    <Compile Include="Events\UserRegisteredEvent.cs" />
+    <Compile Include="Events\ChannelCreateEvent.cs" />
+    <Compile Include="Events\OrderCanceledEvent.cs" />
+    <Compile Include="Events\OrderCreateEvent.cs" />
+    <Compile Include="Provider.cs" />
+    <Compile Include="Events\OrderCompletedEvent.cs" />
+    <Compile Include="Events\OrderEvaluationCompletedEvent.cs" />
+    <Compile Include="Events\OrderPayCompletedEvent.cs" />
+    <Compile Include="IEvent.cs" />
+    <Compile Include="IEventHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XuHos.Common.Enum\XuHos.Common.Enum.csproj">
+      <Project>{BE7FAF9B-E33B-41E3-AB24-B6B9934F2CF1}</Project>
+      <Name>XuHos.Common.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Common\XuHos.Common.csproj">
+      <Project>{775df2bd-fb37-4f33-a8ed-deeea5b3b16b}</Project>
+      <Name>XuHos.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XuHos.Entity\XuHos.Entity.csproj">
+      <Project>{3E2E98E9-A179-468B-938F-24178AC5D729}</Project>
+      <Name>XuHos.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
