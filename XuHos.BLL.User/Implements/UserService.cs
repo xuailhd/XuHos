@@ -132,7 +132,8 @@ namespace XuHos.BLL.User.Implements
                     Mobile = model.Mobile,
                     UserType = EnumUserType.User
                 };
-                RegisterUser(user, out string reason, model.OpenID, model.AppID);
+                string reason;
+                RegisterUser(user, out reason, model.OpenID, model.AppID);
                 userid = user.UserID;
             }
             else
