@@ -66,10 +66,5 @@ namespace XuHos.Entity
         /// </summary>
         public int AppointNumber { get; set; }
 
-        /// <summary>
-        /// 医生号源详情ID
-        /// </summary>
-        public string NumberSourceDetailID { get; set; }
-
     }
 }

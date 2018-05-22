@@ -30,18 +30,11 @@ namespace XuHos.BLL
         /// <param name="scheduleID"></param>
         public DoctorSchedule GetDoctorSchedule(string scheduleID)
         {
-            DoctorSchedule model = null;
-            try
+            using (var db = new DBEntities())
             {
-                var db = new DBEntities();
-                model = db.DoctorSchedules.Find(scheduleID);
-            }
-            catch (Exception ex)
-            {
-                model = null;
-                throw ex;
-            }
-            return model;
+                var model = db.DoctorSchedules.Find(scheduleID);
+                return model;
+            }            
         }
 
         /// <summary>
@@ -52,7 +45,7 @@ namespace XuHos.BLL
         /// <param name="endDate"></param>
         /// <param name="includeOneBtnCall">是否返回包含一键问诊的预约量</param>
         /// <returns></returns>
-        public Response<List<DoctorScheduleDto>> GetDoctorScheduleList(string doctorId, DateTime? beginDate, DateTime? endDate, bool includeOneBtnCall = true)
+        public PagedList<DoctorScheduleDto> GetDoctorScheduleList(string doctorId, DateTime? beginDate, DateTime? endDate)
         {
             Response<List<DoctorScheduleDto>> response = new Response<List<DoctorScheduleDto>>();
             var db = new DBEntities();
@@ -65,9 +58,6 @@ namespace XuHos.BLL
                         StartTime = m.StartTime,
                         EndTime = m.EndTime,
                         DoctorID = doctorId,
-                        Number = m.Number,
-                        Disable = false,
-                        Checked = m.Number > 0 ? true : false
                     };
             if (beginDate.HasValue)
             {
@@ -79,72 +69,10 @@ namespace XuHos.BLL
                 var _endDate = endDate.Value.ToString("yyyyMMdd");
                 q = q.Where(m => m.OPDate.CompareTo(_endDate) < 0);
             }
-            int pagesCount = q.Count();
+
             q = q.OrderBy(m => m.StartTime);
-            var list = q.ToList();
-            if (list != null)
-            {
-                var ids = list.Select(m => m.ScheduleID).ToList();
-                var q1 = from m in db.UserOpdRegisters
-                         join a in db.Orders on m.OPDRegisterID equals a.OrderOutID
-                         where ids.Contains(m.ScheduleID) && m.IsDeleted == false && (a.OrderState == EnumOrderState.Finish || a.OrderState == EnumOrderState.Paid)
-                         && !string.IsNullOrEmpty(m.ScheduleID)
-                         select new DoctorScheduleTmpDto { ScheduleID = m.ScheduleID, OPDType = m.OPDType };
-                var list1 = q1.ToList();
 
-                #region 加上一键问诊的
-                if (beginDate.HasValue && endDate.HasValue && includeOneBtnCall)
-                {
-                    DateTime _beginDate = beginDate.Value;
-                    DateTime _endDate = endDate.Value;
-                    var q2 = from m in db.UserOpdRegisters
-                             join a in db.Orders on m.OPDRegisterID equals a.OrderOutID
-                             where m.IsDeleted == false && (a.OrderState == EnumOrderState.Finish || a.OrderState == EnumOrderState.Paid)
-                             && string.IsNullOrEmpty(m.ScheduleID)
-                             && m.OPDDate.CompareTo(_beginDate) >= 0
-                             && m.OPDDate.CompareTo(_endDate) <= 0
-                             select new DoctorScheduleTmpDto { OPDType = m.OPDType, ScheduleID = m.ScheduleID, OPDDate = m.OPDDate };
-
-                    var list2 = q2.ToList();
-
-                    if (list2 != null && list2.Count > 0)
-                    {
-                        for (int i = 0; i < list2.Count; i++)
-                        {
-                            var item = list2[i];
-                            var time = item.OPDDate.ToString("HH:mm");
-                            var date = item.OPDDate.ToString("yyyyMMdd");
-                            var Schedule = list.Where(t => t.OPDate == date && t.StartTime.CompareTo(time) <= 0 && t.EndTime.CompareTo(time) >= 0).FirstOrDefault();
-                            if (Schedule != null)
-                            {
-                                item.ScheduleID = Schedule.ScheduleID;
-                                list1.Add(item);
-                            }
-                        }
-                    }
-                }
-                #endregion
-
-                //分组求和
-                var list3 = (from aa in list1
-                             group new { aa.ScheduleID, aa.OPDType } by new { aa.ScheduleID, aa.OPDType } into g
-                             select new { g.Key.ScheduleID, g.Key.OPDType, AppointmentCount = g.Count() }).ToList();
-
-                list.ForEach(i =>
-                {
-                    i.AppointmentCounts = new Dictionary<int, int>();
-                    var l = list3.FindAll(m => m.ScheduleID == i.ScheduleID);
-                    l.ForEach(li =>
-                    {
-                        i.AppointmentCounts.Add((int)li.OPDType, li.AppointmentCount);
-                    });
-                });
-
-            }
-
-            response.Total = pagesCount;
-            response.Data = list;
-            return response;
+            return q.ToPagedList(1,int.MaxValue);
         }
 
         #endregion
@@ -158,7 +86,6 @@ namespace XuHos.BLL
         {
             XuHos.BLL.Doctor.Implements.DoctorService doctorService = new Doctor.Implements.DoctorService();
             var DoctorID = doctorService.GetDoctorIDByUserID(userId);
-            var ScheduleState_CacheKey = new XuHos.Common.Cache.Keys.StringCacheKey(StringCacheKeyType.Doctor_ScheduleState, $"{DoctorID}");
 
             bool result = true;
             try
@@ -214,7 +141,6 @@ namespace XuHos.BLL
                     }
                 }
                 db.SaveChanges();
-                ScheduleState_CacheKey.RemoveCache();
             }
             catch (Exception ex)
             {
@@ -230,27 +156,15 @@ namespace XuHos.BLL
         /// <returns></returns>
         public bool DeleteDoctorSchdule(string scheduleID)
         {
-
             bool result = true;
-            try
+            using (var db = new DBEntities())
             {
-                var db = new DBEntities();
                 var model = db.DoctorSchedules.Find(scheduleID);
-
-                var ScheduleState_CacheKey = new XuHos.Common.Cache.Keys.StringCacheKey(StringCacheKeyType.Doctor_ScheduleState, $"{model.DoctorID}");
-
-
                 if (model != null)
                 {
                     model.IsDeleted = true;
-                    db.SaveChanges();
-                    ScheduleState_CacheKey.RemoveCache();
+                    result = db.SaveChanges() > 0;
                 }
-            }
-            catch (Exception ex)
-            {
-                result = false;
-                throw ex;
             }
             return result;
         }
@@ -295,39 +209,27 @@ namespace XuHos.BLL
 
         /// <summary>
         /// 获取医院工作时间(缓存30分钟)
-        
-        /// 日期：2017年7月29日
         /// </summary>
         /// <param name="HospitalID"></param>
         List<HospitalWorkingTime> getHospWorkTimes(string HospitalID)
         {
-            var cacheKey = new XuHos.Common.Cache.Keys.EntityListCacheKey<HospitalWorkingTime>(StringCacheKeyType.Hospital_Worktime, HospitalID);
-            var result = cacheKey.FromCache();
-            if (result == null)
+
+            using (DBEntities db = new DBEntities())
             {
-                using (DBEntities db = new DBEntities())
-                {
-                    //查询医院工作时间
-                    result = db.HospitalWorkingTimes
-                        .Where(w =>
-                                w.HospitalID.Equals(HospitalID) &&
-                                w.IsDeleted == false)
-                        .OrderBy(x => x.StartTime)
-                        .OrderBy(x => x.EndTime).ToList();
+                //查询医院工作时间
+                var result = db.HospitalWorkingTimes
+                    .Where(w =>
+                            w.HospitalID.Equals(HospitalID) &&
+                            w.IsDeleted == false)
+                    .OrderBy(x => x.StartTime)
+                    .OrderBy(x => x.EndTime).ToList();
 
-                    result.ToCache(cacheKey, TimeSpan.FromMinutes(30));
-                }
+                return result;
             }
-
-            return result;
-
-
         }
 
         /// <summary>
         /// 获取医生排版预约总数
-        
-        /// 日期：2017年7月29日
         /// </summary>
         /// <param name="ScheduleID"></param>
         /// <returns></returns>
@@ -357,28 +259,20 @@ namespace XuHos.BLL
 
         /// <summary>
         /// 获取医生排版                
-        
-        /// 日期：2017年7月29日
         /// </summary>
         /// <param name="DoctorID"></param>
         /// <param name="sDTBegin"></param>
         /// <param name="sDTEnd"></param>
         List<ResponseDoctorAvailableRegTimesDTO.RegNumOfSchedule> getDoctorScheduleList(string DoctorID, string sDTBegin, string sDTEnd)
         {
-            var cacheKey = new XuHos.Common.Cache.Keys.EntityListCacheKey<ResponseDoctorAvailableRegTimesDTO.RegNumOfSchedule>(StringCacheKeyType.Doctor_ScheuleList, $"{DoctorID}:{sDTBegin}-{sDTEnd}");
-
-            var list = cacheKey.FromCache();
-
-            if (list == null)
+            using (DBEntities db = new DBEntities())
             {
-                using (DBEntities db = new DBEntities())
-                {
-                    //查询医生排版和对应预约数量
-                    list = (from ds in db.Set<DoctorSchedule>().Where(p =>
-                                            p.IsDeleted == false
-                                             && p.DoctorID == DoctorID
-                                             && p.OPDate.CompareTo(sDTBegin) >= 0
-                                             && p.OPDate.CompareTo(sDTEnd) <= 0)
+                //查询医生排版和对应预约数量
+                var list = (from ds in db.Set<DoctorSchedule>().Where(p =>
+                                        p.IsDeleted == false
+                                         && p.DoctorID == DoctorID
+                                         && p.OPDate.CompareTo(sDTBegin) >= 0
+                                         && p.OPDate.CompareTo(sDTEnd) <= 0)
                             select new ResponseDoctorAvailableRegTimesDTO.RegNumOfSchedule()
                             {
                                 ScheduleId = ds.ScheduleID,
@@ -389,12 +283,8 @@ namespace XuHos.BLL
                                 Quantity = 0
                             }).ToList();
 
-                    //修改排版之后一分钟生效
-                    list.ToCache(cacheKey, TimeSpan.FromMinutes(1));
-                }
+                return list;
             }
-
-            return list;
         }
         #endregion
     }
