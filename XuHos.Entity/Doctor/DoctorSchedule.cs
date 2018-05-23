@@ -36,9 +36,8 @@ namespace XuHos.Entity
         /// 排班日期
         /// </summary>
         [Required]
-        [Column(TypeName = "nvarchar")]
-        [MaxLength(16)]
-        public string OPDate { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime OPDate { get; set; }
 
         /// <summary>
         /// 开始时间

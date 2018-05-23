@@ -24,7 +24,7 @@ namespace XuHos.DTO
     {
         public string ScheduleID { get; set; }
 
-        public string OPDate { get; set; }
+        public DateTime OPDate { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public string DoctorID { get; set; }

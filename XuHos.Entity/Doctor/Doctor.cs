@@ -13,9 +13,8 @@ namespace XuHos.Entity
         public Doctor()
         {
         }
-
         /// <summary>
-        /// 医生ID
+        /// 用户ID
         /// </summary>
         [Key, Required]
         [Column(TypeName = "varchar")]
@@ -29,14 +28,6 @@ namespace XuHos.Entity
         [Column(TypeName = "nvarchar")]
         [MaxLength(64)]
         public string DoctorName { get; set; }
-
-        /// <summary>
-        /// 用户ID
-        /// </summary>
-        [Required]
-        [Column(TypeName = "varchar")]
-        [MaxLength(32)]
-        public string UserID { get; set; }
 
         /// <summary>
         /// 性别（0-男、1-女、2-未知）

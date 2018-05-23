@@ -38,56 +38,130 @@ namespace XuHos.BLL
         }
 
         /// <summary>
-        /// 查询医生排班列表
+        /// 查询医生排班列表设置
         /// </summary>
-        /// <param name="doctorId"></param>
-        /// <param name="beginDate"></param>
-        /// <param name="endDate"></param>
-        /// <param name="includeOneBtnCall">是否返回包含一键问诊的预约量</param>
         /// <returns></returns>
-        public PagedList<DoctorScheduleDto> GetDoctorScheduleList(string doctorId, DateTime? beginDate, DateTime? endDate)
+        public List<DoctorScheduleDto> GetDoctorScheduleList(string doctorId, DateTime beginDate, DateTime endDate)
         {
-            Response<List<DoctorScheduleDto>> response = new Response<List<DoctorScheduleDto>>();
-            var db = new DBEntities();
-            var q = from m in db.DoctorSchedules
-                    where m.IsDeleted == false && m.DoctorID == doctorId
-                    select new DoctorScheduleDto
+            List<DoctorScheduleDto> response = new List<DoctorScheduleDto>();
+            
+
+            var hostimes = GetHosWorktime();
+            List<DoctorScheduleDto> exists = null;
+            using (var db = new DBEntities())
+            {
+                exists = (from m in db.DoctorSchedules
+                              where m.IsDeleted == false && m.DoctorID == doctorId
+                              && m.OPDate.CompareTo(beginDate) >= 0 && m.OPDate.CompareTo(endDate) <= 0
+                              select new DoctorScheduleDto
+                              {
+                                  OPDate = m.OPDate,
+                                  ScheduleID = m.ScheduleID,
+                                  StartTime = m.StartTime,
+                                  EndTime = m.EndTime,
+                                  DoctorID = doctorId,
+                              }).ToList();
+            }
+                
+
+            for (int i=0; beginDate.AddDays(i).CompareTo(endDate) < 0; i++)
+            {
+                var dt = beginDate.AddDays(i);
+                if (exists == null || exists.Count <= 0)
+                {
+                    foreach (var item in hostimes)
                     {
-                        OPDate = m.OPDate,
-                        ScheduleID = m.ScheduleID,
-                        StartTime = m.StartTime,
-                        EndTime = m.EndTime,
-                        DoctorID = doctorId,
-                    };
-            if (beginDate.HasValue)
-            {
-                var _beginDate = beginDate.Value.ToString("yyyyMMdd");
-                q = q.Where(m => m.OPDate.CompareTo(_beginDate) >= 0);
-            }
-            if (endDate.HasValue)
-            {
-                var _endDate = endDate.Value.ToString("yyyyMMdd");
-                q = q.Where(m => m.OPDate.CompareTo(_endDate) < 0);
+                        item.OPDate = dt;
+                        response.Add(item);
+                    }
+                }
+                else
+                {
+                    var list = exists.Where(t => t.OPDate.CompareTo(dt) == 0).ToList();
+                    //没有 直接新增 不查找
+                    if (list == null || list.Count == 0)
+                    {
+                        foreach (var item in hostimes)
+                        {
+                            item.OPDate = dt;
+                            response.Add(item);
+                        }
+                    }
+                    else
+                    {
+                        //循环查找
+                        foreach (var item in hostimes)
+                        {
+                            bool findflag = false;
+                            foreach (var res in list)
+                            {
+                                if (item.StartTime.Equals(res.StartTime))
+                                {
+                                    findflag = true;
+                                    break;
+                                }
+                            }
+                            item.OPDate = dt;
+                            item.Checked = findflag;
+                            response.Add(item);
+                        }
+                    }
+                }
             }
 
-            q = q.OrderBy(m => m.StartTime);
-
-            return q.ToPagedList(1,int.MaxValue);
+            //排序
+            return response.OrderBy(t => t.OPDate).ThenBy(t => t.StartTime).ToList();
         }
 
         #endregion
+
+        /// <summary>
+        /// 获取医院公共排班
+        /// </summary>
+        /// <returns></returns>
+        private List<DoctorScheduleDto> GetHosWorktime()
+        {
+            var cacheKey = new EntityListCacheKey<DoctorScheduleDto>(StringCacheKeyType.Hospital_Worktime,"99999");
+            var hostimes = cacheKey.FromCache();
+            if(hostimes == null || hostimes.Count<=0)
+            {
+                using (var db =new DBEntities())
+                {
+                    hostimes = (from h in db.HospitalWorkingTimes
+                                    select new DoctorScheduleDto
+                                    {
+                                        StartTime = h.StartTime,
+                                        EndTime = h.EndTime,
+                                    }).ToList();
+                    hostimes.ToCache(cacheKey);
+                }
+            }
+            return hostimes;
+        }
 
         #region Command
         /// <summary>
         /// 保存排班列表
         /// </summary>
         /// <param name="modelList"></param>
-        public bool AddDoctorSchduleList(RequestDoctorSchedule<List<RowScheduleDto>> request, string userId)
+        public bool AddDoctorSchduleList(List<DoctorScheduleDto> request, string userId)
         {
-            XuHos.BLL.Doctor.Implements.DoctorService doctorService = new Doctor.Implements.DoctorService();
-            var DoctorID = doctorService.GetDoctorIDByUserID(userId);
+            DateTime maxdt = request.Max(t => t.OPDate);
+            DateTime mindt = request.Min(t => t.OPDate);
 
-            bool result = true;
+            using (var db = new DBEntities())
+            {
+                var exist = db.DoctorSchedules.Where(t => t.DoctorID == userId
+                    && t.OPDate.CompareTo(maxdt) <= 0 && t.OPDate.CompareTo(mindt) >= 0)
+                    .OrderBy(t=>t.OPDate).ThenBy(t=>t.StartTime).ToList();
+
+                if(exist!=null && request.Count)
+
+                for(var )
+            }
+
+
+                bool result = true;
             try
             {
                 var db = new DBEntities();
