@@ -16,6 +16,7 @@ namespace XuHos.WebApi.Controllers.Common
     {
 
         /**
+         * @apiIgnore Not finished Method
       * @api {GET} /options 103601/获取系统选项
       * @apiGroup 103 Base Data
       * @apiVersion 4.0.0

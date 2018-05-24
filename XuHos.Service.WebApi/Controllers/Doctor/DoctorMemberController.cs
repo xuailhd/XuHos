@@ -33,12 +33,13 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
               * @api {GET} /DoctorMembers?PageSize=10&CurrentPage=1 110001/我的患者列表
               * @apiGroup 110 Treatment
               * @apiVersion 4.0.0
               * @apiDescription 我的患者列表
               * @apiPermission 已登录（医生）
-              * @apiHeader {String} apptoken appToken
+              
               * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
               * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
               * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写
@@ -100,12 +101,13 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
               * @api {GET} /DoctorMembers?DoctorMemberID=XXX 110002/患者详细信息
               * @apiGroup 110 Treatment
               * @apiVersion 4.0.0
               * @apiDescription 患者详细信息
               * @apiPermission 已登录（医生）
-              * @apiHeader {String} apptoken appToken
+              
               * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
               * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
               * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写
@@ -159,12 +161,13 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
               * @api {GET} /DoctorMember/GetMyMemberVisitList?DoctorMemberID=XXXCurrentPage=1&PageSize=10 110003/就诊记录列表
               * @apiGroup 110 Treatment
               * @apiVersion 4.0.0
               * @apiDescription 患者就诊记录列表
               * @apiPermission 已登录（医生）
-              * @apiHeader {String} apptoken appToken
+              
               * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
               * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
               * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写
@@ -274,15 +277,16 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
           * @api {GET} /DoctorMember/GetDoctorMemberEMRs 113405/获取患者电子病历列表
           * @apiGroup 113 Examination
           * @apiVersion 4.0.0
           * @apiDescription 查询电子病历列表
           * @apiPermission 已登录（用户）
-          * @apiHeader {String} apptoken appToken
+          
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+                 
           * @apiParam {string} [MemberID=null] 家庭成员ID
           * @apiParam {string} [DoctorMemberID=null] 医生患者ID （传了家庭成员ID，这个就不要传了）
           * @apiParam {string} [Keyword=null] 电子病历名称  
@@ -330,15 +334,16 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
           * @api {GET} /DoctorMember/GetUserMemberEMR 113406/获取患者的电子病历详情
           * @apiGroup 113 Examination
           * @apiVersion 4.0.0
           * @apiDescription 电子病历详情
           * @apiPermission 已登录（用户）
-          * @apiHeader {String} apptoken appToken
+          
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+                 
           * @apiParam {string} UserMemberEMRID  ID
           * @apiParamExample {json} 请求样例：
           *                   ?UserMemberEMRID=XXX

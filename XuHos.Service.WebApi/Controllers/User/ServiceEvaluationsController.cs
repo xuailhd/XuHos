@@ -25,6 +25,7 @@ namespace XuHos.WebApi.Controllers.User
     public class ServiceEvaluationsController : ApiBaseController
     {
         /**
+         * @apiIgnore Not finished Method
         * @api {POST} /ServiceEvaluations/Add 109101/添加评价
         * @apiGroup 109 Attention Evaluation
         * @apiVersion 4.0.0
@@ -81,6 +82,7 @@ namespace XuHos.WebApi.Controllers.User
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {GET} /ServiceEvaluations/GetAllTags 109102/获取评价标签列表
         * @apiGroup 109 Attention Evaluation
         * @apiVersion 4.0.0
@@ -147,6 +149,7 @@ namespace XuHos.WebApi.Controllers.User
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {GET} /ServiceEvaluations/Query 109103/获取评价列表
         * @apiGroup 109 Attention Evaluation
         * @apiVersion 4.0.0
@@ -231,6 +234,7 @@ namespace XuHos.WebApi.Controllers.User
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {GET} /ServiceEvaluations/GetEvaluationCount 109104/获取评价量
         * @apiGroup 109 Attention Evaluation
         * @apiVersion 4.0.0
@@ -269,6 +273,7 @@ namespace XuHos.WebApi.Controllers.User
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {GET} /ServiceEvaluations/GetServiceProviderEvaluatedTags 109105/获取服务提供者获得的标签评价次数
         * @apiGroup 109 Attention Evaluation
         * @apiVersion 4.0.0

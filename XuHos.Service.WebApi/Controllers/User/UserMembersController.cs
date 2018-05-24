@@ -25,15 +25,16 @@ namespace XuHos.WebApi.Controllers
             bll = new BLL.User.Implements.UserMemberService();
         }
         /**
+         * @apiIgnore Not finished Method
           * @api {POST} /UserMembers 102301/新增家庭成员
           * @apiGroup 102 Personal Info
           * @apiVersion 4.0.0
           * @apiDescription 添加家庭成员 
           * @apiPermission 已登录（用户）
-          * @apiHeader {String} apptoken appToken
+          
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写     
+              
           * @apiParam {string} MemberName 姓名
           * @apiParam {string} Relation 成员关系 （0-自己、1-配偶、2-父亲、3-母亲、4-儿子、5女儿、6-其他）
           * @apiParam {string} Gender 性别（0-男、1-女、2-未知）
@@ -88,7 +89,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 新增家庭成员
         /// 前置条件：用户已登录
-        
+
         /// 日期：2016年8月4日
         /// </summary>
         /// <param name="requst">实体</param>
@@ -115,15 +116,16 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
         * @api {DELETE} /UserMembers 102302/删除家庭成员
         * @apiGroup 102 Personal Info
         * @apiVersion 4.0.0
         * @apiDescription 通过成员编号删除 
         * @apiPermission 已登录（用户）
-        * @apiHeader {String} apptoken appToken
+        
         * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-        * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+               
         * @apiParam {string} ID 用户编号
         * @apiParamExample 请求样例：
         * ?ID=XXXXX
@@ -142,7 +144,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 删除家庭成员
         /// 前置条件：用户已登录
-        
+
         /// 日期：2016年8月4日
         /// </summary>
         /// <param name="ID">预约编号</param>
@@ -173,15 +175,16 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
          * @api {PUT} /UserMembers 102303/更新家庭成员
          * @apiGroup 102 Personal Info
          * @apiVersion 4.0.0
          * @apiDescription 更新家庭成员
          * @apiPermission 已登录（用户）
-         * @apiHeader {String} apptoken appToken
+         
          * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
          * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-         * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+                
          * @apiParamExample {json} 请求样例：
          * {
              "MemberID":"成员编号",
@@ -224,8 +227,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 更新家庭成员
         /// 前置条件：用户已登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="ID">预约编号</param>
         /// <returns></returns>
@@ -316,15 +317,16 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
           * @api {GET} /UserMembers 102304/获取家庭成员详情
           * @apiGroup 102 Personal Info
           * @apiVersion 4.0.0
           * @apiDescription 查询家庭成员列表
           * @apiPermission 已登录（用户）
-          * @apiHeader {String} apptoken appToken
+          
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+                 
           * @apiParam {string} ID  家庭成员ID
           * @apiParamExample {json} 请求样例：
           *                   ?ID=XXX
@@ -379,15 +381,16 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
           * @api {GET} /UserMembers 102305/获取家庭成员列表
           * @apiGroup 102 Personal Info
           * @apiVersion 4.0.0
           * @apiDescription 查询家庭成员列表 
           * @apiPermission 已登录（用户）
-          * @apiHeader {String} apptoken appToken
+          
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+                 
           * @apiParam {string} [CurrentPage=1]  页码
           * @apiParam {string} [PageSize=10] 分页大小
           * @apiParamExample {json} 请求样例：
@@ -425,8 +428,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取家庭成员列表
         /// 前置条件：用户已登录
-        
-        /// 日期：2016年8月5日
         /// </summary>
         /// <param name="CurrentPage">分页索引</param>
         /// <param name="PageSize">分页大小</param>
@@ -450,15 +451,14 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
           * @api {GET} UserMembers/GetDefaultMember 102306/获取默认家庭成员
           * @apiGroup 102 Personal Info
           * @apiVersion 4.0.0
           * @apiDescription 查询家庭成员列表 
           * @apiPermission 已登录（用户）
-          * @apiHeader {String} apptoken appToken
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
           * @apiParamExample {json} 请求样例：
           *                   UserMembers/GetDefaultMember
           * @apiSuccess (Response) {String} Msg 提示信息 
@@ -504,15 +504,14 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
           * @api {GET} /UserMembers/SetDefault 102307/设置默认家庭成员
           * @apiGroup 102 Personal Info
           * @apiVersion 4.0.0
           * @apiDescription 设置默认成员  作者：郭超
           * @apiPermission 已登录（用户）
-          * @apiHeader {String} apptoken appToken
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
           * @apiParam {string} [memberID]  成员ID
           * @apiParamExample {json} 请求样例：
           *                   ?memberID=77C5CF07923A4E3D8121F628336527B8
@@ -535,17 +534,16 @@ namespace XuHos.WebApi.Controllers
             var res = bll.SetDefaultMember(memberID, CurrentOperatorUserID);
             return res.ToApiResultForBoolean();
         }
-        
+
         /**
+         * @apiIgnore Not finished Method
           * @api {GET} /UserMembers/GetExistUserMemberByMobile 102310/获取已存在的手机号账号的自已成员
           * @apiGroup 102 Personal Info
           * @apiVersion 4.0.0
           * @apiDescription 获取自己关系家庭成员
           * @apiPermission 已登录（用户）
-          * @apiHeader {String} apptoken appToken
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写    
           * @apiParam {string} [mobile]  手机号ID
           * @apiParamExample {json} 请求样例：
           *                   ?mobile=12899787788    

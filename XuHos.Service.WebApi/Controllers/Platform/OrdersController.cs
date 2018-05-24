@@ -32,6 +32,7 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
           * @api {POST} /Orders/Create 118001/创建支付订单
           * @apiGroup 118 Order
           * @apiVersion 4.0.0
@@ -78,7 +79,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 创建支付订单
         /// 前置条件：已登录
-        
+
         /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
@@ -95,6 +96,7 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
           * @api {POST} /Orders/Cancel 118002/取消订单
           * @apiGroup 118 Order
           * @apiVersion 4.0.0
@@ -120,7 +122,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 取消订单
         /// 前置条件：已登录
-        
+
         /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
@@ -134,6 +136,7 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
         * @api {POST} /Orders/Confirm 118003/确认订单
         * @apiGroup 118 Order
         * @apiVersion 4.0.0
@@ -219,7 +222,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 确认订单
         /// 前置条件：已登录
-        
+
         /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
@@ -241,6 +244,7 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
          * @api {POST} /Orders/Complete 118004/交易完成
          * @apiGroup 118 Order
          * @apiVersion 4.0.0
@@ -266,8 +270,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 交易完成
         /// 前置条件：已登录
-        
-        /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -281,15 +283,13 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
          * @api {GET} /Orders 118005/获取订单详情
          * @apiGroup 118 Order
-         * @apiVersion 4.0.0
          * @apiDescription 交易完成后调用 
          * @apiPermission 已登录用户
-         * @apiHeader {String} apptoken Users unique access-key.
          * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-         * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@ appkey 串MD5加密后转成大写        
+         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空   
          * @apiParam {string} OrderNo 订单编号
          * @apiParamExample 请求样例：
          * ?OrderNo=42FF1C61132E443F862510FF3BC3B03A
@@ -355,7 +355,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取订单详情
         /// 前置条件：已登录
-        
+
         /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
@@ -370,6 +370,7 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
      * @api {GET} /Orders/LogisticWithDelivery 118007/开始发货
      * @apiGroup 118 Order
      * @apiVersion 4.0.0
@@ -395,8 +396,6 @@ namespace XuHos.WebApi.Controllers
     **/
         /// <summary>
         /// 发货
-        
-        /// 日期：2016年7月5日
         /// </summary>
         /// <param name="LogisticNo">物流编号</param>
         /// <returns></returns>

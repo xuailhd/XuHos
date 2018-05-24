@@ -40,7 +40,7 @@ namespace XuHos.BLL.User.Implements
                                                   group doctorMember by new { doctorMember.DoctorID } into gps
                                                   select new { gps.Key.DoctorID })
                             join doc in db.Doctors.Where(a => !a.IsDeleted) on doctorMember.DoctorID equals doc.DoctorID
-                            join user in db.Users on doc.UserID equals user.UserID
+                            join user in db.Users on doc.DoctorID equals user.UserID
                             join his in db.Hospitals.Where(a => !a.IsDeleted) on doc.HospitalID equals his.HospitalID
                             join depart in db.HospitalDepartments.Where(a => !a.IsDeleted) on doc.DepartmentID equals depart.DepartmentID
                             where hospitalId == "" || doc.HospitalID == hospitalId

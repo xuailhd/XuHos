@@ -514,7 +514,7 @@ namespace XuHos.BLL
                         if (schInfo != null)
                         {
                             request.DoctorID = schInfo.DoctorID;
-                            OPDDate = new DateTime(int.Parse(schInfo.OPDate.Substring(0, 4)), int.Parse(schInfo.OPDate.Substring(4, 2)), int.Parse(schInfo.OPDate.Substring(6, 2)));//预约日期            
+                            OPDDate = schInfo.OPDate;//预约日期            
                             OPDBeginTime = schInfo.StartTime;
                             OPDEndTime = schInfo.EndTime;
                         }
@@ -552,12 +552,12 @@ namespace XuHos.BLL
                     else
                     {
                         var schedules = new DoctorSchduleService(CurrentOperatorUserID).GetDoctorScheduleList(
-                            request.DoctorID, DateTime.Now, DateTime.Now.AddDays(1), false);
+                            request.DoctorID, DateTime.Now, DateTime.Now.AddDays(1));
 
                         #region 校验失败：视频或语音在线文字的时候没有设置医生排版
                         if (request.OPDType == EnumDoctorServiceType.AudServiceType || request.OPDType == EnumDoctorServiceType.VidServiceType)
                         {
-                            if (schedules.Data == null || schedules.Data.Count == 0)
+                            if (schedules == null || schedules.Count == 0)
                             {
                                 return new ResponseUserOPDRegisterSubmitDTO
                                 {
@@ -566,7 +566,7 @@ namespace XuHos.BLL
                                 };
                             }
 
-                            if (schedules.Data.Where(x => x.AppointmentCounts.Sum(y => y.Value) < x.Number).FirstOrDefault() == null)
+                            if (schedules.Where(x => x.AppointNumber<x.Number).FirstOrDefault() == null)
                             {
                                 return new ResponseUserOPDRegisterSubmitDTO
                                 {

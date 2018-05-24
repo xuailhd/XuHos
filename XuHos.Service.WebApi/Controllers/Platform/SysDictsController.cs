@@ -24,15 +24,16 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {GET} /SysDicts 103602/获取系统字典
         * @apiGroup 103 Base Data
         * @apiVersion 4.0.0
         * @apiDescription 获取系统字典 
         * @apiPermission 所有人
-        * @apiHeader {String} apptoken appToken
+        
         * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-        * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写   
+          
         * @apiSuccess (Response) {String} Msg 提示信息 
         * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
         * @apiSuccess (Response) {int} Total 总记录数
@@ -43,7 +44,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取系统字典
         /// 前置条件：无
-        
+
         /// 日期：2016年8月4日
         /// </summary>
         /// <returns></returns>

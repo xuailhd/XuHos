@@ -72,7 +72,7 @@ namespace XuHos.BLL
                             //join user in db.Users on map.UserID equals user.UserID
                             orderby item.ModifyTime, item.CreateTime descending
                             where item.IsDeleted == false && member.IsDeleted == false
-                            && doctor.UserID == condition.UserID //&& map.IsDeleted == false
+                            && doctor.DoctorID == condition.UserID //&& map.IsDeleted == false
                             select new DoctorMemberDTO
                             {
                                 DoctorMemberID = item.DoctorMemberID,
@@ -215,7 +215,8 @@ namespace XuHos.BLL
                 var query = from item in db.DoctorMembers
                             join doctor in db.Doctors on item.DoctorID equals doctor.DoctorID
                             join member in db.UserMembers on item.MemberID equals member.MemberID
-                            where item.IsDeleted == false && member.IsDeleted == false && item.DoctorMemberID == doctorMemberID && doctor.UserID == CurrentOperatorUserID
+                            where item.IsDeleted == false && member.IsDeleted == false && item.DoctorMemberID == doctorMemberID 
+                            && doctor.DoctorID == CurrentOperatorUserID
                             select member;
 
                 var entity = query.FirstOrDefault();
@@ -266,7 +267,8 @@ namespace XuHos.BLL
                 var query = from item in db.DoctorMembers
                             join doctor in db.Doctors on item.DoctorID equals doctor.DoctorID
                             join member in db.UserMembers on item.MemberID equals member.MemberID
-                            where item.IsDeleted == false && member.IsDeleted == false && item.DoctorMemberID == doctorMemberID && doctor.UserID == userID
+                            where item.IsDeleted == false && member.IsDeleted == false && item.DoctorMemberID == doctorMemberID 
+                            && doctor.DoctorID == userID
                             select new DoctorMemberDTO
                             {
                                 DoctorID = doctor.DoctorID,

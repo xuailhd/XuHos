@@ -33,14 +33,13 @@ namespace XuHos.WebApi.Controllers
     {
         /**
          * @api {GET} /IM/Config 117001/获取云通信配置
-         * @apiGroup obsolete
-         * @apiVersion 4.0.0
+         * @apiGroup 117 IM
          * @apiDescription 获取云通信独立认证配置 
          * @apiPermission 已登录
-         * @apiHeader {String} apptoken appToken
+         
          * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
          * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-         * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写   
+           
          * @apiSuccess (Response) {String} Msg 提示信息 
          * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
          * @apiSuccess (Response) {int} Total 总记录数
@@ -56,33 +55,27 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取当前登录用户腾讯云通信配置
         /// 前置条件：已登录
-        
+
         /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [UserAuthenticate(IsValidUserType = false)]
-        [Obsolete("已移至共用接口基础层IM/Config")]
         public ApiResult Config()
         {
-
-
             var bll = new XuHos.Integration.QQCloudy.IMHelper();
             return bll.Config(CurrentOperatorUserIdentifier).ToApiResultForObject();
-
-
         }
 
         /**
         * @api {GET} /IM/MediaConfig 117002/获取多媒体配置
-        * @apiGroup obsolete
-        * @apiVersion 4.0.0
+        * @apiGroup 117 IM
         * @apiDescription 获取多媒体配置（视频直播、录制需要） 
         * @apiPermission 已登录
-        * @apiHeader {String} apptoken appToken
+        
         * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-        * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写   
+          
         * @apiParam {String} ChannelID 房间编号 
         * @apiParam {int} Identifier 当前用户唯一标识（通过IM/Config接口获取）
         * @apiParamExample {json} 请求样例：
@@ -357,15 +350,14 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
            * @api {Post} /IM/Users 117004/获取人员信息
            * @apiGroup obsolete
            * @apiVersion 4.0.0
            * @apiDescription 通过用户标识获取用户的信息 
            * @apiPermission 已登录（用户）
-           * @apiHeader {String} apptoken appToken
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
            * @apiParam {Array} Identifiers 用户标识 
            * @apiParam {int} ChannelID 房间编号 
            * @apiParamExample {json} 请求样例：
@@ -397,15 +389,14 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
            * @api {GET} /IM/Room/WaitingCount 117005/获取候诊人数
            * @apiGroup obsolete
            * @apiVersion 4.0.0
            * @apiDescription 获取候诊人数 
            * @apiPermission 已登录（用户）
-           * @apiHeader {String} apptoken appToken
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
            * @apiParam {String} DoctorID 医生编号 
            * @apiParam {int} ChannelID 房间编号 
            * @apiParamExample {json} 请求样例：
@@ -420,7 +411,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 用户查询候诊队列
         /// 前置条件：用户已登录
-        
+
         /// 日期：2016年8月6日
         /// </summary>
         /// <param name="DoctorID">医生编号</param>
@@ -440,65 +431,12 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
-           * @api {GET} /IM/Room/State 117006/获取房间状态
-           * @apiGroup obsolete
-           * @apiVersion 4.0.0
-           * @apiDescription 获取房间状态 
-           * @apiPermission 已登录(用户/主治医生/分诊医生)
-           * @apiHeader {String} apptoken appToken
-           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
-           * @apiParam {int} ChannelID 房间编号 
-           * @apiParamExample {json} 请求样例：
-           * {ChannelID:"XXX",State:2}
-           * @apiSuccess (Response) {String} Msg 提示信息 
-           * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
-           * @apiSuccess (Response) {int} Total 总记录数
-           * @apiSuccess (Response) {int} Data 预约状态  0=未就诊,1=候诊中,2=就诊中,3=已就诊,4=呼叫中,5=离开中
-           * @apiSuccessExample {json} 返回样例:
-           *{"Data":1,"Total":2,"Status":0,"Msg":""}
-       **/
-        /// <summary>
-        /// 获取房间状态
-        /// 前置条件：已登录
-        
-        /// 日期：2016年8月4日
-        /// </summary>
-        /// <param name="ChannelID"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("~/IM/Room/State")]
-        [UserAuthenticate(IsValidUserType = false)]
-        public ApiResult GetRoomState(int ChannelID)
-        {
-            var bll = new BLL.Sys.Implements.ConversationRoomService();
-            var entity = bll.GetChannelInfo(ChannelID);
-            if (entity != null)
-            {
-
-                //前端用户只需要知道有候诊状态即可，不需要知道有重复候诊的状态
-                if (entity.RoomState == EnumRoomState.WaitAgain)
-                    entity.RoomState = EnumRoomState.Waiting;
-
-                return entity.RoomState.ToApiResultForObject();
-            }
-            else
-                return EnumApiStatus.BizError.ToApiResultForApiStatus("房间不存在");
-
-
-        }
-
-        /**
-           * @api {GET} /IM/Room?ChannelID=:ChannelID 117007/获取房间信息
-           * @apiGroup obsolete
-           * @apiVersion 4.0.0
-           * @apiDescription 获取预约详情 
+           * @api {GET} /IM/GetRoomInfo 117007/获取房间信息
+           * @apiGroup 117 IM
+           * @apiDescription 获取房间信息 
            * @apiPermission 已登录（用户/医生/分诊医生）
-           * @apiHeader {String} apptoken appToken
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
            * @apiParam {int} ChannelID 房间编号 
            * @apiParamExample {json} 请求样例：
            * ?ChannelID=XXXX
@@ -513,7 +451,7 @@ namespace XuHos.WebApi.Controllers
                     "ServiceID": "8f8c435e09e24ce2af61d92fa2ff422e",
                     "ChannelID": 9,
                     "Secret": "593c3fe883234f9ea2e7d6b83ad0c7c8",
-                    "RoomState": 2,
+                    "RoomState": 2,   0=未就诊,1=候诊中,2=就诊中,3=已就诊,4=呼叫中,5=离开中
                     "BeginTime": "2016-08-18T13:42:35.8",
                     "EndTime": "2016-08-18T09:00:57.6001987",
                     "TotalTime": 0
@@ -526,13 +464,12 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取房间详情
         /// 前置条件：用户已登录
-        
+
         /// 日期：2016年8月4日
         /// </summary>
         /// <param name="ChannelID">房间编号</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("~/IM/Room")]
         [UserAuthenticate(IsValidUserType = false)]
         public ApiResult GetRoomInfo([FromUri]int ChannelID)
         {
@@ -550,15 +487,12 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
-           * @api {PUT} /IM/Room/State 117008/修改房间状态
-           * @apiGroup obsolete
-           * @apiVersion 4.0.0
-           * @apiDescription 查询用户预约的历史记录
-           * @apiPermission 已登录（用户/主治医生）
-           * @apiHeader {String} apptoken appToken
+           * @api {POST} /IM/SetRoomState 117008/修改房间状态
+           * @apiGroup 117 IM
+           * @apiDescription 修改房间状态
+           * @apiPermission 已登录
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
            * @apiParam {int} ChannelID 房间编号 
            * @apiParam {int} State 新的状态  0=未就诊,1=候诊中,2=就诊中,3=已就诊,4=呼叫中,5=离开中
            * @apiParam {int} ExpectedState 当前状态 0=未就诊,1=候诊中,2=就诊中,3=已就诊,4=呼叫中,5=离开中
@@ -566,8 +500,7 @@ namespace XuHos.WebApi.Controllers
            * {
            *    ChannelID:"XXX",
            *    State:2,
-           *    ExpectedState:1,
-           *    DisableWebSdkInteroperability:true //AgoraSDK1.12及以上版本设置True(以便于WEB端启用高版本)
+           *    ExpectedState:1
            * }
            * @apiSuccess (Response) {String} Msg 提示信息 
            * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
@@ -579,15 +512,11 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 更新房间状态
         /// 前置条件：已登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPut]
-        [Route("~/IM/Room/State")]
+        [HttpPost]
         [UserAuthenticate(IsValidUserType = false)]
-        [Obsolete("已移至共用接口基础层IM/Room/State")]
         public ApiResult SetRoomState([FromBody]BLL.Sys.DTOs.Request.RequestConversationRoomSetStateDTO request)
         {
             try
@@ -662,15 +591,14 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
          * @api {GET} /IM/Messages 117009/获取消息记录
          * @apiGroup obsolete
          * @apiVersion 4.0.0
          * @apiDescription 获取消息记录
          * @apiPermission 已登录（用户/主治医生）
-         * @apiHeader {String} apptoken appToken
          * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
          * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-         * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
          * @apiParam {int} ChannelID 房间编号 
          * @apiParam {int} CurrentPage=1 当前页码 
          * @apiParam {int} PageSize=10 分页大小
@@ -687,7 +615,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取聊天记录
         /// 前置条件：无
-                
         /// 日期：2016年8月4日
         /// </summary>
         /// <param name="request">搜索条件</param>
@@ -708,8 +635,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// IM:117010
         /// 录制完成
-        
-        /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -737,15 +662,14 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
         * @api {POST} /IM/SendFileMessage 117011/发送文件消息
         * @apiGroup obsolete
         * @apiVersion 4.0.0
         * @apiDescription 发送文件消息 
         * @apiPermission 已登录
-        * @apiHeader {String} apptoken appToken
         * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-        * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写   
          * @apiParamExample {json} 请求样例：
          * {ChanndlID:1,FileMD5:"xxxx"}
         * @apiSuccess (Response) {String} Msg 提示信息 
@@ -757,7 +681,7 @@ namespace XuHos.WebApi.Controllers
         **/
         /// <summary>
         /// 发送文件消息
-        
+
         /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
@@ -793,15 +717,13 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
           * @api {POST} /IM/SendAudioMessage 117012/发送音频消息
           * @apiGroup obsolete
-          * @apiVersion 4.0.0
           * @apiDescription 发送图片消息 
           * @apiPermission 已登录
-          * @apiHeader {String} apptoken appToken
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写   
            * @apiParamExample {json} 请求样例：
            * {ChanndlID:1,FileMD5:"xxxx"}
           * @apiSuccess (Response) {String} Msg 提示信息 
@@ -848,15 +770,13 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
        * @api {POST} /IM/SendImageMessage 117013/发送图片消息
        * @apiGroup obsolete
-       * @apiVersion 4.0.0
        * @apiDescription 发送图片消息 
        * @apiPermission 已登录
-       * @apiHeader {String} apptoken appToken
        * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
        * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-       * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写   
         * @apiParamExample {json} 请求样例：
         * {ChanndlID:1,FileMD5:"xxxx"}
        * @apiSuccess (Response) {String} Msg 提示信息 
@@ -868,8 +788,6 @@ namespace XuHos.WebApi.Controllers
        **/
         /// <summary>
         /// 发送图片消息
-        
-        /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -907,15 +825,14 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
          * @api {POST} /IM/SendTextMessage 117014/发送文本消息
          * @apiGroup obsolete
          * @apiVersion 4.0.0
          * @apiDescription 发送文本消息 
          * @apiPermission 已登录
-         * @apiHeader {String} apptoken appToken
          * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
          * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-         * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写   
           * @apiParamExample {json} 请求样例：
           * {ChanndlID:1,Content:"消息内容"}
          * @apiSuccess (Response) {String} Msg 提示信息 
@@ -927,8 +844,6 @@ namespace XuHos.WebApi.Controllers
         **/
         /// <summary>
         /// 发送文本消息
-        
-        /// 日期：2016年8月6日
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -950,15 +865,14 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
          * @api {POST} /IM/SendEnterRoomNotify 117015 发送进入诊室通知
          * @apiGroup obsolete
          * @apiVersion 4.0.0
          * @apiDescription 发送进入诊室通知 作者：沈腾飞
          * @apiPermission 已登录
-         * @apiHeader {String} apptoken appToken
          * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
          * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-         * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写   
          * @apiParamExample {json} 请求样例：
          * ?channelID=XXXX
          * @apiSuccess (Response) {String} Msg 提示信息 

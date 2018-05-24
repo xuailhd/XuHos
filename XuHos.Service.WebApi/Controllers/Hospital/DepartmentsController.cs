@@ -89,15 +89,16 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
           * @api {GET} /Departments/?ID=:ID 103004/获取科室详情
           * @apiGroup 103 Base Data
           * @apiVersion 4.0.0
           * @apiDescription 获取科室详情 
           * @apiPermission 所有人
-          * @apiHeader {String} apptoken appToken
+          
           * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+                 
           * @apiParam {String} ID 科室编号 
           * @apiParamExample {json} 请求样例：
           *                   ?ID=068EC7030C0D40DD9EE436601C7F34FA
@@ -110,7 +111,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取科室详情
         /// 前置条件：无
-        
+
         /// 日期：2016年8月4日
         /// </summary>
         /// <param name="ID">科室编号</param>
@@ -126,15 +127,16 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
            * @api {GET} /Departments 103005/获取科室列表
            * @apiGroup 103 Base Data
            * @apiVersion 4.0.0
            * @apiDescription 通过关键字，分页获取医院列表 
            * @apiPermission 所有人
-           * @apiHeader {String} apptoken appToken
+           
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+                  
            * @apiParam {int} CurrentPage=1 页码 
            * @apiParam {int} PageSize=10 分页大小
            * @apiParamExample {json} 请求样例：
@@ -149,7 +151,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 查询科室信息
         /// 前置条件：无
-        
+
         /// 日期：2016年8月4日
         /// </summary>
         /// <param name="request">搜索条件</param>
@@ -174,12 +176,13 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
            * @api {Get} /Departments/Options  103009获取科室选项
            * @apiGroup 103 Base Data
            * @apiVersion 4.0.0
            * @apiDescription 获取科室选项
            * @apiPermission 所有人
-           * @apiHeader {String} apptoken appToken
+           
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
            * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写

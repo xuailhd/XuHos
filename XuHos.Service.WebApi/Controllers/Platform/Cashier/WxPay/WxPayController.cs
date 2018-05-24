@@ -24,10 +24,8 @@ namespace XuHos.WebApi.Platform.Cashier
          * @apiVersion 4.0.0
          * @apiDescription 微信预支付 
          * @apiPermission 已登录
-         * @apiHeader {String} apptoken appToken
          * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-         * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写   
+         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空 
          * @apiParam {string} OrderNo 订单编号
          * @apiParam {string} [SellerID=wxf1b0cceac4c331e3] 收款账号
          * @apiParam {string} [SignType=0] 签名类型（APP=0,Web=1,Wap=2,JS=3）

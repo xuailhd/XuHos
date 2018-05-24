@@ -37,7 +37,7 @@ namespace XuHos.BLL.Sys.Implements
                 #region 根据医生编号查询医生的所有用户标识
                 var identifiers = (from doctor in db.Doctors.Where(a => !a.IsDeleted)
                                    join doctorId in doctorIDList on doctor.DoctorID equals doctorId
-                                   join user in db.Users.Where(a => !a.IsDeleted) on doctor.UserID equals user.UserID
+                                   join user in db.Users.Where(a => !a.IsDeleted) on doctor.DoctorID equals user.UserID
                                    join uid in db.ConversationIMUids.Where(a => !a.IsDeleted) on user.UserID equals uid.UserID
                                    select uid.Identifier).ToList();
 

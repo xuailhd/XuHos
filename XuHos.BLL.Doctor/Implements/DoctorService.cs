@@ -49,7 +49,7 @@ namespace XuHos.BLL.Doctor.Implements
             using (XuHos.DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              join hosp in db.Hospitals on doctor.HospitalID equals hosp.HospitalID
                              join department in db.HospitalDepartments on doctor.DepartmentID equals department.DepartmentID
                              where doctor.IsDeleted == false && doctor.IsShow
@@ -68,7 +68,7 @@ namespace XuHos.BLL.Doctor.Implements
                                  {
                                      UserType = user.UserType,
                                      PhotoUrl = user.PhotoUrl,
-                                     UserID = doctor.UserID,
+                                     UserID = doctor.DoctorID,
                                  },
                                  
                              });
@@ -204,7 +204,7 @@ namespace XuHos.BLL.Doctor.Implements
                     condition.CAT_NO = obj.CAT_NO;
                 }
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              join hosp in db.Hospitals on doctor.HospitalID equals hosp.HospitalID
                              join department in db.HospitalDepartments on doctor.DepartmentID equals department.DepartmentID
                              where doctor.IsDeleted == false && doctor.IsShow
@@ -224,7 +224,7 @@ namespace XuHos.BLL.Doctor.Implements
                                  {
                                      UserType = user.UserType,
                                      PhotoUrl = user.PhotoUrl,
-                                     UserID = doctor.UserID,
+                                     UserID = doctor.DoctorID,
                                  },
                              });
 
@@ -352,7 +352,7 @@ namespace XuHos.BLL.Doctor.Implements
             using (XuHos.DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              join hosp in db.Hospitals on doctor.HospitalID equals hosp.HospitalID
                              join department in db.HospitalDepartments on doctor.DepartmentID equals department.DepartmentID
                              //join data in db.DoctorStatisticalDatas on doctor.DoctorID equals data.DoctorID into dataLeftMid
@@ -394,7 +394,7 @@ namespace XuHos.BLL.Doctor.Implements
             using (XuHos.DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              join hosp in db.Hospitals on doctor.HospitalID equals hosp.HospitalID
                              join department in db.HospitalDepartments on doctor.DepartmentID equals department.DepartmentID
                              where doctor.DoctorID == doctorID && doctor.IsDeleted == false
@@ -416,7 +416,7 @@ namespace XuHos.BLL.Doctor.Implements
                                  {
                                      UserType = user.UserType,
                                      PhotoUrl = user.PhotoUrl,
-                                     UserID = doctor.UserID,
+                                     UserID = doctor.DoctorID,
                                      Mobile = user.Mobile
                                  },
                              });
@@ -481,7 +481,7 @@ namespace XuHos.BLL.Doctor.Implements
             using (DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              where doctor.IsDeleted == false && doctor.IsShow
                              orderby doctor.Sort descending, doctor.CreateTime, doctor.DoctorID
                              select new ResponseDoctorDTO
@@ -553,7 +553,7 @@ namespace XuHos.BLL.Doctor.Implements
             using (DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              join docservice in db.DoctorServices on doctor.DoctorID equals docservice.DoctorID
                              where ((docservice.ServiceType == EnumDoctorServiceType.VidServiceType && docservice.ServiceSwitch)
                                     ||
@@ -612,7 +612,7 @@ namespace XuHos.BLL.Doctor.Implements
             using (XuHos.DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              where
                                  doctor.IsExpert == true && doctor.IsDeleted == false && doctor.IsShow &&
                                  (hospitalId == "" || doctor.HospitalID == hospitalId)
@@ -637,7 +637,7 @@ namespace XuHos.BLL.Doctor.Implements
                                  {
                                      UserType = user.UserType,
                                      PhotoUrl = user.PhotoUrl,
-                                     UserID = doctor.UserID,
+                                     UserID = doctor.DoctorID,
                                  },
                              });
 
@@ -660,8 +660,6 @@ namespace XuHos.BLL.Doctor.Implements
 
         /// <summary>
         /// 获取医生列表
-        
-        /// 日期：2016年7月29日
         /// </summary>
         /// <returns></returns>
         public Response<List<ResponseDoctorDTO>> GetDoctorPageList(RequestDoctorSelectDTO condition, bool filterWeb = true, List<string> userPkgs = null)
@@ -690,7 +688,7 @@ namespace XuHos.BLL.Doctor.Implements
             using (XuHos.DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              join dept in db.HospitalDepartments on doctor.DepartmentID equals dept.DepartmentID
                              join hosp in db.Hospitals on doctor.HospitalID equals hosp.HospitalID                        
                                  // 不是所有的科室都有关联公共科室,用左关联
@@ -903,7 +901,7 @@ namespace XuHos.BLL.Doctor.Implements
             using (XuHos.DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              join dept in db.HospitalDepartments on doctor.DepartmentID equals dept.DepartmentID
                              join hosp in db.Hospitals on doctor.HospitalID equals hosp.HospitalID
                              where doctor.IsDeleted == false && hosp.HospitalID == HospitalId
@@ -928,7 +926,7 @@ namespace XuHos.BLL.Doctor.Implements
                                  {
                                      UserType = user.UserType,
                                      PhotoUrl = user.PhotoUrl,
-                                     UserID = doctor.UserID,
+                                     UserID = doctor.DoctorID,
                                  }
                              });
 
@@ -957,7 +955,7 @@ namespace XuHos.BLL.Doctor.Implements
             using (XuHos.DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
+                             join user in db.Users on doctor.DoctorID equals user.UserID
                              join dept in db.HospitalDepartments on doctor.DepartmentID equals dept.DepartmentID
                              join hosp in db.Hospitals on doctor.HospitalID equals hosp.HospitalID
                              join rolemap in db.UserRoleMaps on user.UserID equals rolemap.UserID
@@ -995,67 +993,9 @@ namespace XuHos.BLL.Doctor.Implements
             }
         }
 
-        public Response<List<ResponseDoctorDTO>> GetDoctorPageListForDrugstoreTreat(
-            int PageIndex = 1,
-            int PageSize = int.MaxValue
-            )
-        {
-
-            using (XuHos.DAL.EF.DBEntities db = new DAL.EF.DBEntities())
-            {
-                var date = DateTime.Now.ToString("yyyyMMdd");
-                var doctorIds =
-                    db.DoctorSchedules.Where(o => o.OPDate == date)
-                        .GroupBy(o => new { o.DoctorID, o.OPDate })
-                        .Select(group => group.Key.DoctorID).ToList();
-
-                var query = (from doctor in db.Doctors
-                             join user in db.Users on doctor.UserID equals user.UserID
-                             join dept in db.HospitalDepartments on doctor.DepartmentID equals dept.DepartmentID
-                             join hosp in db.Hospitals on doctor.HospitalID equals hosp.HospitalID
-                             //                             join rolemap in db.UserRoleMaps on user.UserID equals rolemap.UserID
-                             //                             join role in db.UserRoles on rolemap.RoleID equals role.RoleID
-                             join service in db.DoctorServices on doctor.DoctorID equals service.DoctorID
-                             orderby doctor.Sort descending
-                             where !doctor.IsDeleted && doctor.DoctorType == 3 && service.ServiceSwitch
-                                   && service.ServiceType == EnumDoctorServiceType.VidServiceType && !service.IsDeleted
-                                   && doctorIds.Contains(doctor.DoctorID)
-                             select new ResponseDoctorDTO
-                             {
-                                 areaCode = doctor.areaCode,
-                                 Birthday = doctor.Birthday,
-                                 Address = doctor.Address,
-                                 CheckState = doctor.CheckState,
-                                 DepartmentID = dept.DepartmentID,
-                                 DoctorID = doctor.DoctorID,
-                                 DepartmentName = dept.DepartmentName,
-                                 DoctorName = doctor.DoctorName,
-                                 Duties = doctor.Duties,
-                                 HospitalID = hosp.HospitalID,
-                                 HospitalName = hosp.HospitalName,
-                                 Marriage = doctor.Marriage,
-                                 Title = doctor.Title,
-                                 Specialty = doctor.Specialty,
-                                 DoctorType = doctor.DoctorType,
-                                 Intro = doctor.Intro,
-                                 User = new ResopnseUserDTO
-                                 {
-                                     PhotoUrl = user.PhotoUrl
-                                 },
-                             });
-
-                Response<List<ResponseDoctorDTO>> result = new Response<List<ResponseDoctorDTO>>();
-                int total = 0;
-                result.Data = query.Pager(out total, PageIndex, PageSize);
-                result.Total = total;
-                return result;
-            }
-        }
 
         /// <summary>
         /// 获取推荐医生
-        
-        /// 日期：2016年8月3日
         /// </summary>
         /// <param name="Take"></param>
         /// <param name="CAT_NO"></param>
@@ -1066,7 +1006,7 @@ namespace XuHos.BLL.Doctor.Implements
             {
                 var query = from doctor in db.Doctors
                             join department in db.HospitalDepartments on doctor.DepartmentID equals department.DepartmentID
-                            join user in db.Users on doctor.UserID equals user.UserID
+                            join user in db.Users on doctor.DoctorID equals user.UserID
                             where doctor.IsDeleted == false && doctor.IsShow
                             orderby doctor.DoctorType descending, doctor.Sort descending
                             select new ResponseDoctorDTO
@@ -1212,7 +1152,7 @@ namespace XuHos.BLL.Doctor.Implements
             {
                 using (var db = new DBEntities())
                 {
-                    var doctor = db.Doctors.Where(p => p.IsDeleted == false && p.UserID == UserID).FirstOrDefault();
+                    var doctor = db.Doctors.Where(p => p.IsDeleted == false && p.DoctorID == UserID).FirstOrDefault();
                     if (doctor != null)
                     {
                         DoctorID = doctor.DoctorID;
@@ -1958,7 +1898,7 @@ SELECT ServiceEvaluationTagID, TagName, (@L - LEN(REPLACE(@S, ';' + TagName + ';
             using (XuHos.DAL.EF.DBEntities db = new DAL.EF.DBEntities())
             {
                 var u = db.Users.Where(w => w.UserID == UserID).FirstOrDefault();
-                var d = db.Doctors.Where(w => w.UserID == UserID).FirstOrDefault();
+                var d = db.Doctors.Where(w => w.DoctorID == UserID).FirstOrDefault();
 
                 if (request.Intro != null)
                 {

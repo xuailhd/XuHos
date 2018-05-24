@@ -39,6 +39,7 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {GET} /doctorPrice/getDoctorPriceServiceList 106001/获取服务列表
         * @apiGroup 106 Service Setting
         * @apiVersion 4.0.0
@@ -90,6 +91,7 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {GET} /doctorPrice/getDoctorPriceService 106002/获取医生服务详情
         * @apiGroup 106 Service Setting
         * @apiVersion 4.0.0
@@ -138,6 +140,7 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {POST} /doctorPrice/addOrEditeDoctorService 106003/服务设置保存
         * @apiGroup 106 Service Setting
         * @apiVersion 4.0.0

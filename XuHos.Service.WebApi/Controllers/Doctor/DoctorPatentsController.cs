@@ -24,8 +24,6 @@ namespace XuHos.WebApi.Controllers
         /// 110 Treatment：110010
         /// 获取患者就诊记录
         /// 前置条件：医生已登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="OPDRegisterID">当前预约编号</param>
         /// <param name="MemberID">会员编号</param> 

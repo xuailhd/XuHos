@@ -38,7 +38,7 @@ namespace XuHos.DTO
         /// <summary>
         /// 已预约人数
         /// </summary>
-        public Dictionary<int, int> AppointmentCounts { get; set; }
+        public int AppointNumber { get; set; }
 
         public int Number { get; set; } //号源数量
     }

@@ -361,6 +361,7 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
             * @api {Get} /users/isLogin  101004/是否已登录
             * @apiGroup 101 Login Register
             * @apiVersion 4.0.0
@@ -384,7 +385,7 @@ namespace XuHos.WebApi.Controllers
           */
         /// <summary>
         /// 获取登录状态
-        
+
         /// 日期：2016年8月5日
         /// </summary>
         /// <returns></returns>

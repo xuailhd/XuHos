@@ -36,8 +36,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 新增医生
         /// 前置条件：管理员登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="requst">实体</param>
         /// <returns></returns>
@@ -60,8 +58,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 更新医生
         /// 前置条件：管理员登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="requst">实体</param>
         /// <returns></returns>
@@ -76,10 +72,9 @@ namespace XuHos.WebApi.Controllers
         /**
            * @api {Post} /Doctors/UpdateDoctorInfo 102102/更新医生信息
            * @apiGroup 102 Personal Info
-           * @apiVersion 4.0.0
            * @apiDescription 更新医生信息
            * @apiPermission 医生登陆  
-           * @apiHeader {String} apptoken appToken
+           
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken userToken，用户未登录时传空
            * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@ appkey 串MD5加密后转成大写    
@@ -162,40 +157,6 @@ namespace XuHos.WebApi.Controllers
             return EnumApiStatus.BizError.ToApiResultForApiStatus();
         }
 
-        /**
-        * @api {GET} /Doctors/GetDoctorStatisticsInfo 102103/获取医生统计信息
-        * @apiGroup 102 Personal Info
-        * @apiVersion 4.0.0
-        * @apiDescription 获取医生统计信息
-        * @apiPermission 所有人
-        * @apiParam {String} UserID 医生的UserID
-        * @apiParamExample {json} 请求样例：
-        *   ?UserID=B04D4AE28F994AE2AACBB456D7E0647B    
-        * @apiSuccess (Response) {String} Msg 提示信息 
-        * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
-        * @apiSuccess (Response) {int} Total 总记录     
-        * @apiSuccess (Response) {object} Data 业务数据
-        * @apiSuccessExample {json} 返回样例:
-        *  {
-            "Data": {
-                "DoctorID": "89F9E5907FD04DBF96A9867D1FA30396",
-                "DoctorName": "邱浩强",
-                "DepartmentID": "A8064D2DAE3542B18CBD64F467828F57",
-                "DepartmentName": "健康体检中心",
-                "HospitalID": "42FF1C61132E443F862510FF3BC3B03A",
-                "HospitalName": "康美医院",
-                "PhotoUrl": "http://121.15.153.63:8028/images/b427cae4799bf5387eadfc9d7e627e2e",
-                "Income": 135.04,//收入
-                "ServiceTimes": 7,//服务次数
-                "DiagnoseTimes": 6,//问诊量
-                "FollowedCount": 4,//关注量
-                "EvaluatedCount": 5//评价数
-            },
-            "Total": 0,
-            "Status": 0,
-            "Msg": "操作成功"
-        }
-        */
         /// <summary>
         /// 获取医生统计信息
         /// </summary>
@@ -209,8 +170,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 删除医生
         /// 前置条件：管理员登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="ID">预约编号</param>
         /// <returns></returns>
@@ -229,10 +188,8 @@ namespace XuHos.WebApi.Controllers
            * @apiVersion 4.0.0
            * @apiDescription 获取医生详情 
            * @apiPermission 所有人
-           * @apiHeader {String} apptoken appToken
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-           * @apiHeader {String} usertoken userToken，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@ appkey 串MD5加密后转成大写        
+           * @apiHeader {String} usertoken userToken，用户未登录时传空       
            * @apiParam {String} ID 医生编号 
            * @apiParamExample {json} 请求样例：
            *                   ?ID=89F9E5907FD04DBF96A9867D1FA30396
@@ -284,52 +241,12 @@ namespace XuHos.WebApi.Controllers
                     },
                     "DoctorServices": [
                         {
-                            "ServiceID": "2bcdbdcd9c254e69b0be943d73a7c8bb",
-                            "DoctorID": "89F9E5907FD04DBF96A9867D1FA30396",
-                            "ServiceType": 0,
-                            "ServiceSwitch": 1,
-                            "ServicePrice": 12,
-                            "HasSchedule": false
-                        },
-                        {
-                            "ServiceID": "3dbd8a5da298412297916f61312311b2",
-                            "DoctorID": "89F9E5907FD04DBF96A9867D1FA30396",
-                            "ServiceType": 2,
-                            "ServiceSwitch": 1,
-                            "ServicePrice": 0.01,
-                            "HasSchedule": true
-                        },
-                        {
-                            "ServiceID": "58af696153f0456c8a3a2864cf7e844a",
-                            "DoctorID": "89F9E5907FD04DBF96A9867D1FA30396",
-                            "ServiceType": 5,
-                            "ServiceSwitch": 1,
-                            "ServicePrice": 50,
-                            "HasSchedule": false
-                        },
-                        {
-                            "ServiceID": "94307e6025374116bc3a3ec34cbd779d",
-                            "DoctorID": "89F9E5907FD04DBF96A9867D1FA30396",
-                            "ServiceType": 4,
-                            "ServiceSwitch": 1,
-                            "ServicePrice": 0.01,
-                            "HasSchedule": false
-                        },
-                        {
                             "ServiceID": "a55291ac95b4472ba1c966953fc17b49",
                             "DoctorID": "89F9E5907FD04DBF96A9867D1FA30396",
                             "ServiceType": 3,
                             "ServiceSwitch": 1,
                             "ServicePrice": 0.01,
                             "HasSchedule": true
-                        },
-                        {
-                            "ServiceID": "f0bb5909685d4beb959dd67dc912a6fd",
-                            "DoctorID": "89F9E5907FD04DBF96A9867D1FA30396",
-                            "ServiceType": 1,
-                            "ServiceSwitch": 1,
-                            "ServicePrice": 0.01,
-                            "HasSchedule": false
                         }
                     ],
                     "Hospital": {
@@ -352,9 +269,7 @@ namespace XuHos.WebApi.Controllers
                         "UserType": 2,
                         "Mobile": "13692248249",
                         "Email": "zenglu@km.com",
-                        "Password": "7c4a8d09ca3762af61e59520943dc26494f8941b",
                         "PayPassword": "",
-                        "_PhotoUrl": "images/b427cae4799bf5387eadfc9d7e627e2e",
                         "PhotoUrl": "http://121.15.153.63:8028/images/b427cae4799bf5387eadfc9d7e627e2e",
                         "Score": 0,
                         "Star": 0,
@@ -381,8 +296,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取医生详情
         /// 前置条件：无
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="ID">医生编号</param>
         /// <returns></returns>
@@ -391,252 +304,10 @@ namespace XuHos.WebApi.Controllers
         [IgnoreAuthenticate]
         public ApiResult GetEntity([FromUri]string ID)
         {
-            var doctorBll = new BLL.Doctor.Implements.DoctorService();
             var model = doctorBll.GetDoctorDetail(ID);
             return model.ToApiResultForObject();
         }
 
-        /**
-          * @api {GET} /Doctors/?UserID=:UserID 102105/获取医生详情(By UserID)
-          * @apiGroup 102 Personal Info
-          * @apiVersion 4.0.0
-          * @apiDescription 根据医生UserID获取医生资料 作者：郭超
-          * @apiPermission 所有人
-          * @apiHeader {String} apptoken appToken
-          * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-          * @apiHeader {String} usertoken userToken，用户未登录时传空
-          * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@ appkey 串MD5加密后转成大写        
-          * @apiParam {String} ID 医生编号 
-          * @apiParamExample {json} 请求样例：
-          *                   ?UserID=89F9E5907FD04DBF96A9867D1FA30396
-           * @apiSuccess (Response) {String} Msg 提示信息 
-           * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
-           * @apiSuccess (Response) {int} Total 总记录     
-           * @apiSuccess (Response) {object} Data 业务数据
-          * @apiSuccessExample {json} 返回样例:
-          * {"Data":{"DoctorID":"89F9E5907FD04DBF96A9867D1FA30396","DoctorName":"邱浩强","IsFollowed":false,"UserID":"B04D4AE28F994AE2AACBB456D7E0647B","Gender":1,"Marriage":0,"Birthday":"19850808","IDType":4,"IDNumber":"123","Address":"2131","PostCode":"231","Intro":"<p>广东省医师协会神经病学分会委员，中华医学会揭阳内科分会副主任委员。揭阳市优秀专家和拔尖人才，普宁市优秀专业技术人才。政协揭阳市第三、第四、第五届委员。</p><p>从事临床及医院管理工作30多年，曾于广州市第一人民医院进修，具有丰富的临床经验。专业特长为神经内科、心血管内科，特别在应用&amp;ldquo;微创&amp;rdquo;手术治疗高血压性脑出血、颅内血肿等疾病领域有着独特造诣。</p><p>主持科研项目5项，获揭阳市科技进步一等奖2项、三等奖2项。主编出版专著1部，在国家级医学杂志发表论文6篇，省级医学杂志发表论文17篇。</p>","IsConsultation":false,"IsExpert":false,"IsFreeClinicr":false,"Specialty":"高血压 糖尿病 恶性肿瘤 其他","areaCode":"","HospitalID":"42FF1C61132E443F862510FF3BC3B03A","HospitalName":"","Grade":"0","DepartmentID":"A8064D2DAE3542B18CBD64F467828F57","DepartmentName":"神经内分泌科","Education":"","Title":"4","Duties":"","CheckState":1,"SignatureURL":"","Sort":0,"FollowNum":0,"DiagnoseNum":0,"ConsultNum":0,"DoctorServices":[{"ServiceType":2,"ServiceSwitch":0,"ServicePrice":0.0,"HasSchedule":false},{"ServiceType":4,"ServiceSwitch":0,"ServicePrice":0.0,"HasSchedule":false},{"ServiceType":1,"ServiceSwitch":0,"ServicePrice":0.0,"HasSchedule":false},{"ServiceType":3,"ServiceSwitch":0,"ServicePrice":0.0,"HasSchedule":false}],"User":{"UserID":"B04D4AE28F994AE2AACBB456D7E0647B","UserAccount":"jack","UserCNName":"邱浩强","UserENName":"3","UserType":2,"Mobile":"13692248249","Email":"zenglu@km.com","Password":"7c4a8d09ca3762af61e59520943dc26494f8941b","PayPassword":"","_PhotoUrl":"images/b427cae4799bf5387eadfc9d7e627e2e","PhotoUrl":"http://121.15.153.63:8028/images/b427cae4799bf5387eadfc9d7e627e2e","Score":0,"Star":0,"Comment":0,"Good":0,"Fans":0,"Grade":0,"Checked":0,"RegTime":"2016-08-01T17:40:07.92","CancelTime":"2016-08-01T17:40:07.92","UserState":0,"UserLevel":3,"Terminal":0,"LastTime":"2016-11-18T09:56:39.703","identifier":110}},"Total":0,"Status":0,"Msg":"操作成功"}
-        **/
-        /// <summary>
-        /// 获取医生详情
-        /// 前置条件：无
-        /// 作者：郭超
-        /// 日期：2016年8月4日
-        /// </summary>
-        /// <param name="UserID">用户编号</param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("~/Doctors")]
-        [IgnoreUserAuthenticate]
-        public ApiResult GetEntityByUserID(string UserID)
-        {
-            var bll = new BLL.Doctor.Implements.DoctorService();
-            var model = bll.GetDoctorInfoByUserID(UserID);
-            return model.ToApiResultForObject();
-        }
-
-
-        /**
-            * @api {GET} /Doctors/GetDrugstoreDoctors 105001/获取处方医生
-            * @apiGroup 105 Drugstore
-            * @apiVersion 4.0.0
-            * @apiDescription 获取处方医生 
-            * @apiPermission 所有人
-            * @apiHeader {String} apptoken Users unique access-key.
-            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-            * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@ appkey 串MD5加密后转成大写        
-            * @apiParam {int} CurrentPage=1 页码 
-            * @apiParam {int} PageSize=10 分页大小
-            * @apiParam {string} Keyword='' 关键字
-            * @apiParamExample {json} 请求样例：
-            *                   /Doctors/GetDrugstoreDoctors?CurrentPage=1&PageSize=10&Keyword=
-            * @apiSuccess (Response) {String} Msg 提示信息 
-            * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
-            * @apiSuccess (Response) {int} Total 总记录数
-            * @apiSuccess (Response) {Array} Data 业务数据
-            * @apiSuccessExample {json} 返回样例:
-            *{
-                "Data": [
-                    {
-                        "DoctorID": "4FDADA2DD7E3450CAEC78E9CA407BF06",
-                        "DoctorName": "向金龙",
-                        "Gender": 0,
-                        "Marriage": 0,
-                        "Birthday": "19850808",
-                        "IDType": 0,
-                        "Address": "深圳市福田区国际创新中心A座8楼",
-                        "IsConsultation": false,
-                        "IsExpert": false,
-                        "areaCode": "",
-                        "HospitalID": "42FF1C61132E443F862510FF3BC3B03A",
-                        "HospitalName": "康美医院",
-                        "DepartmentID": "BCE87580389041A0A70F9465F305BBC2",
-                        "DepartmentName": "全科",
-                        "Duties": "",
-                        "CheckState": 0,
-                        "Sort": 0,
-                    }
-                ],
-                "Total": 75,
-                "Status": 0,
-                "Msg": "操作成功"
-            }
-        **/
-        /// <summary>
-        /// 药店/获取处方医生
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [IgnoreAuthenticate]
-        public ApiResult GetDrugstoreDoctors([FromUri]DTO.RequestDoctorSelectDTO request)
-        {
-            if (request == null)
-            {
-                request = new RequestDoctorSelectDTO();
-
-            }
-
-            return doctorBll.GetDoctorPageListForDrugstore(
-                       request.CurrentPage,
-                       request.PageSize).ToApiResultForList();
-        }
-
-        /**
-            * @api {GET} /Doctors/GetAvailableDrugstoreDoctors 105002/获取有排班的处方医生
-            * @apiGroup 105 Drugstore
-            * @apiVersion 4.0.0
-            * @apiDescription 获取有排班的处方医生 
-            * @apiPermission 所有人
-            * @apiHeader {String} apptoken Users unique access-key.
-            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-            * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@ appkey 串MD5加密后转成大写        
-            * @apiParam {int} CurrentPage=1 页码 
-            * @apiParam {int} PageSize=10 分页大小
-            * @apiParam {string} Keyword='' 关键字
-            * @apiParamExample {json} 请求样例：
-            *                   /Doctors/GetAvailableDrugstoreDoctors?CurrentPage=1&PageSize=10&Keyword=
-            * @apiSuccess (Response) {String} Msg 提示信息 
-            * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
-            * @apiSuccess (Response) {int} Total 总记录数
-            * @apiSuccess (Response) {Array} Data 业务数据
-            * @apiSuccessExample {json} 返回样例:
-            *{
-                "Data": [
-                    {
-                        "DoctorID": "4FDADA2DD7E3450CAEC78E9CA407BF06",
-                        "DoctorName": "向金龙",
-                        "Gender": 0,
-                        "Marriage": 0,
-                        "Birthday": "19850808",
-                        "IDType": 0,
-                        "Address": "深圳市福田区国际创新中心A座8楼",
-                        "IsConsultation": false,
-                        "IsExpert": false,
-                        "areaCode": "",
-                        "HospitalID": "42FF1C61132E443F862510FF3BC3B03A",
-                        "HospitalName": "康美医院",
-                        "DepartmentID": "BCE87580389041A0A70F9465F305BBC2",
-                        "DepartmentName": "全科",
-                        "Duties": "",
-                        "CheckState": 0,
-                        "Sort": 0,
-                    }
-                ],
-                "Total": 75,
-                "Status": 0,
-                "Msg": "操作成功"
-            }
-        **/
-        /// <summary>
-        /// 药店/获取有排班的处方医生
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [IgnoreAuthenticate]
-        public ApiResult GetAvailableDrugstoreDoctors([FromUri]DTO.RequestDoctorSelectDTO request)
-        {
-            if (request == null)
-            {
-                request = new RequestDoctorSelectDTO();
-            }
-
-            var result = doctorBll.GetDoctorPageListForDrugstore(
-                       request.CurrentPage,
-                       request.PageSize);
-
-            if (result.Data != null && result.Data.Count > 0)
-            {
-                int i = result.Data.Count - 1;
-                DoctorSchduleService schSerice = new DoctorSchduleService(CurrentOperatorUserID);
-                string beginDate = DateTime.Now.ToString("yyyyMMdd");
-                string endDate = DateTime.Now.AddDays(4).ToString("yyyyMMdd");
-                string begintime = DateTime.Now.ToString("HH:mm");
-                while (i >= 0)
-                {
-                    string doctorID = result.Data[i].DoctorID;
-                    if (!schSerice.Exists(t => t.IsDeleted == false && t.DoctorID == doctorID && (t.OPDate.CompareTo(beginDate) > 0
-                        || (t.EndTime.CompareTo(begintime) > 0 && t.OPDate.CompareTo(beginDate) == 0)) && t.OPDate.CompareTo(endDate) < 0))
-                    {
-                        result.Data.RemoveAt(i);
-                    }
-                    i--;
-                }
-                result.Total = result.Data.Count;
-            }
-
-            return result.ToApiResultForList();
-        }
-
-        /**
-            * @api {GET} /Doctors/GetAvailableDoctors 105003/获取有排班的医生
-            * @apiGroup 105 Drugstore
-            * @apiVersion 4.0.0
-            * @apiDescription 获取有排班的处方医生 
-            * @apiPermission 所有人
-            * @apiHeader {String} apptoken Users unique access-key.
-            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-            * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@ appkey 串MD5加密后转成大写        
-            * @apiParam {int} CurrentPage=1 页码 
-            * @apiParam {int} PageSize=10 分页大小
-            * @apiParam {string} Keyword='' 关键字
-            * @apiParamExample {json} 请求样例：
-            *                   /Doctors/GetAvailableDoctors?CurrentPage=1&PageSize=10&Keyword=
-            * @apiSuccess (Response) {String} Msg 提示信息 
-            * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
-            * @apiSuccess (Response) {int} Total 总记录数
-            * @apiSuccess (Response) {Array} Data 业务数据
-            * @apiSuccessExample {json} 返回样例:
-            *{
-                "Data": [
-                    {
-                        "DoctorID": "4FDADA2DD7E3450CAEC78E9CA407BF06",
-                        "DoctorName": "向金龙",
-                        "Gender": 0,
-                        "Marriage": 0,
-                        "Birthday": "19850808",
-                        "IDType": 0,
-                        "Address": "深圳市福田区国际创新中心A座8楼",
-                        "IsConsultation": false,
-                        "IsExpert": false,
-                        "areaCode": "",
-                        "HospitalID": "42FF1C61132E443F862510FF3BC3B03A",
-                        "HospitalName": "康美医院",
-                        "DepartmentID": "BCE87580389041A0A70F9465F305BBC2",
-                        "DepartmentName": "全科",
-                        "Duties": "",
-                        "CheckState": 0,
-                        "Sort": 0,
-                    }
-                ],
-                "Total": 75,
-                "Status": 0,
-                "Msg": "操作成功"
-            }
-        **/
         /// <summary>
         /// 药店/获取有排班的处方医生
         /// </summary>
@@ -659,51 +330,19 @@ namespace XuHos.WebApi.Controllers
             return result.ToApiResultForList();
         }
 
-        /// <summary>
-        /// 药店/获取有排班的看诊医生
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [IgnoreAuthenticate]
-        public ApiResult GetAvailableDrugstoreTreatDoctors([FromUri]DTO.RequestDoctorSelectDTO request)
-        {
-            if (request == null)
-            {
-                request = new RequestDoctorSelectDTO();
-            }
-
-            var result = doctorBll.GetDoctorPageListForDrugstoreTreat(
-                       request.CurrentPage,
-                       request.PageSize);
-
-
-            return result.ToApiResultForList();
-        }
-
         /**
-            * @api {GET} /Doctors 102106/查询医生列表
+            * @api {GET} /Doctors 102103/查询医生列表
             * @apiGroup 102 Personal Info
-            * @apiVersion 4.0.0
             * @apiDescription 通过关键字查询医生列表 
             * @apiPermission 所有人
-            * @apiHeader {String} apptoken Users unique access-key.
             * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-            * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@ appkey 串MD5加密后转成大写        
+            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空     
             * @apiParam {int} CurrentPage=1 页码 
             * @apiParam {int} PageSize=10 分页大小
             * @apiParam {string} Keyword='' 关键字
-            * @apiParam {string} DepartmentName='' 科室名称（完全匹配）
-            * @apiParam {string} DepartmentKeyword='' 科室名称（模糊匹配）
-            * @apiParam {string} HospitalName='' 医院名称（完全匹配）
-            * @apiParam {string} HospitalKeyword='' 医院名称（模糊匹配）
-            * @apiParam {string} ScheduleDate='yyyy-MM-dd' 排班日期（为空时返回结果不包含有无排班状态）
-            * @apiParam {string} IncludePkgStatus=true 是否返回套餐可用状态
-            * @apiParam {string} IncludeReplyCount=true 是否返回复数
             * @apiParam {string} OrderBy= 排序规则，可叠加（4：按照有无排班排序；5：按照有无套餐排序；6：按照评分降序排序；7：按问诊回复量降序排序）
             * @apiParamExample {json} 请求样例：
-            *                   ?CurrentPage=1&PageSize=10&Keyword=&DepartmentName=&DepartmentKeyword=&IncludePkgStatus=true&IncludeReplyCount=true&ScheduleDate=2017-11-29&OrderBy=4&OrderBy=6
+            *                   ?CurrentPage=1&PageSize=10&Keyword=&OrderBy=4&OrderBy=6
             * @apiSuccess (Response) {String} Msg 提示信息 
             * @apiSuccess (Response) {int} Status 0 代表无错误 1代表有错误
             * @apiSuccess (Response) {int} Total 总记录数
@@ -795,9 +434,8 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
-       * @api {Get} /Doctors/GetMyVisitDoctors 110014/已就诊的医生
-       * @apiGroup 110 Treatment
-       * @apiVersion 4.0.0
+       * @api {Get} /Doctors/GetMyVisitDoctors 104001/已就诊的医生
+       * @apiGroup 104 Treatment
        * @apiDescription 查询已就诊过的医生
        * @apiPermission 已登录(用户)
        * @apiHeader {String} apptoken Users unique access-key.
@@ -847,7 +485,7 @@ namespace XuHos.WebApi.Controllers
         [UserAuthenticate(IsValidUserType = false)]
         public ApiResult GetMyVisitDoctors(int CurrentPage = 1, int PageSize = 10, string hospitalId = null)
         {
-            var list = new BLL.User.Implements.UserDoctorService().GetMyVisitDoctors(CurrentOperatorUserID, CurrentPage, PageSize, hospitalId);
+            var list = userDoctor.GetMyVisitDoctors(CurrentOperatorUserID, CurrentPage, PageSize, hospitalId);
             return list.ToApiResultForList();
         }
 
@@ -868,6 +506,7 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
        * @api {Get} /Doctors/GetExpertDoctors 102108/获的推荐专家
        * @apiGroup 102 Personal Info
        * @apiVersion 4.0.0
@@ -959,6 +598,7 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
        * @api {Get} /Doctors/GetRecommendDoctors 获的推荐专家
        * @apiGroup 102 Personal Info
        * @apiVersion 4.0.0
@@ -1021,6 +661,7 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
        * @api {Get} /Doctors/GetSerivceTypeIncomes 107001/获取所有服务的服务次数和收入数据
        * @apiGroup 107 UserAccount
        * @apiVersion 4.0.0
@@ -1100,6 +741,7 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {POST} /Doctors/GetDoctorList 获取医生列表
         * @apiGroup 102 Personal Info
         * @apiVersion 4.0.0
@@ -1179,6 +821,7 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
         * @api {POST} /Doctors/GetHospitalDoctors 获取机构医生列表（包括其他机构在该机构执业的医生）
         * @apiGroup 102 Personal Info
         * @apiVersion 4.0.0

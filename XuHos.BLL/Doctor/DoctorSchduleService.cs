@@ -60,6 +60,7 @@ namespace XuHos.BLL
                                   StartTime = m.StartTime,
                                   EndTime = m.EndTime,
                                   DoctorID = doctorId,
+                                  AppointNumber = m.AppointNumber
                               }).ToList();
             }
                 
@@ -149,78 +150,75 @@ namespace XuHos.BLL
             DateTime maxdt = request.Max(t => t.OPDate);
             DateTime mindt = request.Min(t => t.OPDate);
 
+            request = request.OrderBy(t => t.OPDate).ThenBy(t => t.StartTime).ToList();
+
+            var hostimes = GetHosWorktime();
+
             using (var db = new DBEntities())
             {
                 var exist = db.DoctorSchedules.Where(t => t.DoctorID == userId
                     && t.OPDate.CompareTo(maxdt) <= 0 && t.OPDate.CompareTo(mindt) >= 0)
                     .OrderBy(t=>t.OPDate).ThenBy(t=>t.StartTime).ToList();
 
-                if(exist!=null && request.Count)
-
-                for(var )
-            }
-
-
-                bool result = true;
-            try
-            {
-                var db = new DBEntities();
-                var list = request.Data as List<RowScheduleDto>;
-                foreach (var item in list)
+                int i =0, j = 0;
+                foreach(var item in exist)
                 {
-                    var l = item.DoctorSchedule as List<DoctorScheduleDto>;
-                    foreach (var i in l)
+                    item.IsDeleted = true;
+                }
+
+                for (; i < request.Count; i++)
+                {
+                    //未选中的不处理
+                    if (!request[i].Checked)
                     {
-                        #region
-                        if (!i.Disable)
+                        continue;
+                    }
+
+                    //不符合医院时间的，排除掉
+                    if (!hostimes.Where(t => t.StartTime == request[i].StartTime && t.EndTime == request[i].StartTime).Any())
+                    {
+                        request[i].Checked = false;
+                        continue;
+                    }
+
+                    for (; j < exist.Count; j++)
+                    {
+                        if (request[i].StartTime == exist[j].StartTime)
                         {
-                            if (string.IsNullOrEmpty(i.ScheduleID))
-                            {
-                                var model = db.DoctorSchedules.FirstOrDefault(m => m.DoctorID == i.DoctorID && m.OPDate == i.OPDate && m.StartTime == i.StartTime && m.EndTime == i.EndTime);
-                                if (model == null)
-                                {
-                                    if (i.Checked)
-                                    {
-                                        model = new DoctorSchedule();
-                                        model.ScheduleID = System.Guid.NewGuid().ToString("N");
-                                        model.OPDate = i.OPDate;
-                                        model.IsDeleted = false;
-                                        model.DoctorID = i.DoctorID;
-                                        model.StartTime = i.StartTime;
-                                        model.EndTime = i.EndTime;
-                                        model.CreateUserID = userId;
-                                        model.IsDeleted = false;
-                                        db.DoctorSchedules.Add(model);
-                                    }
-                                }
-                                else
-                                {
-                                    //无ID，需要恢复才生成更新操作；
-                                    if (i.Checked)
-                                    {
-                                        model.IsDeleted = !i.Checked;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                var model = db.DoctorSchedules.FirstOrDefault(m => m.ScheduleID == i.ScheduleID);
-                                if (!i.Checked)
-                                {
-                                    model.IsDeleted = !i.Checked;
-                                }
-                            }
+                            //数据库的设置未 未删除
+                            exist[j].IsDeleted = false;
+                            //请求的标记未 不处理
+                            request[j].Checked = false;
                         }
-                        #endregion
+                        else if (request[i].StartTime.CompareTo(exist[i].StartTime) < 0)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                 }
-                db.SaveChanges();
+                foreach(var item in request)
+                {
+                    if (item.Checked)
+                    {
+                        DoctorSchedule ds = new DoctorSchedule()
+                        {
+                            StartTime = item.StartTime,
+                            EndTime = item.EndTime,
+                            Number = item.Number,
+                            ScheduleID = Guid.NewGuid().ToString("N"),
+                            OPDate = item.OPDate,
+                            DoctorID = userId
+                        };
+
+                        db.DoctorSchedules.Add(ds);
+                    }
+                }
+                return db.SaveChanges() > 0;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return result;
         }
 
         /// <summary>
@@ -282,27 +280,6 @@ namespace XuHos.BLL
         }
 
         /// <summary>
-        /// 获取医院工作时间(缓存30分钟)
-        /// </summary>
-        /// <param name="HospitalID"></param>
-        List<HospitalWorkingTime> getHospWorkTimes(string HospitalID)
-        {
-
-            using (DBEntities db = new DBEntities())
-            {
-                //查询医院工作时间
-                var result = db.HospitalWorkingTimes
-                    .Where(w =>
-                            w.HospitalID.Equals(HospitalID) &&
-                            w.IsDeleted == false)
-                    .OrderBy(x => x.StartTime)
-                    .OrderBy(x => x.EndTime).ToList();
-
-                return result;
-            }
-        }
-
-        /// <summary>
         /// 获取医生排版预约总数
         /// </summary>
         /// <param name="ScheduleID"></param>
@@ -331,35 +308,6 @@ namespace XuHos.BLL
             return count.Value;
         }
 
-        /// <summary>
-        /// 获取医生排版                
-        /// </summary>
-        /// <param name="DoctorID"></param>
-        /// <param name="sDTBegin"></param>
-        /// <param name="sDTEnd"></param>
-        List<ResponseDoctorAvailableRegTimesDTO.RegNumOfSchedule> getDoctorScheduleList(string DoctorID, string sDTBegin, string sDTEnd)
-        {
-            using (DBEntities db = new DBEntities())
-            {
-                //查询医生排版和对应预约数量
-                var list = (from ds in db.Set<DoctorSchedule>().Where(p =>
-                                        p.IsDeleted == false
-                                         && p.DoctorID == DoctorID
-                                         && p.OPDate.CompareTo(sDTBegin) >= 0
-                                         && p.OPDate.CompareTo(sDTEnd) <= 0)
-                            select new ResponseDoctorAvailableRegTimesDTO.RegNumOfSchedule()
-                            {
-                                ScheduleId = ds.ScheduleID,
-                                OPDDate = ds.OPDate,
-                                StartTime = ds.StartTime,
-                                EndTime = ds.EndTime,
-                                Number = ds.Number,
-                                Quantity = 0
-                            }).ToList();
-
-                return list;
-            }
-        }
         #endregion
     }
 }

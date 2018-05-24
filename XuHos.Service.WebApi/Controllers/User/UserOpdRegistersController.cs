@@ -29,6 +29,7 @@ namespace XuHos.WebApi.Controllers
     {
 
         /**
+         * @apiIgnore Not finished Method
            * @api {POST} /UserOPDRegisters 110301//新增看诊预约
            * @apiGroup 110 Treatment
            * @apiVersion 4.0.0
@@ -82,7 +83,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 新增看诊预约
         /// 前置条件：用户已登录
-        
+
         /// 日期：2016年8月4日
         /// </summary>
         /// <param name="requst">实体</param>
@@ -137,6 +138,7 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
            * @api {Post} /UserOPDRegisters/TodaySubmited 110302/查询是否已预约看诊
            * @apiGroup 110 Treatment
            * @apiVersion 4.0.0
@@ -189,15 +191,14 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
          * @api {GET} /UserOPDRegisters?OPDRegisterID=:OPDRegisterID 110305/获取预约详情
          * @apiGroup 110 Treatment
          * @apiVersion 4.0.0
          * @apiDescription 获取预约详情 
          * @apiPermission 已登录（用户/医生/分诊医生）
-         * @apiHeader {String} apptoken appToken
          * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
          * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-         * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
          * @apiParam {int} OPDRegisterID 预约ID 
          * @apiParamExample {json} 请求样例：
          * ?OPDRegisterID=XXXX
@@ -268,8 +269,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取预约详情
         /// 前置条件：用户已登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="OPDRegisterID">预约编号</param>
         /// <returns></returns>
@@ -283,15 +282,14 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
            * @api {GET} /UserOPDRegisters 110307/获取预约记录列表
            * @apiGroup 110 Treatment
            * @apiVersion 4.0.0
            * @apiDescription 查询用户预约的历史记录 
            * @apiPermission 已登录（用户）
-           * @apiHeader {String} apptoken appToken
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
            * @apiParam {int} CurrentPage=1 页码 
            * @apiParam {int} PageSize=10 分页大小
             * @apiParam {int} [OPDType] 医生服务类型 1-图文咨询、2-语音咨询、3-视频咨询、4-家庭医生、5-远程会诊
@@ -398,8 +396,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取预约记录列表
         /// 前置条件：已登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="request">搜索条件</param>
         /// <returns></returns>
@@ -414,15 +410,14 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
         * @api {GET} /UserOPDRegisters/GetDoctorAudVid 110308/获取医生的语音/视频看诊
         * @apiGroup 110 Treatment
         * @apiVersion 4.0.0
         * @apiDescription 医生的语音/视频看诊订单
         * @apiPermission 已登录（医生）
-        * @apiHeader {String} apptoken appToken
         * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-        * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
         * @apiParam {int} CurrentPage 页码 
         * @apiParam {int} PageSize 分页大小
         * @apiParamExample {json} 请求样例：
@@ -483,17 +478,16 @@ namespace XuHos.WebApi.Controllers
             var result = new UserOPDRegisterService(CurrentOperatorUserID).GetDoctorAudVid(CurrentOperatorDoctorID, request.CurrentPage, request.PageSize);
             return result.ToApiResultForList();
         }
-        
+
         /**
+         * @apiIgnore Not finished Method
         * @api {Delete} /UserOPDRegisters 110309/删除语音/视频看诊记录
         * @apiGroup 110 Treatment
         * @apiVersion 4.0.0
         * @apiDescription 删除语音/视频看诊记录
         * @apiPermission 已登录（用户）
-        * @apiHeader {String} apptoken appToken
         * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
         * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-        * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
         * @apiParam {string} ID 语音/视频记录ID  
         * @apiParamExample {json} 请求样例：
            /UserOPDRegisters?ID=xxx

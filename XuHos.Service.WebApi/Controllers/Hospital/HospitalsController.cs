@@ -30,8 +30,6 @@ namespace XuHos.WebApi.Controllers
         /// 103 Base Data：103101
         /// 新增医院
         /// 前置条件：管理员登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="requst">医院信息</param>
         /// <returns></returns>
@@ -56,8 +54,6 @@ namespace XuHos.WebApi.Controllers
         /// 103 Base Data：103102
         /// 更新医院
         /// 前置条件：管理员登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="requst">医院信息</param>
         /// <returns></returns>
@@ -75,8 +71,6 @@ namespace XuHos.WebApi.Controllers
         /// 103 Base Data：103103
         /// 删除医院
         /// 前置条件：管理员登录
-        
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="ID">医院编号</param>
         /// <returns></returns>
@@ -91,15 +85,16 @@ namespace XuHos.WebApi.Controllers
 
 
         /**
+         * @apiIgnore Not finished Method
            * @api {GET} /Hospitals/?ID=:ID 103104/获取医院详情
            * @apiGroup 103 Base Data
            * @apiVersion 4.0.0
            * @apiDescription 获取医院详情 
            * @apiPermission 所有人
-           * @apiHeader {String} apptoken appToken
+           
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+                  
            * @apiParam {String} ID 医院编号 
            * @apiParamExample {json} 请求样例：
            *    ?ID=42FF1C61132E443F862510FF3BC3B03A
@@ -112,7 +107,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取医院详情
         /// 前置条件：无
-        
+
         /// 日期：2016年8月4日
         /// </summary>
         /// <param name="ID">预约编号</param>
@@ -127,15 +122,16 @@ namespace XuHos.WebApi.Controllers
         }
 
         /**
+         * @apiIgnore Not finished Method
            * @api {GET} /Hospitals 103105/获取医院列表
            * @apiGroup 103 Base Data
            * @apiVersion 4.0.0
            * @apiDescription 通过关键字，分页获取医院列表 
            * @apiPermission 所有人
-           * @apiHeader {String} apptoken appToken
+           
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
            * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@appkey MD5加密后转成大写        
+                  
            * @apiParam {int} CurrentPage=1 页码 
            * @apiParam {int} PageSize=10 分页大小
            * @apiParam {string} Keyword='' 关键字
@@ -151,7 +147,7 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 获取医院列表
         /// 前置条件：无
-                
+
         /// 日期：2016年8月4日
         /// </summary>
         /// <param name="request">搜索条件</param>
