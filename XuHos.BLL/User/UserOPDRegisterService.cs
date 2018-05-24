@@ -217,8 +217,6 @@ namespace XuHos.BLL
         }
         /// <summary>
         /// 检查是否已经预约
-        
-        /// 日期：2016年11月25日
         /// </summary>
         /// <param name="requst"></param>
         /// <returns></returns>
@@ -226,88 +224,22 @@ namespace XuHos.BLL
         {
             using (DBEntities db = new DBEntities())
             {
-                int Year = DateTime.Now.Year;
-                int Month = DateTime.Now.Month;
-                int Day = DateTime.Now.Day;
-
                 OrderRepeatReturnDTO opdModel = null;
-
-                //未指定医生（医生领单的业务）
-                if (string.IsNullOrEmpty(requst.DoctorID))
-                {
-                    //有已经支付过，就诊未结束的就返回
-                    opdModel = (from opd in db.UserOpdRegisters.Where(a =>
-                                     a.IsUseTaskPool
-                                     && a.UserID == requst.UserID
-                                     && a.MemberID == requst.MemberID
-                                     && a.OPDType == requst.OPDType
-                                     && (
-                                         a.RegDate.Year == Year &&
-                                         a.RegDate.Month == Month &&
-                                         a.RegDate.Day == Day)
-                                        && a.IsDeleted == false)
-                                join opdOrder in db.Orders on opd.OPDRegisterID equals opdOrder.OrderOutID
-                                join room in db.ConversationRooms on opd.OPDRegisterID equals room.ServiceID
-                                where
-                                (
-                                       opdOrder.OrderState == EnumOrderState.Paid ||
-                                       opdOrder.OrderState == EnumOrderState.Finish
-                                )
-                                && room.RoomState != EnumRoomState.AlreadyVisit
-                                //排除已经关闭的订单
-                                && !room.Close
-                                orderby opdOrder.OrderTime descending
-                                select new OrderRepeatReturnDTO
-                                {
-                                    OrderOutID = opd.OPDRegisterID,
-                                    OrderNo = opdOrder.OrderNo,
-                                    OrderState = opdOrder.OrderState,
-                                    ChannelID = room.ChannelID,
-                                    DoctorID = opd.DoctorID,
-                                    Cancelable = (
-
-                                          opdOrder.RefundState == EnumRefundState.NoRefund &&
-                                         (opdOrder.OrderState == EnumOrderState.Paid || opdOrder.OrderState == EnumOrderState.NoPay || opdOrder.OrderState == EnumOrderState.NoConfirm) &&
-                                         !(opdOrder.LogisticState == EnumLogisticState.配送中 || opdOrder.LogisticState == EnumLogisticState.已发货 || opdOrder.LogisticState == EnumLogisticState.已送达)
-                                        )
-                                }).FirstOrDefault();
-                }
-                else
-                {
-                    //如果有未完成或未取消的订单则返回
-                    opdModel = (from opd in db.UserOpdRegisters.Where(a =>
-                                     !a.IsUseTaskPool
-                                     && (a.DoctorID == requst.DoctorID)
-                                     && a.UserID == requst.UserID
-                                     && a.MemberID == requst.MemberID
-                                     && a.OPDType == requst.OPDType
-                                     && (
-                                         a.RegDate.Year == Year &&
-                                         a.RegDate.Month == Month &&
-                                         a.RegDate.Day == Day)
-                                        && a.IsDeleted == false)
-                                join opdOrder in db.Orders on opd.OPDRegisterID equals opdOrder.OrderOutID
-                                join room in db.ConversationRooms on opd.OPDRegisterID equals room.ServiceID
-                                where
-                                 (opdOrder.OrderState == EnumOrderState.NoConfirm ||
-                                 opdOrder.OrderState == EnumOrderState.NoPay ||
-                                 opdOrder.OrderState == EnumOrderState.Paid)
-                                orderby opdOrder.OrderTime descending
-                                select new OrderRepeatReturnDTO
-                                {
-                                    OrderOutID = opd.OPDRegisterID,
-                                    OrderNo = opdOrder.OrderNo,
-                                    OrderState = opdOrder.OrderState,
-                                    ChannelID = room.ChannelID,
-                                    DoctorID = opd.DoctorID,
-                                    Cancelable = (
-                                          opdOrder.RefundState == EnumRefundState.NoRefund &&
-                                         (opdOrder.OrderState == EnumOrderState.Paid || opdOrder.OrderState == EnumOrderState.NoPay || opdOrder.OrderState == EnumOrderState.NoConfirm) &&
-                                         !(opdOrder.LogisticState == EnumLogisticState.配送中 || opdOrder.LogisticState == EnumLogisticState.已发货 || opdOrder.LogisticState == EnumLogisticState.已送达)
-                                        )
-                                }).FirstOrDefault();
-
-                }
+                opdModel = (from opd in db.UserOpdRegisters.Where(a =>a.UserID == requst.UserID
+                                     && a.MemberID == requst.MemberID && a.OPDType == requst.OPDType
+                                    && a.IsDeleted == false)
+                            join opdOrder in db.Orders on opd.OPDRegisterID equals opdOrder.OrderOutID
+                            join room in db.ConversationRooms on opd.OPDRegisterID equals room.ServiceID
+                            where opdOrder.OrderState != EnumOrderState.Finish && room.RoomState != EnumRoomState.AlreadyVisit
+                            orderby opdOrder.OrderTime descending
+                            select new OrderRepeatReturnDTO
+                            {
+                                OrderOutID = opd.OPDRegisterID,
+                                OrderNo = opdOrder.OrderNo,
+                                OrderState = opdOrder.OrderState,
+                                ChannelID = room.ChannelID,
+                                DoctorID = opd.DoctorID,
+                            }).FirstOrDefault();
 
                 //已经预约了
                 if (opdModel != null)
@@ -412,14 +344,47 @@ namespace XuHos.BLL
 
         /// <summary>
         /// 提交预约
-        
-        /// 日期：2016年11月25日
         /// </summary>
         /// <param name="request"></param>
         /// <param name="CheckExists">是否检查重复预约</param>
         /// <returns></returns>
-        public ResponseUserOPDRegisterSubmitDTO Submit(RequestUserOPDRegisterSubmitDTO request, bool CheckExists = true)
+        public ResponseUserOPDRegisterSubmitDTO Submit(RequestUserOPDRegisterSubmitDTO request)
         {
+
+            #region 校验失败：重复预约
+            var existsOrder = new OrderRepeatReturnDTO();
+
+            if (ExistsWithSubmitRequest(request, out existsOrder))
+            {
+
+                if (existsOrder.OrderState == EnumOrderState.NoPay)
+                {
+                    return new ResponseUserOPDRegisterSubmitDTO
+                    {
+                        ErrorInfo = "预约成功",
+                        ActionStatus = "Success",
+                        OPDRegisterID = existsOrder.OrderOutID,
+                        OrderNO = existsOrder.OrderNo,
+                        OrderState = existsOrder.OrderState,
+                        ChannelID = existsOrder.ChannelID
+                    };
+                }
+                else
+                {
+                    return new ResponseUserOPDRegisterSubmitDTO
+                    {
+                        ErrorInfo = "已有未完成的预约，不能重复预约",
+                        OPDRegisterID = existsOrder.OrderOutID,
+                        OrderNO = existsOrder.OrderNo,
+                        OrderState = existsOrder.OrderState,
+                        ChannelID = existsOrder.ChannelID,
+                        ActionStatus = "Repeat"
+                    };
+                }
+                    
+            }
+            #endregion
+
             using (DAL.EF.DBEntities db = new DBEntities())
             {
                 var Reason = "";
@@ -434,240 +399,20 @@ namespace XuHos.BLL
                 var OrderExpireTime = DateTime.Now.AddMinutes(30);
                 var IsUseTaskPool = false;
 
-                RequestUserMemberDTO member = null;
-
-                #region 没有指定就诊人
-                if (string.IsNullOrEmpty(request.MemberID))
-                {
-                    //获取默认就诊人
-                    if (string.IsNullOrEmpty(request.Name))
-                    {
-                        member = new BLL.User.Implements.UserMemberService().
+                RequestUserMemberDTO member = new UserMemberService().
                             GetDefaultMemberInfo(request.UserID).Map<ResponseUserMemberDTO, RequestUserMemberDTO>();
 
-                        request.MemberID = member.MemberID;
-
-                    }
-                    else
-                    {
-                        member = new RequestUserMemberDTO()
-                        {
-                            UserID = request.UserID,
-                            MemberName = request.Name,
-                            Relation = EnumUserRelation.Other, //自己关系只能有一个，默认其他
-                            Gender = request.Sex,
-                            Birthday = request.Birth,
-                            Marriage = request.Marriage,
-                            Mobile = request.Mobile,
-                            Address = "",
-                            Email = "",
-                            PostCode = "",
-                        };
-
-                        //设置默认成员
-                        request.MemberID = member.MemberID;
-                        
-                    }
-                }
-
-                #endregion
-
-                #region 校验失败：就诊人信息不合法
-                UserMemberService umService = new UserMemberService();
-                if (string.IsNullOrEmpty(request.MemberID) && !umService.CheckMemberProfileWithSubmitRequest(request.MemberID, out Reason))
-                {
-                    return new ResponseUserOPDRegisterSubmitDTO
-                    {
-                        ErrorInfo = Reason,
-                        ActionStatus = "Fail",
-                    };
-                }
-                #endregion
-
-                #region 一键呼叫和预约处理
-
-
-
-                //指定医生呼叫
-                if (!string.IsNullOrEmpty(request.ScheduleID))
-                {
-                    if (request.OPDType == EnumDoctorServiceType.AudServiceType || request.OPDType == EnumDoctorServiceType.VidServiceType)
-                    {
-                        //获取排版信息
-                        var schInfo = new DoctorSchduleService(CurrentOperatorUserID).Single<Entity.DoctorSchedule>(request.ScheduleID);
-
-                        #region 校验失败：视频或语音在线文字的时候没有设置医生排版
-                        if (request.OPDType == EnumDoctorServiceType.AudServiceType || request.OPDType == EnumDoctorServiceType.VidServiceType)
-                        {
-                            if (schInfo == null || schInfo.Number == 0)
-                            {
-                                return new ResponseUserOPDRegisterSubmitDTO
-                                {
-                                    ErrorInfo = "医生排班不存在",
-                                    ActionStatus = "UnSupport",
-                                };
-                            }
-                        }
-                        #endregion
-
-                        #region 通过医生排版填充预约信息
-                        if (schInfo != null)
-                        {
-                            request.DoctorID = schInfo.DoctorID;
-                            OPDDate = schInfo.OPDate;//预约日期            
-                            OPDBeginTime = schInfo.StartTime;
-                            OPDEndTime = schInfo.EndTime;
-                        }
-                        #endregion
-
-                        //获取服务价格
-                        ServicePrice = GetServicePriceWithSubmitRequest(request);
-
-                        #region 校验失败：医生未开通服务
-                        if (ServicePrice < 0)
-                        {
-                            return new ResponseUserOPDRegisterSubmitDTO
-                            {
-                                ErrorInfo = "医生未开通" + request.OPDType.GetEnumDescript(),
-                                ActionStatus = "UnSupport",
-                            };
-                        }
-                        #endregion
-                    }
-                }
-                //一键呼叫
-                else
-                {
-                    //不需要家庭成员
-                    if (request.MemberID == "-")
-                    {
-                        request.MemberID = "";
-                    }
-
-                    if (string.IsNullOrEmpty(request.DoctorID))
-                    {
-                        request.DoctorID = "";
-                    }
-                    // 如果指定医生的情况，但又没有排班的情况，参考，药店看诊端，沈腾飞
-                    else
-                    {
-                        var schedules = new DoctorSchduleService(CurrentOperatorUserID).GetDoctorScheduleList(
-                            request.DoctorID, DateTime.Now, DateTime.Now.AddDays(1));
-
-                        #region 校验失败：视频或语音在线文字的时候没有设置医生排版
-                        if (request.OPDType == EnumDoctorServiceType.AudServiceType || request.OPDType == EnumDoctorServiceType.VidServiceType)
-                        {
-                            if (schedules == null || schedules.Count == 0)
-                            {
-                                return new ResponseUserOPDRegisterSubmitDTO
-                                {
-                                    ErrorInfo = "医生排班不存在",
-                                    ActionStatus = "UnSupport",
-                                };
-                            }
-
-                            if (schedules.Where(x => x.AppointNumber<x.Number).FirstOrDefault() == null)
-                            {
-                                return new ResponseUserOPDRegisterSubmitDTO
-                                {
-                                    ErrorInfo = "该时间段已约满",
-                                    ActionStatus = "UnSupport",
-                                };
-                            }
-                        }
-                        #endregion
-
-                        //获取服务价格
-                        ServicePrice = GetServicePriceWithSubmitRequest(request);
-
-                        #region 校验失败：医生未开通服务
-                        if (ServicePrice < 0)
-                        {
-                            return new ResponseUserOPDRegisterSubmitDTO
-                            {
-                                ErrorInfo = "医生未开通" + request.OPDType.GetEnumDescript(),
-                                ActionStatus = "UnSupport",
-                            };
-                        }
-                        #endregion
-                    }
-
-                    if (string.IsNullOrEmpty(request.ScheduleID))
-                    {
-                        request.ScheduleID = "";
-                    }
-
-                    IsUseTaskPool = true;
-                    //订单过期时间5分钟
-                    OrderExpireTime = DateTime.Now.AddMinutes(5);
-                }
-                #endregion
-
-                #region 校验失败：重复预约
-                var existsOrder = new OrderRepeatReturnDTO();
-
-                if (CheckExists && ExistsWithSubmitRequest(request, out existsOrder))
-                {
-                    //一键呼叫时，且订单已经被医生领取，如果订单能够被取消掉则先取消订单再预约
-                    if (string.IsNullOrEmpty(request.DoctorID) &&
-                        !string.IsNullOrEmpty(existsOrder.DoctorID) &&
-                        existsOrder.Cancelable)
-                    {
-                        //取消掉原订单
-                        if (!orderService.Cancel(existsOrder.OrderNo))
-                        {
-                            return new ResponseUserOPDRegisterSubmitDTO
-                            {
-                                ErrorInfo = "取消未完成的订单失败，请重试",
-                                ActionStatus = "Fail",
-                            };
-                        }
-                    }
-                    else
-                    {
-                        return new ResponseUserOPDRegisterSubmitDTO
-                        {
-                            ErrorInfo = "当天已有未完成的预约，不能重复预约",
-                            OPDRegisterID = existsOrder.OrderOutID,
-                            OrderNO = existsOrder.OrderNo,
-                            OrderState = existsOrder.OrderState,
-                            ChannelID = existsOrder.ChannelID,
-                            ActionStatus = "Repeat"
-                        };
-
-                    }
-                }
-                #endregion
-
-                if (!string.IsNullOrWhiteSpace(request.MemberID) && member == null)
-                {
-                    member = umService.GetMemberInfo(request.MemberID).Map<ResponseUserMemberDTO, RequestUserMemberDTO>();
-                }
 
                 #region 新增预约记录
                 UserOPDRegister model = new UserOPDRegister()
                 {
-                    IsUseTaskPool = IsUseTaskPool,
-                    CreateTime = DateTime.Now,
-                    ScheduleID = request.ScheduleID,
-                    DeleteTime = DateTime.Now,
-                    ModifyTime = DateTime.Now,
-                    IsDeleted = false,
-                    DoctorGroupID = string.IsNullOrEmpty(request.DoctorGroupID) ? "" : request.DoctorGroupID,
                     CreateUserID = request.UserID,
-                    OrgnazitionID = request.OrgnazitionID,
                     OPDType = request.OPDType,
                     MemberID = request.MemberID,
-                    RegDate = DateTime.Now,
-                    OPDBeginTime = OPDBeginTime,//服务预约时间段开始
-                    OPDEndTime = OPDEndTime,//服务预约时间端结束
                     Fee = ServicePrice,//服务价格
-                    DoctorID = string.IsNullOrEmpty(request.DoctorID) ? "" : request.DoctorID,//医生编号
-                    OPDDate = OPDDate,//预约日期
                     OPDRegisterID = Guid.NewGuid().ToString("N"),
                     UserID = request.UserID,
                     ConsultContent = string.IsNullOrEmpty(request.ConsultContent) ? "" : request.ConsultContent,
-                    ConsultDisease = string.IsNullOrEmpty(request.ConsultDisease) ? "" : request.ConsultDisease,
                 };
 
                 if (member != null)
@@ -685,45 +430,6 @@ namespace XuHos.BLL
 
                 db.UserOpdRegisters.Add(model);
 
-                #endregion
-
-                #region 添加过敏史
-                // 如果填写了过敏史，则增加病历记录
-                if (!string.IsNullOrEmpty(request.AllergicHistory))
-                {
-                    db.Set<UserMedicalRecord>().Add(new UserMedicalRecord
-                    {
-                        OPDRegisterID = model.OPDRegisterID,
-                        DoctorID = model.DoctorID,
-                        OrgnazitionID = "",
-                        MemberID = model.MemberID,
-                        UserID = model.UserID,
-                        UserMedicalRecordID = Guid.NewGuid().ToString("N"),
-                        Sympton = "",//主诉
-                        PresentHistoryIllness = "",//现病史
-                        PastMedicalHistory = "",//既往病史
-                        Advised = "", //医嘱
-                        PreliminaryDiagnosis = "", //初步诊断
-                        AllergicHistory = request.AllergicHistory//过敏史
-                    });
-                }
-                #endregion
-
-                #region 添加医生患者
-                if (!string.IsNullOrEmpty(request.DoctorID) && !string.IsNullOrEmpty(request.MemberID) &&
-                    db.DoctorMembers.FirstOrDefault(x => x.DoctorID == request.DoctorID && x.MemberID == request.MemberID && !x.IsDeleted) == null)
-                {
-                    var doctorMember = new DoctorMember()
-                    {
-                        DoctorID = request.DoctorID,
-                        MemberID = request.MemberID,
-                        CreateTime = DateTime.Now,
-                        CreateUserID = request.UserID,
-                        DoctorMemberID = Guid.NewGuid().ToString("N"),
-                    };
-
-                    db.DoctorMembers.Add(doctorMember);
-                }
                 #endregion
 
                 #region 添加附件
@@ -759,7 +465,6 @@ namespace XuHos.BLL
                 //如果预约类型是挂号那么房间类型就是线下看诊，否则是线上看诊
                 room.RoomType = EnumRoomType.Group;
                 room.TriageID = long.MaxValue;
-                room.Priority = request.UserLevel;
                 room.DisableWebSdkInteroperability = true;
                 db.Set<ConversationRoom>().Add(room);
                 #endregion
@@ -796,7 +501,6 @@ namespace XuHos.BLL
                     UserID = model.UserID,
                     OrderTime = DateTime.Now,
                     OrderExpireTime = OrderExpireTime,
-                    OrgnazitionID = request.OrgnazitionID,
                     Details = new List<DTO.Platform.OrderDetailDTO>()
                                     {
                                         new DTO.Platform.OrderDetailDTO() {

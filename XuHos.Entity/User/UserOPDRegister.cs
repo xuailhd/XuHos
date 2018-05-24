@@ -15,14 +15,7 @@ namespace XuHos.Entity
         public UserOPDRegister()
         {
             this.CreateTime = DateTime.Now;
-            this.RegDate = DateTime.Now;       
-            this.ConsultContent = "";
             this.DoctorID = "";
-            this.DoctorGroupID = "";
-            this.MemberID = "";
-            this.MemberName = "";
-            this.ScheduleID = "";
-            this.IsUseTaskPool = false;
             this.Gender = Common.Enum.EnumUserGender.Other;
             this.Marriage = Common.Enum.EnumUserMaritalStatus.Other;
             this.IDNumber = "";
@@ -55,14 +48,6 @@ namespace XuHos.Entity
         public string DoctorID { get; set; }
 
         /// <summary>
-        /// 医生分组编号
-        /// </summary>       
-        [Column(TypeName = "varchar")]
-        [MaxLength(32)]
-        [Required]
-        public string DoctorGroupID { get; set; }
-
-        /// <summary>
         /// 排班ID
         /// </summary>
         [Column(TypeName = "varchar")]
@@ -70,33 +55,23 @@ namespace XuHos.Entity
         public string ScheduleID { get; set; }
 
         /// <summary>
-        /// 预约日期
-        /// </summary>
-        [Required]
-        public DateTime RegDate { get; set; }
-
-        /// <summary>
         /// 排班日期
         /// </summary>
-        [Required]
-        public DateTime OPDDate { get; set; }
+        public DateTime? OPDDate { get; set; }
 
         /// <summary>
         /// 就诊开始时间
         /// </summary>
-        [Required]
         public string OPDBeginTime { get; set; }
 
         /// <summary>
         /// 就诊结束时间
         /// </summary>
-        [Required]
         public string OPDEndTime { get; set; }
 
         /// <summary>
         /// 咨询内容
         /// </summary>
-        [Required]
         [Column(TypeName = "nvarchar")]
         [MaxLength(400)]
         public string ConsultContent { get; set; }
@@ -123,13 +98,11 @@ namespace XuHos.Entity
         public decimal Fee { get; set; }
 
 
-        [Required]
         public string MemberID { get; set; }
 
         /// <summary>
         /// 成员姓名
         /// </summary>
-        [Required]
         [Column(TypeName = "nvarchar")]
         [MaxLength(32)]
         public string MemberName { get; set; }
@@ -137,14 +110,12 @@ namespace XuHos.Entity
         /// <summary>
         /// 性别（0-男、1-女、2-未知）
         /// </summary>
-        [Required]
         [Column(TypeName = "int")]
         public Common.Enum.EnumUserGender Gender { get; set; }
 
         /// <summary>
         /// 婚姻情况(0-未婚、1-已婚、2-未知)
         /// </summary>
-        [Required]
         [Column(TypeName = "int")]
         public Common.Enum.EnumUserMaritalStatus Marriage { get; set; }
 
@@ -156,7 +127,6 @@ namespace XuHos.Entity
         /// <summary>
         /// 证件号码
         /// </summary>
-        [Required]
         [Column(TypeName = "varchar")]
         [MaxLength(32)]
         public string IDNumber { get; set; }
@@ -164,7 +134,6 @@ namespace XuHos.Entity
         /// <summary>
         /// 证件类型（0-身份证）
         /// </summary>
-        [Required]
         [Column(TypeName = "int")]
         public XuHos.Common.Enum.EnumUserCardType IDType { get; set; }
 
@@ -185,29 +154,9 @@ namespace XuHos.Entity
         /// <summary>
         /// 出生日期
         /// </summary>
-        [Required]
         [Column(TypeName = "varchar")]
         [MaxLength(10), MinLength(10)]
         public string Birthday { get; set; }
-
-        /// <summary>
-        /// 机构ID
-        /// </summary>
-        [Column(TypeName = "varchar")]
-        [MaxLength(32)]
-        [Required]
-        public string OrgnazitionID { get; set; }
-
-        /// <summary>
-        /// 使用任务池
-        /// </summary>
-        [Required]
-        public bool IsUseTaskPool { get; set;}
-
-        /// <summary>
-        /// 预约标识（0：默认看诊，1：私人医生看诊）
-        /// </summary>
-        public int Flag { get; set; }
 
     }
 }

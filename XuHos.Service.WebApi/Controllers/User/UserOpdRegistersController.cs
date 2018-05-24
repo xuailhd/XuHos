@@ -35,10 +35,8 @@ namespace XuHos.WebApi.Controllers
            * @apiVersion 4.0.0
            * @apiDescription 提交预约信息 
            * @apiPermission 已登录(用户)
-           * @apiHeader {String} apptoken Users unique access-key.
            * @apiHeader {String} noncestr 随机数，每次调用接口不能重复，长度10到40的字母或数字组成
-           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空
-           * @apiHeader {String} sign  apptoken=@apptoken&noncestr=@noncestr&usertoken=@userToken&appkey=@ appkey 串MD5加密后转成大写        
+           * @apiHeader {String} usertoken 登录用户token，用户未登录时传空       
            * @apiParam {string} MemberID 成员编号 
            * @apiParam {string} [DoctorID] 医生编号
            * @apiParam {string} ScheduleID 医生排版编号
@@ -50,12 +48,7 @@ namespace XuHos.WebApi.Controllers
            * @apiParam {string} RandomCode 验证码
            * @apiParamExample {json} 请求样例：
            *{
-                "MemberID": "XXXX", //成员编号    
-                "ScheduleID": "XXXX",//医生排版编号(一键呼叫不需要可控可难过)
-                "OPDType": 0,//预约类型，
                 "ConsultContent":"咨询内容"，  
-                "OrgnazitionID":"机构编号",
-                “Privilege”：0, //折扣类型(不使用特权=0,义诊=2,套餐=3,家庭医生=5,机构折扣=6)      
                  Files:[
                  {
                     FileUrl:"/xxx/xxx.jpg",
@@ -83,8 +76,6 @@ namespace XuHos.WebApi.Controllers
         /// <summary>
         /// 新增看诊预约
         /// 前置条件：用户已登录
-
-        /// 日期：2016年8月4日
         /// </summary>
         /// <param name="requst">实体</param>
         /// <returns></returns>
