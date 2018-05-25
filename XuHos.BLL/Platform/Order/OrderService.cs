@@ -173,7 +173,7 @@ namespace XuHos.BLL
         /// 创建订单
         /// </summary>
         /// <returns></returns>
-        public DTO.Platform.OrderDTO CreateOrder(DTO.Platform.OrderDTO order, DBEntities db = null)
+        public OrderDTO CreateOrder(OrderDTO order, DBEntities db = null)
         {
 
             var dbPrivateScope = false;
@@ -377,9 +377,9 @@ namespace XuHos.BLL
         /// <param name="OrderNo"></param>
         /// <param name="trade"></param>
         /// <returns></returns>
-        public DTO.Platform.OrderDTO GetOrder(string OrderNo, string OrderOutID = "")
+        public OrderDTO GetOrder(string OrderNo, string OrderOutID = "")
         {
-            var order = new DTO.Platform.OrderDTO();
+            var order = new OrderDTO();
 
             //订单编号是空，则通过外部订单编号获取订单号
             if (string.IsNullOrEmpty(OrderNo))
@@ -387,7 +387,7 @@ namespace XuHos.BLL
                 OrderNo = GetOrderNOByOrderOutID(OrderOutID);
             }
 
-            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
+            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
             order = CacheKey_Order.FromCache();
 
             //缓存没有命中，从数据库获取
@@ -399,7 +399,7 @@ namespace XuHos.BLL
 
                     if (entity != null)
                     {
-                        order = new DTO.Platform.OrderDTO();
+                        order = new OrderDTO();
                         //订单编号
                         order.OrderNo = entity.OrderNo;
                         order.OrderState = entity.OrderState;
@@ -494,7 +494,7 @@ namespace XuHos.BLL
             EnumTradeState TradeState = EnumTradeState.TRADE_SUCCESS,
             DBEntities db = null)
         {
-            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNO);
+            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNO);
 
             var dbPrivateScope = false;
             var ret = false;
@@ -671,7 +671,7 @@ namespace XuHos.BLL
         /// <returns></returns>
         public bool Cancel(string OrderNO, string CancelReason = "暂无", decimal? RefundFee = null, DBEntities db = null)
         {
-            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNO);
+            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNO);
 
             var ret = false;
             var UserId = CurrentOperatorUserID;
@@ -707,7 +707,8 @@ namespace XuHos.BLL
                     entity.LogisticState == EnumLogisticState.配送中 ||
                     entity.LogisticState == EnumLogisticState.已送达)
                 {
-                    XuHos.Common.LogHelper.WriteInfo("订单" + OrderNO + " 取消失败，状态 “" + entity.LogisticState.GetEnumDescript() + "”");
+                    XuHos.Common.LogHelper.WriteInfo("订单" + OrderNO + " 取消失败，状态 “" 
+                        + entity.LogisticState.GetEnumDescript() + "”");
                     ret = false;
                 }
                 else
@@ -718,7 +719,7 @@ namespace XuHos.BLL
                     if (stockService != null)
                     {
                         //调用库存，加库存操作。如果操作失败则不能取消
-                        var stockRestoreResult = stockService.Restore(entity.Map<Entity.Order, DTO.Platform.OrderDTO>(), CancelReason);
+                        var stockRestoreResult = stockService.Restore(entity.Map<Entity.Order, OrderDTO>(), CancelReason);
                         if (stockRestoreResult != EnumStockRestoreResult.Success)
                         {
                             XuHos.Common.LogHelper.WriteWarn(string.Format("订单:{0} 取消失败", entity.OrderNo, entity.PayType.GetEnumDescript()));
@@ -887,7 +888,7 @@ namespace XuHos.BLL
         /// <returns></returns>
         public bool Refund(string OrderNo, EnumPayType PayType, string TradeNo)
         {
-            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
+            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
             var RefundNo = TradeNo;
 
             if (PayType == EnumPayType.AliPay)
@@ -1013,7 +1014,7 @@ namespace XuHos.BLL
         /// <returns></returns>
         public bool RefundCompleted(string OrderNo, EnumPayType PayType, DBEntities db = null)
         {
-            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
+            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
 
             var dbPrivateScope = false;
             var ret = false;
@@ -1076,22 +1077,18 @@ namespace XuHos.BLL
             if (ret)
                 CacheKey_Order.RemoveCache();
 
-
             return ret;
-
         }
 
         /// <summary>
         /// 确认订单
-        
-        /// 日期：2016年12月26日
         /// </summary>
         /// <param name="OrderNo"></param>
         /// <param name="request"></param>
         /// <returns></returns>
         public EnumApiStatus Confirm(string OrderNo, RequestOrderConfirmDTO request, DBEntities db = null)
         {
-            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
+            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
             var ret = EnumApiStatus.BizError;
             var dbPrivateScope = false;
             var UserId = CurrentOperatorUserID;
@@ -1121,8 +1118,6 @@ namespace XuHos.BLL
                     {
                         //获取当前订单设置的收货人
                         var orderConsignee = db.Set<OrderConsignee>().Where(a => a.OrderNo == OrderNo).FirstOrDefault();
-
-                      
 
                        #region 检查物流配送的信息是否齐全
                         //如果是处方订单则需要检测收货人设置是否正确
@@ -1381,7 +1376,7 @@ namespace XuHos.BLL
         /// <returns></returns>
         public bool LogisticWithDelivery(string OrderNo)
         {
-            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
+            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, OrderNo);
 
             Order entity = new Order();
             using (DBEntities db = new DBEntities())
@@ -1508,7 +1503,7 @@ namespace XuHos.BLL
                         }
                     }
                 }
-                var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, entity.OrderNo);
+                var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, entity.OrderNo);
                 CacheKey_Order.RemoveCache();
                 return true;
             }
@@ -1571,7 +1566,7 @@ namespace XuHos.BLL
                         }
                     }
                 }
-                var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, entity.OrderNo);
+                var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, entity.OrderNo);
                 CacheKey_Order.RemoveCache();
                 return true;
             }
@@ -1633,7 +1628,7 @@ namespace XuHos.BLL
 
                         if (db.SaveChanges() > 0)
                         {
-                            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<DTO.Platform.OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, entity.OrderNo);
+                            var CacheKey_Order = new XuHos.Common.Cache.Keys.EntityCacheKey<OrderDTO>(XuHos.Common.Cache.Keys.StringCacheKeyType.Order, entity.OrderNo);
                             CacheKey_Order.RemoveCache();
                             return true;
                         }

@@ -8,8 +8,6 @@ namespace XuHos.DTO
 {
     /// <summary>
     /// 搜索请求
-    
-    /// 日期：2016年8月4日
     /// </summary>
     public class RequestHospitalQueryDTO : Common.IPagerRequest,Common.IRequestKeywordQuery
     {

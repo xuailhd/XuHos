@@ -85,6 +85,8 @@
     <Compile Include="Doctor\DoctorMemberService.cs" />
     <Compile Include="Doctor\DoctorPatentService.cs" />
     <Compile Include="Doctor\DoctorSchduleService.cs" />
+    <Compile Include="DTO\Request\RequestConfirmDoctorDTO.cs" />
+    <Compile Include="DTO\Request\RequestUserOPDRegisterSubmitDTO.cs" />
     <Compile Include="Hospital\HospitalDepartmentService.cs" />
     <Compile Include="Platform\Cashier\AliPayCashierService.cs" />
     <Compile Include="Platform\Cashier\CashierFactoryService.cs" />

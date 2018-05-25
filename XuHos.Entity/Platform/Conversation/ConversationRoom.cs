@@ -14,13 +14,11 @@ namespace XuHos.Entity
         public ConversationRoom()
         {
             this.RoomType = Common.Enum.EnumRoomType.Group;
-            this.TriageID =long.MaxValue;
             this.Duration = -1;
             this.ChargingSeq = 0;
             this.ChargingState = EnumRoomChargingState.Stoped;
             this.ChargingInterval = 15;
             this.Secret = "";
-            this.DisableWebSdkInteroperability = false;
         }
 
         /// <summary>
@@ -101,17 +99,6 @@ namespace XuHos.Entity
         [Required]
         public bool Enable { get; set; }
 
-        
-        [Required]
-
-        public bool DisableWebSdkInteroperability { get; set;}
-
-        /// <summary>
-        /// 房间是否已关闭（关闭后无法设置房间状态）
-        /// </summary>
-        [Required]
-        public bool Close { get; set; }
-
         /// <summary>
         /// 房间类型
         /// </summary>
@@ -120,23 +107,10 @@ namespace XuHos.Entity
         public XuHos.Common.Enum.EnumRoomType RoomType { get; set; }
 
         /// <summary>
-        /// 分诊编号（线下看诊通过分诊编号来叫号）
-        /// </summary>
-        [Required]
-        public long TriageID { get; set; }
-
-        /// <summary>
-        /// 优先级
-        /// </summary>
-        [Required]
-        public int Priority { get; set; }
-
-        /// <summary>
         /// 计费状态
         /// </summary>
         [Required]
         public EnumRoomChargingState ChargingState { get; set; }
-
 
         /// <summary>
         /// 计费时钟序号

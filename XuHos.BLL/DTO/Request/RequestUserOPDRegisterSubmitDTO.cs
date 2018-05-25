@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using XuHos.Common.Enum;
+using XuHos.DTO;
 
-namespace XuHos.DTO
+namespace XuHos.BLL.DTO
 {
 
     /// <summary>
@@ -24,13 +25,6 @@ namespace XuHos.DTO
         /// 预约类型（0-挂号、1-图文、2-语音、3-视频）
         /// </summary>
         public EnumDoctorServiceType OPDType { get; set; }
-
-        /// <summary>
-        /// 排班ID
-        /// </summary>
-        public string ScheduleID { get; set; }
-
-        public string MemberID { get; set; }
         
         /// <summary>
         /// 咨询内容
@@ -50,10 +44,5 @@ namespace XuHos.DTO
         public string UserID { get; set; }
 
         public EnumUserType UserType { get; set; }
-
-        /// <summary>
-        /// 没有指定排版的时候需要指定医生编号
-        /// </summary>
-        public string DoctorID { get; set; }
     }
 }

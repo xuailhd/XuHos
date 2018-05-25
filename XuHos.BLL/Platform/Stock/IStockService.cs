@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XuHos.DTO.Platform;
 
 namespace XuHos.BLL.Platform.Order
 {
@@ -41,7 +42,7 @@ namespace XuHos.BLL.Platform.Order
         /// </summary>
         /// <param name="OutID"></param>
         /// <returns></returns>
-        EnumStockRestoreResult Restore(DTO.Platform.OrderDTO order,string CancelReason);
+        EnumStockRestoreResult Restore(OrderDTO order,string CancelReason);
 
     }
 }

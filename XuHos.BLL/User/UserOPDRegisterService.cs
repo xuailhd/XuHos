@@ -23,6 +23,7 @@ using XuHos.BLL.User.DTOs.Response;
 using System.Data.Entity.Infrastructure;
 using System.Globalization;
 using RequestUserQueryOPDRegisterDTO = XuHos.DTO.RequestUserQueryOPDRegisterDTO;
+using XuHos.BLL.DTO;
 
 namespace XuHos.BLL
 {
@@ -39,64 +40,6 @@ namespace XuHos.BLL
         public UserOPDRegisterService(string CurrentOperatorUserID, string CurrentOperatorOrgID) : base(CurrentOperatorUserID)
         {
             this.CurrentOperatorOrgID = CurrentOperatorOrgID;
-        }
-
-
-        public bool SendConsultContent(int ChannelID, string OPDRegisterID)
-        {
-            var imservice = new XuHos.Integration.QQCloudy.IMHelper();
-            var sysDerepService = new BLL.Sys.SysDereplicationService();
-            var imUidService = new ConversationIMUidService(CurrentOperatorUserID);
-
-            using (DBEntities db = new DBEntities())
-            {
-                var model = db.UserOpdRegisters.Where(a => a.OPDRegisterID == OPDRegisterID && !a.IsDeleted).FirstOrDefault();
-
-                if (model != null)
-                {
-                    //用户唯一标识
-                    var userIdentifier = imUidService.GetUserIMUid(model.UserID);
-
-                    //发送图片消息
-                    var ImageFiles = db.UserFiles.Where(a => a.OutID == OPDRegisterID).ToList();
-
-                    using (XuHos.EventBus.MQChannel mqChannel = new EventBus.MQChannel())
-                    {
-                        mqChannel.BeginTransaction();
-
-                        foreach (var File in ImageFiles)
-                        {
-                            if (!mqChannel.Publish<EventBus.Events.ChannelSendGroupMsgEvent<ResponseUserFileDTO>>(new EventBus.Events.ChannelSendGroupMsgEvent<ResponseUserFileDTO>()
-                            {
-                                ChannelID = ChannelID,
-                                FromAccount = userIdentifier,
-                                Msg = File.Map<UserFile, ResponseUserFileDTO>()
-
-                            }))
-                            {
-                                return false;
-                            }
-                        }
-
-                        if (!mqChannel.Publish<EventBus.Events.ChannelSendGroupMsgEvent<string>>(new EventBus.Events.ChannelSendGroupMsgEvent<string>()
-                        {
-                            ChannelID = ChannelID,
-                            FromAccount = userIdentifier,
-                            Msg = model.ConsultContent
-
-                        }))
-                        {
-                            return false;
-                        }
-
-                        mqChannel.Commit();
-
-                        return true;
-                    }
-                }
-            }
-
-            return true;
         }
 
         public UserOPDRegisterDTO Single(string OPDRegisterID, bool WithoutUnSignedRecipe = true)
@@ -215,6 +158,7 @@ namespace XuHos.BLL
             }
             return model;
         }
+
         /// <summary>
         /// 检查是否已经预约
         /// </summary>
@@ -230,7 +174,9 @@ namespace XuHos.BLL
                                     && a.IsDeleted == false)
                             join opdOrder in db.Orders on opd.OPDRegisterID equals opdOrder.OrderOutID
                             join room in db.ConversationRooms on opd.OPDRegisterID equals room.ServiceID
-                            where opdOrder.OrderState != EnumOrderState.Finish && room.RoomState != EnumRoomState.AlreadyVisit
+                            where (opdOrder.OrderState == EnumOrderState.Paid || opdOrder.OrderState == EnumOrderState.NoPay 
+                            || opdOrder.OrderState == EnumOrderState.NoConfirm)
+                            && room.RoomState != EnumRoomState.AlreadyVisit
                             orderby opdOrder.OrderTime descending
                             select new OrderRepeatReturnDTO
                             {
@@ -257,10 +203,52 @@ namespace XuHos.BLL
             }
         }
 
+
         /// <summary>
-        /// 获取医生服务价格
-        
-        /// 日期：2016年11月25日
+        /// 获取已经支付未完成的的订单
+        /// </summary>
+        /// <param name="requst"></param>
+        /// <returns></returns>
+        public bool ExistsPayReg(RequestUserOPDRegisterSubmitDTO requst, out OrderRepeatReturnDTO order)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                OrderRepeatReturnDTO opdModel = null;
+                opdModel = (from opd in db.UserOpdRegisters.Where(a => a.UserID == requst.UserID
+                                     && a.MemberID == requst.MemberID && a.OPDType == requst.OPDType
+                                    && a.IsDeleted == false)
+                            join opdOrder in db.Orders on opd.OPDRegisterID equals opdOrder.OrderOutID
+                            join room in db.ConversationRooms on opd.OPDRegisterID equals room.ServiceID
+                            where opdOrder.OrderState == EnumOrderState.Paid 
+                            && room.RoomState != EnumRoomState.AlreadyVisit
+                            orderby opdOrder.OrderTime descending
+                            select new OrderRepeatReturnDTO
+                            {
+                                OrderOutID = opd.OPDRegisterID,
+                                OrderNo = opdOrder.OrderNo,
+                                OrderState = opdOrder.OrderState,
+                                ChannelID = room.ChannelID,
+                                DoctorID = opd.DoctorID,
+                            }).FirstOrDefault();
+
+                //已经预约了
+                if (opdModel != null)
+                {
+                    order = opdModel;
+                    return true;
+                }
+                else
+                {
+                    order = null;
+                    return false;
+                }
+
+
+            }
+        }
+
+
+        /// <summary>
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -350,7 +338,6 @@ namespace XuHos.BLL
         /// <returns></returns>
         public ResponseUserOPDRegisterSubmitDTO Submit(RequestUserOPDRegisterSubmitDTO request)
         {
-
             #region 校验失败：重复预约
             var existsOrder = new OrderRepeatReturnDTO();
 
@@ -392,12 +379,11 @@ namespace XuHos.BLL
                 var orderService = new OrderService(CurrentOperatorUserID);
 
                 //获取服务价格
-                decimal ServicePrice = 0M;
+                decimal ServicePrice = 0.01M;
                 var OPDDate = DateTime.Now;
                 var OPDBeginTime = DateTime.Now.ToString("HH:mm");
                 var OPDEndTime = DateTime.Now.AddMinutes(30).ToString("HH:mm");
                 var OrderExpireTime = DateTime.Now.AddMinutes(30);
-                var IsUseTaskPool = false;
 
                 RequestUserMemberDTO member = new UserMemberService().
                             GetDefaultMemberInfo(request.UserID).Map<ResponseUserMemberDTO, RequestUserMemberDTO>();
@@ -464,8 +450,6 @@ namespace XuHos.BLL
                 room.ServiceType = model.OPDType;
                 //如果预约类型是挂号那么房间类型就是线下看诊，否则是线上看诊
                 room.RoomType = EnumRoomType.Group;
-                room.TriageID = long.MaxValue;
-                room.DisableWebSdkInteroperability = true;
                 db.Set<ConversationRoom>().Add(room);
                 #endregion
 
@@ -475,35 +459,23 @@ namespace XuHos.BLL
 
                 switch (model.OPDType)
                 {
-                    case EnumDoctorServiceType.PicServiceType:
-                        ProductType = EnumProductType.ImageText;
-                        break;
-                    case EnumDoctorServiceType.AudServiceType:
-                        ProductType = EnumProductType.Phone;
-                        break;
                     case EnumDoctorServiceType.VidServiceType:
                         ProductType = EnumProductType.video;
-                        break;
-                    case EnumDoctorServiceType.FamilyDoctor:
-                        ProductType = EnumProductType.Other;
-                        break;
-                    case EnumDoctorServiceType.Registration:
-                        ProductType = EnumProductType.Registration;
                         break;
                     default:
                         break;
                 }
 
-                var order = orderService.CreateOrder(new DTO.Platform.OrderDTO()
+                var order = orderService.CreateOrder(new OrderDTO()
                 {
                     OrderType = ProductType,
                     OrderOutID = model.OPDRegisterID,
                     UserID = model.UserID,
                     OrderTime = DateTime.Now,
                     OrderExpireTime = OrderExpireTime,
-                    Details = new List<DTO.Platform.OrderDetailDTO>()
+                    Details = new List<OrderDetailDTO>()
                                     {
-                                        new DTO.Platform.OrderDetailDTO() {
+                                        new OrderDetailDTO() {
 
                                             Subject=ProductType.GetEnumDescript(),
                                             Body="",
@@ -523,8 +495,6 @@ namespace XuHos.BLL
                     if (orderService.Confirm(order.OrderNo, new RequestOrderConfirmDTO()
                     {
                         OrderNo = order.OrderOutID,
-                        Privilege = request.Privilege,
-                        UserPackageID = request.UserPackageID
                     }) == EnumApiStatus.BizOK)
                     {
                         order = orderService.GetOrder(order.OrderNo);
@@ -555,22 +525,29 @@ namespace XuHos.BLL
         }
 
 
+        //public bool ComfirmReg(RequestUserOPDRegisterSubmitDTO request)
+        //{
+        //    var existsOrder = new OrderRepeatReturnDTO();
+        //    if (ExistsWithSubmitRequest(request, out existsOrder))
+        //    {
+        //        using (var db = new DBEntities())
+        //        {
+        //            v
+        //    }
+        //    }
+
+            
+        //}
+
         /// <summary>
         /// 获取预约记录
-        
-        /// 日期：2016年8月3日
         /// </summary>
-        /// <param name="PageIndex"></param>
-        /// <param name="PageSize"></param>
-        /// <param name="OPDType"></param>
-        /// <param name="Keyword"></param>
-        /// <param name="BeginDate"></param>
-        /// <param name="EndDate"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
-        public Response<List<DTO.UserOPDRegisterDTO>> GetPageList(DTO.RequestUserQueryOPDRegisterDTO request)
+        public Response<List<UserOPDRegisterDTO>> GetPageList(RequestUserQueryOPDRegisterDTO request)
         {
 
-            Response<List<DTO.UserOPDRegisterDTO>> result = new Response<List<DTO.UserOPDRegisterDTO>>();
+            Response<List<UserOPDRegisterDTO>> result = new Response<List<UserOPDRegisterDTO>>();
 
             var today = DateTime.Now;
 
@@ -616,31 +593,30 @@ namespace XuHos.BLL
                             join order in db.Orders.Where(a => !a.IsDeleted) on opd.OPDRegisterID equals order.OrderOutID
                             join room in db.Set<Entity.ConversationRoom>().Where(a => a.IsDeleted == false) on opd.OPDRegisterID equals room.ServiceID into leftJoinRoom
                             from roomIfEmpty in leftJoinRoom.DefaultIfEmpty()
-                            select new DTO.UserOPDRegisterDTO()
+                            select new UserOPDRegisterDTO()
                             {
                                 OPDRegisterID = opd.OPDRegisterID,//预约编号
-                                OPDDate = opd.OPDDate,//排版日期
-                                OPDType = opd.OPDType,//预约类型
-                                RegDate = opd.RegDate,//预约时间                                                    
+                                OPDDate = opd.OPDDate.Value,//排版日期
+                                OPDType = opd.OPDType,//预约类型                                              
                                 UserID = opd.UserID,//用户编号                             
                                 Fee = opd.Fee,//费用
                                 ConsultContent = opd.ConsultContent,
                                 IDNumber = opd.IDNumber,
                                 MemberID = opd.MemberID,
                                 Age = opd.Age,
-                                Room = new DTO.ConversationRoomDTO()
+                                Room = new ConversationRoomDTO()
                                 {
                                     //就诊当天，没有就诊，用户已经支付
                                     ChannelID = roomIfEmpty != null && (order.OrderState == EnumOrderState.Finish ||
                                     (order.OrderState == EnumOrderState.Paid &&
-                                    (opd.OPDDate.Year == today.Year &&
-                                    opd.OPDDate.Month == today.Month &&
-                                    opd.OPDDate.Day == today.Day))
+                                    (opd.OPDDate.Value.Year == today.Year &&
+                                    opd.OPDDate.Value.Month == today.Month &&
+                                    opd.OPDDate.Value.Day == today.Day))
                                     ) ? roomIfEmpty.ChannelID : 0,//就诊房间
                                     RoomState = roomIfEmpty != null ? roomIfEmpty.RoomState : EnumRoomState.NoTreatment,//预约状态
                                     Secret = roomIfEmpty != null ? roomIfEmpty.Secret : "",//房间密码
                                 },
-                                Order = new DTO.Platform.OrderDTO()
+                                Order = new OrderDTO()
                                 {
                                     OrderNo = order.OrderNo,//订单编号
                                     OrderTime = order.OrderTime,//订单时间
@@ -654,7 +630,7 @@ namespace XuHos.BLL
                                     IsEvaluated = order.IsEvaluated,
                                     RefundState = order.RefundState
                                 },
-                                Member = new DTO.UserMemberDTO()
+                                Member = new UserMemberDTO()
                                 {
                                     UserID = opd.UserID,
                                     MemberID = opd.MemberID,//成员编号
@@ -663,7 +639,7 @@ namespace XuHos.BLL
                                     IDNumber = opd.IDNumber,
                                     Age = opd.Age
                                 },
-                                Doctor = new DTO.DoctorDto()
+                                Doctor = new DoctorDto()
                                 {
 
                                     DoctorID = opd.DoctorID,//医生编号
@@ -697,31 +673,30 @@ namespace XuHos.BLL
                             from schIfEmpty in leftJoinSch.DefaultIfEmpty()
                             join room in db.Set<Entity.ConversationRoom>().Where(a => a.IsDeleted == false) on opd.OPDRegisterID equals room.ServiceID into leftJoinRoom
                             from roomIfEmpty in leftJoinRoom.DefaultIfEmpty()
-                            select new DTO.UserOPDRegisterDTO()
+                            select new UserOPDRegisterDTO()
                             {
                                 OPDRegisterID = opd.OPDRegisterID,//预约编号
-                                OPDDate = opd.OPDDate,//排版日期
+                                OPDDate = opd.OPDDate.Value,//排版日期
                                 OPDType = opd.OPDType,//预约类型
-                                RegDate = opd.RegDate,//预约时间                                                    
                                 UserID = opd.UserID,//用户编号                             
                                 Fee = opd.Fee,//费用
                                 ConsultContent = opd.ConsultContent,
                                 IDNumber = opd.IDNumber,
                                 MemberID = opd.MemberID,
                                 Age = opd.Age,
-                                Room = new DTO.ConversationRoomDTO()
+                                Room = new ConversationRoomDTO()
                                 {
                                     //就诊当天，没有就诊，用户已经支付
                                     ChannelID = roomIfEmpty != null && (order.OrderState == EnumOrderState.Finish ||
                                     (order.OrderState == EnumOrderState.Paid &&
-                                    (opd.OPDDate.Year == today.Year &&
-                                    opd.OPDDate.Month == today.Month &&
-                                    opd.OPDDate.Day == today.Day))
+                                    (opd.OPDDate.Value.Year == today.Year &&
+                                    opd.OPDDate.Value.Month == today.Month &&
+                                    opd.OPDDate.Value.Day == today.Day))
                                     ) ? roomIfEmpty.ChannelID : 0,//就诊房间
                                     RoomState = roomIfEmpty != null ? roomIfEmpty.RoomState : EnumRoomState.NoTreatment,//预约状态
                                     Secret = roomIfEmpty != null ? roomIfEmpty.Secret : "",//房间密码
                                 },
-                                Order = new DTO.Platform.OrderDTO()
+                                Order = new OrderDTO()
                                 {
                                     OrderNo = order.OrderNo,//订单编号
                                     OrderTime = order.OrderTime,//订单时间
@@ -735,7 +710,7 @@ namespace XuHos.BLL
                                     IsEvaluated = order.IsEvaluated,
                                     RefundState = order.RefundState
                                 },
-                                Member = new DTO.UserMemberDTO()
+                                Member = new UserMemberDTO()
                                 {
                                     UserID = opd.UserID,
                                     MemberID = opd.MemberID,//成员编号
@@ -744,7 +719,7 @@ namespace XuHos.BLL
                                     IDNumber = opd.IDNumber,
                                     Age = opd.Age
                                 },
-                                Doctor = new DTO.DoctorDto()
+                                Doctor = new DoctorDto()
                                 {
                                     DoctorID = opd.DoctorID,//医生编号
                                     DoctorName = doctorLeft == null ? "" : doctorLeft.DoctorName,
@@ -756,7 +731,7 @@ namespace XuHos.BLL
                                     Title = doctorLeft == null ? "" : doctorLeft.Title,
                                     Duties = doctorLeft == null ? "" : doctorLeft.Duties,
                                 },
-                                Schedule = new DTO.DoctorScheduleDto
+                                Schedule = new DoctorScheduleDto
                                 {
                                     ScheduleID = schIfEmpty.ScheduleID,
                                     StartTime = schIfEmpty != null ? schIfEmpty.StartTime : opd.OPDBeginTime,
@@ -801,7 +776,7 @@ namespace XuHos.BLL
                 #endregion
 
                 query = query.OrderByDescending(a => new { a.Order.OrderTime, a.Order.OrderState });
-                result.Data = query.Pager<DTO.UserOPDRegisterDTO>(out Total, request.CurrentPage, request.PageSize);
+                result.Data = query.Pager<UserOPDRegisterDTO>(out Total, request.CurrentPage, request.PageSize);
 
                 result.Total = Total;
 
@@ -833,7 +808,7 @@ namespace XuHos.BLL
                             where opd.IsDeleted == false
                                   && opd.DoctorID == DoctorID
                                   && (opd.OPDType == EnumDoctorServiceType.AudServiceType || opd.OPDType == EnumDoctorServiceType.VidServiceType)
-                            orderby opd.RegDate descending, opd.OPDRegisterID descending
+                            orderby opd.CreateTime descending, opd.OPDRegisterID descending
                             select new ResponseOPDRegisterAudVidDTO()
                             {
                                 OPDRegisterID = opd.OPDRegisterID,//预约编号
@@ -842,9 +817,8 @@ namespace XuHos.BLL
                                 Birthday = member.Birthday,
                                 Gender = member.Gender,
                                 ChannelID = roomIfEmpty == null ? 0 : roomIfEmpty.ChannelID,
-                                OPDType = opd.OPDType,//预约类型
-                                RegDate = opd.RegDate,//预约时间  
-                                OPDDate = opd.OPDDate,
+                                OPDType = opd.OPDType,//预约类型 
+                                OPDDate = opd.OPDDate.Value,
                                 ConsultContent = opd.ConsultContent,
                                 OrderState = orderStatus != null ? orderStatus.OrderState : EnumOrderState.Paid,
                                 Price = orderStatus != null ? orderStatus.totalFee : 0,//价格
@@ -868,8 +842,6 @@ namespace XuHos.BLL
 
         /// <summary>
         /// 创建聊天的房间
-        
-        /// 日期：2016年10月18日
         /// </summary>
         /// <param name="OPDRegisterID"></param>
         /// <returns></returns>
